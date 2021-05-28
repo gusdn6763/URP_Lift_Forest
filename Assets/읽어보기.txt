@@ -1,0 +1,26 @@
+설명
+1. 이 프로젝트는 URP이다.
+2. MainScene가 메인 씬
+3. Showcase씬은 캐릭터 애니메이션 테스트용
+4. MainScene씬의 URP Post Processing오브젝트 -> 간단히 설명하면 뽀샤시 효과, 가벼운것과 무거운것이 있음. 현재 무거운거 적용중
+5. 다운받은 에셋은 _Store에 넣기
+
+
+해야할일
+1. All_Environment->Environment 오브젝트의 WindController오브젝트 값 조절하기 -> 게임 시작시 바람이 나온다.
+2. 평지 부분에 마을 만들기 ->NPC 마을
+3. 마음에 드는 NPC찾아서 애니메이션 적용하기 
+4. MainScene의 NPC 오브젝트 스크립트를 보고 NPC가 어떤말을 할지 입력하기
+
+알려주어야 할것
+1. 핑크색 파티클이 나올시 알려주기 -> 수정 못한거 있을 가능성이 있음
+2. NPC 어떻게 행동하는지 세부행동 정해서 알려주기 -> 마을의 일정범위안에서 막 움직일지, 특정행동을 한다든지
+3. 해야할것 알려주기 -> 코드부분
+
+최적화
+1. 브런치 나눠서 하기 + 메쉬나 최적화는 각각하지말고 하나의 브런치에서 짝코딩으로 하기
+2. 무거울시 Project Settings의 Graphics에서 Scriptable Render Pipeline Settings를 Low 또는 Medium으로 변경하기
+3. 그래도 무거울시 MainScene의 URP Post Processing오브젝트 에서 Volume 스크립트의 Profile에 넣어진것을 URP로 바꾸기
+
+희망
+1.Cliffs_A ~ Cliffs_D오브젝트 등산 가능 -> 절벽 맨위에 보물상자...?
