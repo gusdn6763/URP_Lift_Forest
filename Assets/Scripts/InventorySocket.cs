@@ -10,9 +10,11 @@ using UnityEngine.UI;
 
 public class InventorySocket : XRSocketInteractor
 {
-    private SelectEnterEventArgs tmpArgs;
-    private Text myText;
+    [SerializeField] private SelectEnterEventArgs tmpArgs;
+    [SerializeField] private MeshFilter meshFilter;
+    [SerializeField] private MeshRenderer meshRenderer;
 
+    private Text myText;
 
     public Item currentItem;
 
@@ -51,10 +53,12 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        print("2");
         if (args.interactable.CompareTag(Constant.item))
         {
             tmpArgs = args;
             Item tmp = args.interactable.GetComponent<Item>();
+            CurrentCount++;
             if (currentItem == null)
             {
                 tmp.transform.SetParent(transform);
@@ -70,22 +74,22 @@ public class InventorySocket : XRSocketInteractor
                 else
                 {
                     base.OnSelectEntered(args);
-                    return ;
                 }
+                return ;
             }
-            CurrentCount++;
         }
         base.OnSelectEntered(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        print("1");
         CurrentCount -= 1;
-        print(currentItem);
         if (CurrentCount > 0)
         {
-            print(args.interactor);
-            print(args.interactable);
+            Item item = Instantiate(currentItem, currentItem.transform.position, currentItem.transform.rotation);
+            item.transform.SetParent(transform);
+            item.RigiKinematic(true);
             //Default오브젝트를 추가
         }
         else
@@ -95,7 +99,6 @@ public class InventorySocket : XRSocketInteractor
             base.OnSelectExited(args);
         }
     }
- 
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
