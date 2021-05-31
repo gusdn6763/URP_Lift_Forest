@@ -45,6 +45,7 @@ public class CustomController : MonoBehaviour
         }
         if (currentUsingDevice.TryGetFeatureValue(CommonUsages.triggerButton, out menuButtonValue) && menuButtonValue)
         {
+
         }
         else
         {
@@ -148,4 +149,5 @@ public class CustomController : MonoBehaviour
             handAnimator.SetFloat("Grip", 0);
         }
     }
+
 }
