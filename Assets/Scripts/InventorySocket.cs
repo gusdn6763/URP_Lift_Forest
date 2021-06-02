@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class InventorySocket : XRSocketInteractor
 {
     private Text myText;
+    private Item checkItem;
 
     public Item currentItem;
 
@@ -42,46 +43,61 @@ public class InventorySocket : XRSocketInteractor
         base.Start();
     }
 
-
+    /// <summary>
+    /// 슬롯에 아이템을 부딪힐시
+    /// </summary>
+    /// <param name="args"></param>
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        if (currentItem != null && !dividObject)
+        if (checkItem = args.interactable.GetComponent<Item>())             //만약의 에러 체크용
         {
-            if (currentItem.GetType() == args.interactable.GetType())
+            if (checkItem.maxSlotCount >= currentCount)                     //인벤토리에 아이템을 넣을 수 있는 최대 갯수
             {
-                Destroy(args.interactable.gameObject);
-                CurrentCount++;
-            }
-        }
-        else if(dividObject && currentItem != null && args.interactable.GetComponent<Item>().makedItem == false)
-        {
-            if (currentItem.GetType() == args.interactable.GetType())
-            {
-                Destroy(args.interactable.gameObject);
-                CurrentCount++;
+                if (currentItem != null && !dividObject)                    //인벤토리에 아이템이 넣어진게 있고, 나누어진 오브젝트면
+                {
+                    if (currentItem.GetType() == args.interactable.GetType())
+                    {
+                        Destroy(args.interactable.gameObject);
+                        CurrentCount++;
+                    }
+                }
+                else if (dividObject && currentItem != null && checkItem.makedItem == false)
+                {
+                    if (currentItem.GetType() == args.interactable.GetType())
+                    {
+                        Destroy(args.interactable.gameObject);
+                        CurrentCount++;
+                    }
+                }
             }
         }
         base.OnHoverEntered(args);
     }
 
+    /// <summary>
+    /// 슬롯에 아이템을 넣을시
+    /// </summary>
+    /// <param name="args"></param>
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if (args.interactable.CompareTag(Constant.item))
+        checkItem = args.interactable.GetComponent<Item>();
+        if (checkItem.makedItem == false)
         {
-            Item tmp = args.interactable.GetComponent<Item>();
-            if (tmp.makedItem == false)
+            CurrentCount++;
+            if (currentItem == null)
             {
-                CurrentCount++;
-                if (currentItem == null)
-                {
-                    tmp.transform.SetParent(transform);
-                    currentItem = tmp;
-                }
+                checkItem.transform.SetParent(transform);
+                currentItem = checkItem;
             }
         }
+        
         base.OnSelectEntered(args);
     }
 
+    /// <summary>
+    /// 슬롯에 아이템을 빼낼시
+    /// </summary>
+    /// <param name="args"></param>
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         args.interactable.GetComponent<Item>().makedItem = false;
@@ -100,7 +116,7 @@ public class InventorySocket : XRSocketInteractor
 
     IEnumerator MakeObject()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         Item test = Instantiate(TestManager.instance.FineItem(currentItem));
         currentItem = test;
         dividObject = true;
