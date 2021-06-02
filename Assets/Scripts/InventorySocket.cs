@@ -66,7 +66,6 @@ public class InventorySocket : XRSocketInteractor
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        print("a");
         if (args.interactable.CompareTag(Constant.item))
         {
             Item tmp = args.interactable.GetComponent<Item>();
