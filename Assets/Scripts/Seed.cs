@@ -31,25 +31,20 @@ public class Seed : Item
 
     public IEnumerator Growing()
     {
-        yield return new WaitForSeconds(seeds[currentCount].growingCount);
-        meshRenderer = seeds[currentCount].renderer;
-        filter = seeds[currentCount].filter;
-        currentCount++;
-        if (currentCount == count)
+        while (count != currentCount)
         {
-            int count = Random.Range(0, maxInstanteCount);
-            for (int i = 0; i < count; i++)
+            yield return new WaitForSeconds(seeds[currentCount].growingCount);
+            meshRenderer = seeds[currentCount].renderer;
+            filter = seeds[currentCount].filter;
+            currentCount++;
+            if (currentCount == count)
             {
-                Instantiate(completeItem, transform.position, transform.rotation);
+                int count = Random.Range(0, maxInstanteCount);
+                for (int i = 0; i < count; i++)
+                {
+                    Instantiate(completeItem, transform.position, transform.rotation);
+                }
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag(Constant.dirt))
-        {
-
         }
     }
 }
