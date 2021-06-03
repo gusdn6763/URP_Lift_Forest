@@ -22,7 +22,6 @@ public class WaypointMove : MonoBehaviour
     Animator animator;
 
 
-
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -70,22 +69,24 @@ public class WaypointMove : MonoBehaviour
         {
             yield return null;
 
-
             transform.position = Vector3.MoveTowards
-
             (transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
 
             this.transform.LookAt(pointPos[pointNum].position);
+            
 
             animator.SetBool("IsWalking", true);
 
             if (Vector3.Distance(transform.position, pointPos[pointNum].position) < 0.05f)
             {
 
-                animator.SetBool("IsWalking", false);
-
-
+                animator.SetBool("IsWalking", false); 
+               
+                
                 yield return waitSecond;
+
+                
+
 
                 Debug.Log(pointNum);
 

@@ -21,7 +21,7 @@ public class wayPointMove1 : MonoBehaviour
 
     Animator animator;
 
-   
+    
 
     private void Awake()
     {
@@ -37,6 +37,8 @@ public class wayPointMove1 : MonoBehaviour
     {
         // transform.position = pointPos[pointNum].transform.position;
         // MovePath();
+        
+
     }
 
 
