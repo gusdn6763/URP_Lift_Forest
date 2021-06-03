@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    [SerializeField] protected float speed;         //플레이어 속도
+    public XRRayInteractor leftInteractorRay;
+    public XRRayInteractor rightInteractorRay;
     [SerializeField] private XRNode playerMoveDevice;                //어떠한 기기로 이동할지 정하는 변수
+    [SerializeField] protected float speed;         //플레이어 속도
 
     private CharacterController characterController;     //VR Rig의 캐릭터 컨트롤러
     private XRRig rig;
 
-    public XRController climbingHand;
+    [HideInInspector] public XRController climbingHand;
     private Vector2 inputAxis;
     public float mass = 1f;                                     //영향받는 중력크기
     public float additionalHeight = 0.2f;                       //추가적인 머리 크기
@@ -42,13 +44,30 @@ public class Player : MonoBehaviour
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(playerMoveDevice);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+
+        //if (leftTeleportRay)
+        //{
+        //    bool isLeftInteractorRayHovering = leftInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
+        //    leftTeleportRay.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(leftTeleportRay) && !isLeftInteractorRayHovering);
+        //}
+
+        //if (rightTeleportRay)
+        //{
+        //    bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
+        //    rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
+        //}
+
     }
 
     private void FixedUpdate()
     {
         CapsuleFollowHeadset();
 
-        if (!moveImpossible)
+        if (climbingHand)
+        {
+            Climb();
+        }
+        else if (!moveImpossible)
         {
             StartMove();
             ApplyGravity();
@@ -57,7 +76,6 @@ public class Player : MonoBehaviour
         {
             ApplyGravity();
         }
-
     }
 
     /// <summary>
@@ -86,6 +104,13 @@ public class Player : MonoBehaviour
         Vector3 gravity = new Vector3(0, Physics.gravity.y * mass, 0);
         gravity.y *= Time.deltaTime;
         characterController.Move(gravity * Time.deltaTime);
+    }
+
+    void Climb()
+    {
+        InputDevices.GetDeviceAtXRNode(climbingHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
+
+        characterController.Move(transform.rotation * -velocity * Time.fixedDeltaTime);
     }
 
 }

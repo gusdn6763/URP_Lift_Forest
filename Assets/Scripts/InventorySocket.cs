@@ -117,7 +117,7 @@ public class InventorySocket : XRSocketInteractor
     IEnumerator MakeObject()
     {
         yield return new WaitForSeconds(0.2f);
-        Item test = Instantiate(TestManager.instance.FineItem(currentItem));
+        Item test = Instantiate(ItemManager.instance.FineItem(currentItem));
         currentItem = test;
         dividObject = true;
         test.transform.SetParent(transform);

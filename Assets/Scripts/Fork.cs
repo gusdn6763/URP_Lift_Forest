@@ -8,9 +8,4 @@ public class Fork : Item
     {
         defaultSell = true;
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        
-    }
 }

@@ -13,5 +13,8 @@
     public const string speed = "Speed";
 
     public const string item = "Item";
+    public const string agricultural = "Agricultural";
+    public const string seed = "Seed";
+    public const string dirt = "Dirt";
 }
 
