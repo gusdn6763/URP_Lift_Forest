@@ -7,7 +7,7 @@ public class Dirt : MonoBehaviour
 {
     [SerializeField] private GameObject Field;
     [SerializeField] private List<Vector3> overPosition;
-    [SerializeField] private XRSocketInteractor socket;
+    public SeedSocket socket;
 
     private bool digAble = true;
     private int count;
@@ -15,7 +15,7 @@ public class Dirt : MonoBehaviour
 
     private void Awake()
     {
-        socket = GetComponentInChildren<XRSocketInteractor>();
+        socket = GetComponentInChildren<SeedSocket>();
     }
 
     private void Start()

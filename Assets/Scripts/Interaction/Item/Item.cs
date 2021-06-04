@@ -13,14 +13,26 @@ public class Item : XRGrabInteractable
 
     private ItemUI ui;
     private Collider col;
+    private Rigidbody rigi;
     private SelectEnterEventArgs tmp;
 
     protected bool defaultSell = false;
     public int maxSlotCount = 99;
     public bool makedItem = false;
 
+    private Transform parentTransform;
+    private Vector3 spawnPoint;
+    public bool spawnItem = false;
+    public float spawnTime = 5f;
+
     protected override void Awake()
     {
+        if(spawnItem)
+        {
+            parentTransform = GetComponentInParent<Transform>();
+            spawnPoint = GetComponent<Transform>().position;
+        }
+        rigi = GetComponent<Rigidbody>();
         ui = ItemManager.instance.itemUI;
         col = GetComponent<Collider>();
         base.Awake();
@@ -44,15 +56,24 @@ public class Item : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        tmp = args;
         col.isTrigger = true;
+        rigi.isKinematic = false;
+        if (spawnItem)
+        {
+            StartCoroutine(SpawnItem());
+        }
         base.OnSelectEntered(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        tmp = null;
         col.isTrigger = false;
         base.OnSelectExited(args);
+    }
+
+    IEnumerator SpawnItem()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);
     }
 }
