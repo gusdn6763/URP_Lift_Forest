@@ -19,7 +19,7 @@ public class CustomController : MonoBehaviour
     public InputDeviceCharacteristics characteristics;    //사람들이 임의로 정의해준 디바이스 열거 넘버
     public InputDevice currentUsingDevice;   //연결된 컨트롤러가 무엇인지 알려줌
     public GameObject handModel;          //hand모델
-    [Header("체크시 컨트롤러")]public bool renderController = false; //hand인지 컨트롤러인지 확인하는 변수
+    [Header("체크시 컨트롤러")] public bool renderController = false; //hand인지 컨트롤러인지 확인하는 변수
 
     private void Start()
     {
@@ -107,8 +107,17 @@ public class CustomController : MonoBehaviour
         }
         else
         {
-            handInstance.SetActive(true);
-            controllerInstance.SetActive(false);
+            if (handInstance != null)
+            {
+                handInstance.SetActive(true);
+            }
+            if (controllerInstance != null)
+            {
+                controllerInstance.SetActive(false);
+            }
+
+
+
         }
     }
     void SetControllerPosition()
