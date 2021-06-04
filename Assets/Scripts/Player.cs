@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
+    public XRController rightTeleportRay;
     public XRRayInteractor leftInteractorRay;
     public XRRayInteractor rightInteractorRay;
     [SerializeField] private XRNode playerMoveDevice;                //어떠한 기기로 이동할지 정하는 변수
     [SerializeField] protected float speed;         //플레이어 속도
+    public InputHelpers.Button teleportActivationButton;
 
     private CharacterController characterController;     //VR Rig의 캐릭터 컨트롤러
     private XRRig rig;
@@ -21,7 +23,15 @@ public class Player : MonoBehaviour
     private Vector2 inputAxis;
     public float mass = 1f;                                     //영향받는 중력크기
     public float additionalHeight = 0.2f;                       //추가적인 머리 크기
+    public float activationThreshold = 0.1f;
     public bool moveImpossible = false;                         //플레이어 이동을 금지
+
+    public bool EnableRightTeleport { get; set; } = true;
+
+    Vector3 pos;
+    Vector3 norm;
+    int index;
+    bool validTarget;
 
     private void Awake()
     {
@@ -45,18 +55,11 @@ public class Player : MonoBehaviour
         InputDevice device = InputDevices.GetDeviceAtXRNode(playerMoveDevice);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
 
-        //if (leftTeleportRay)
-        //{
-        //    bool isLeftInteractorRayHovering = leftInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
-        //    leftTeleportRay.gameObject.SetActive(EnableLeftTeleport && CheckIfActivated(leftTeleportRay) && !isLeftInteractorRayHovering);
-        //}
-
-        //if (rightTeleportRay)
-        //{
-        //    bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(ref pos, ref norm, ref index, ref validTarget);
-        //    rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
-        //}
-
+        if (rightTeleportRay)
+        {
+            bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
+            rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
+        }
     }
 
     private void FixedUpdate()
@@ -111,6 +114,12 @@ public class Player : MonoBehaviour
         InputDevices.GetDeviceAtXRNode(climbingHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
 
         characterController.Move(transform.rotation * -velocity * Time.fixedDeltaTime);
+    }
+
+    public bool CheckIfActivated(XRController controller)
+    {
+        InputHelpers.IsPressed(controller.inputDevice, teleportActivationButton, out bool isActivated, activationThreshold);
+        return isActivated;
     }
 
 }

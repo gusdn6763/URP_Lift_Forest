@@ -7,6 +7,8 @@ TagManager:
   - Left
   - Right
   - Item
+  - Agricultural
+  - Seed
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Item
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 

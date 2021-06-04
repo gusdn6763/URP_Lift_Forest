@@ -83,7 +83,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2356271330942653297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introduceTxt: {fileID: 2356271332351020570}
   priceTxt: {fileID: 2356271331731486637}
-  overSize: 3
+  addSize: {x: 0, y: 0, z: 0}
 --- !u!1 &2356271331539515503
 GameObject:
   m_ObjectHideFlags: 0

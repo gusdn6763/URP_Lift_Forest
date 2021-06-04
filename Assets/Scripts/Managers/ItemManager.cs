@@ -25,9 +25,4 @@ public class ItemManager : MonoBehaviour
         }
         return null;
     }
-
-    public ItemUI setItemUI()
-    {
-        return itemUI;
-    }
 }

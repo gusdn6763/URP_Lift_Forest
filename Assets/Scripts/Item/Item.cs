@@ -12,7 +12,8 @@ public class Item : XRGrabInteractable
     [SerializeField] private string introudce;
 
     private ItemUI ui;
-    public Collider col;
+    private Collider col;
+    private SelectEnterEventArgs tmp;
 
     protected bool defaultSell = false;
     public int maxSlotCount = 99;
@@ -20,19 +21,14 @@ public class Item : XRGrabInteractable
 
     protected override void Awake()
     {
+        ui = ItemManager.instance.itemUI;
         col = GetComponent<Collider>();
         base.Awake();
-
-    }
-
-    private void Start()
-    {
-        ui = ItemManager.instance.setItemUI();
     }
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        if(!(ui.gameObject.activeSelf))
+        if(!(ui.gameObject.activeSelf && tmp == null))
         {
             ui.TranceInfo(transform, introudce, price);
             ui.gameObject.SetActive(true);
@@ -48,12 +44,14 @@ public class Item : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        tmp = args;
         col.isTrigger = true;
         base.OnSelectEntered(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
+        tmp = null;
         col.isTrigger = false;
         base.OnSelectExited(args);
     }

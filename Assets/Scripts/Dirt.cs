@@ -29,7 +29,7 @@ public class Dirt : MonoBehaviour
     {
         if(currentCount < count)
         {
-            Field.transform.position = overPosition[currentCount];
+            Field.transform.localPosition = overPosition[currentCount];
             currentCount++;
             digAble = false;
             if (currentCount == count)
@@ -43,7 +43,7 @@ public class Dirt : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(Constant.agricultural))
+        if (other.CompareTag(Constant.agricultural))
         {
             Dig();
         }
