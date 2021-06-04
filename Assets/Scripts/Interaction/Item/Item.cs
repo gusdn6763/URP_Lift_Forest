@@ -8,18 +8,20 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Item : XRGrabInteractable
 {
     [Header("아이템 정보")]
+    public string itemName;
     [SerializeField] private string price;
     [SerializeField] private string introudce;
 
     private ItemUI ui;
     private Collider col;
     private Rigidbody rigi;
-    private SelectEnterEventArgs tmp;
 
+    [Header("인벤토리에 들어가기위한 제한갯수")]
     protected bool defaultSell = false;
     public int maxSlotCount = 99;
     public bool makedItem = false;
 
+    [Header("아이템 재스폰->사과 또는 NPC의 판매 아이템")]
     private Transform parentTransform;
     private Vector3 spawnPoint;
     public bool spawnItem = false;
@@ -40,7 +42,7 @@ public class Item : XRGrabInteractable
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        if(!(ui.gameObject.activeSelf && tmp == null))
+        if(!(ui.gameObject.activeSelf))
         {
             ui.TranceInfo(transform, introudce, price);
             ui.gameObject.SetActive(true);
@@ -71,7 +73,7 @@ public class Item : XRGrabInteractable
         base.OnSelectExited(args);
     }
 
-    IEnumerator SpawnItem()
+    protected IEnumerator SpawnItem()
     {
         yield return new WaitForSeconds(spawnTime);
         Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);

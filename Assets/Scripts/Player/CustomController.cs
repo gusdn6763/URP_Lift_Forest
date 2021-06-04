@@ -12,9 +12,6 @@ public class CustomController : MonoBehaviour
     private GameObject controllerInstance; //디바이스 오브젝트
     private GameObject handInstance;       //hand 오브젝트
 
-    private bool menuButtonValue = false;
-    private bool oneClicktriggerButtonCheck = false;
-    private bool rayCheck = false;
     public HandState currentHand;
     public InputDeviceCharacteristics characteristics;    //사람들이 임의로 정의해준 디바이스 열거 넘버
     public InputDevice currentUsingDevice;   //연결된 컨트롤러가 무엇인지 알려줌
@@ -42,14 +39,6 @@ public class CustomController : MonoBehaviour
         if (!renderController)
         {
             UpdateHandAnimation();
-        }
-        if (currentUsingDevice.TryGetFeatureValue(CommonUsages.triggerButton, out menuButtonValue) && menuButtonValue)
-        {
-
-        }
-        else
-        {
-            oneClicktriggerButtonCheck = true;
         }
     }
 

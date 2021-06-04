@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 [System.Serializable]
 public class SeedGrowingStage
@@ -19,25 +20,39 @@ public class Seed : Item
     private MeshFilter filter;
     private MeshRenderer meshRenderer;
 
-    public bool isActive;
-    private int count;
-    private int currentCount;
+    private int growingCount;
+    private int currentGrowingCount;
+    private bool buy = false;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        filter = GetComponent<MeshFilter>();
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+
 
     private void Start()
     {
-        currentCount = 0;
-        count = seeds.Count;
+        currentGrowingCount = 0;
+        growingCount = seeds.Count;
+    }
+
+    public void Buy()
+    {
+        buy = true;
+        StartCoroutine(SpawnItem());
     }
 
     public IEnumerator Growing()
     {
-        while (count != currentCount)
+        while (growingCount != currentGrowingCount)
         {
-            yield return new WaitForSeconds(seeds[currentCount].growingCount);
-            meshRenderer = seeds[currentCount].renderer;
-            filter = seeds[currentCount].filter;
-            currentCount++;
-            if (currentCount == count)
+            yield return new WaitForSeconds(seeds[currentGrowingCount].growingCount);
+            meshRenderer = seeds[currentGrowingCount].renderer;
+            filter = seeds[currentGrowingCount].filter;
+            currentGrowingCount++;
+            if (currentGrowingCount == growingCount)
             {
                 int count = Random.Range(0, maxInstanteCount);
                 for (int i = 0; i < count; i++)
@@ -46,5 +61,16 @@ public class Seed : Item
                 }
             }
         }
+    }
+
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+
+        base.OnSelectEntered(args);
+    }
+
+    public override bool IsSelectableBy(XRBaseInteractor interactor)
+    {
+        return base.IsSelectableBy(interactor) && buy;
     }
 }

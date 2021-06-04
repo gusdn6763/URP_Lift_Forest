@@ -27,7 +27,7 @@ public class Dirt : MonoBehaviour
 
     public void Dig()
     {
-        if(currentCount < count)
+        if(currentCount < count && digAble)
         {
             Field.transform.localPosition = overPosition[currentCount];
             currentCount++;

@@ -215,7 +215,6 @@ MonoBehaviour:
   seeds: []
   completeItem: {fileID: 0}
   maxInstanteCount: 0
-  isActive: 0
 --- !u!136 &8982424978828943467
 CapsuleCollider:
   m_ObjectHideFlags: 0

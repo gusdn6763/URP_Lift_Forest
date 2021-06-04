@@ -21,17 +21,19 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public XRController climbingHand;
     private Vector2 inputAxis;
+    private bool enableRightTeleport;
+    private Vector3 pos;
+    private Vector3 norm;
+    private int index;
+    private bool validTarget;
+    private int money;
+
     public float mass = 1f;                                     //영향받는 중력크기
     public float additionalHeight = 0.2f;                       //추가적인 머리 크기
     public float activationThreshold = 0.1f;
     public bool moveImpossible = false;                         //플레이어 이동을 금지
 
-    public bool EnableRightTeleport { get; set; } = true;
-
-    Vector3 pos;
-    Vector3 norm;
-    int index;
-    bool validTarget;
+    public int Money { get { return money; } set { money = value; } }
 
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class Player : MonoBehaviour
         if (rightTeleportRay)
         {
             bool isRightInteractorRayHovering = rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);
-            rightTeleportRay.gameObject.SetActive(EnableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
+            rightTeleportRay.gameObject.SetActive(enableRightTeleport && CheckIfActivated(rightTeleportRay) && !isRightInteractorRayHovering);
         }
     }
 

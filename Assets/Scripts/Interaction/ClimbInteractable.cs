@@ -10,7 +10,6 @@ public class ClimbInteractable : XRBaseInteractable
     {
         base.OnSelectEntered(args);
 
-        print("1");
         if (args.interactor is XRDirectInteractor)
             Player.instance.climbingHand = args.interactor.GetComponent<XRController>();
     }

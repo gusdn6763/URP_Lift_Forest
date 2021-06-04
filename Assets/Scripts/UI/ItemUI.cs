@@ -3,26 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemUI : MonoBehaviour
+public class ItemUI : UI
 {
     [SerializeField] private Text introduceTxt;
     [SerializeField] private Text priceTxt;
-    [SerializeField] private Vector3 addSize;
 
-    private Canvas canvas;
     private Transform parentTransform;
     private Vector3 tmpVector;
-
-    private void Awake()
-    {
-        canvas = GetComponent<Canvas>();
-    }
-
-    private void Start()
-    {
-        canvas.worldCamera = Camera.main;
-        transform.position = Vector3.zero;
-    }
 
     private void Update()
     {
