@@ -16,5 +16,7 @@
     public const string agricultural = "Agricultural";
     public const string seed = "Seed";
     public const string dirt = "Dirt";
+
+    public const string fishingHole = "FishingHole";
 }
 
