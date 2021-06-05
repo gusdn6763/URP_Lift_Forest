@@ -208,7 +208,9 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   obame: "\uACE0\uCD94"
   price: 1
-  introudce: "\uACE0\uCD94\uAC00 \uB2E4 \uC790\uB790\uB2E4."
+  introudce: "5\uC6D4 \uD30C\uC885 ~ 6,10\uC6D4 \uC218\uD655. \uB9E4\uC6B4\uB9DB\uC744
+    \uB0B4\uB294 \uC6B0\uB9AC\uB098\uB77C\uC758 \uC911\uC694\uD55C \uC2DD\uC7AC\uB8CC.
+    \uB9E4\uC6C0\uC758 \uC815\uB3C4\uAC00 \uB2E4\uC591\uD558\uB2E4."
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
