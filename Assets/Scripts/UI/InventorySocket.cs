@@ -61,7 +61,7 @@ public class InventorySocket : XRSocketInteractor
                         CurrentCount++;
                     }
                 }
-                else if (dividObject && currentItem != null && checkItem.makedItem == false)
+                else if (dividObject && currentItem != null && checkItem.MakedItem == false)
                 {
                     if (currentItem.GetType() == args.interactable.GetType())
                     {
@@ -81,7 +81,7 @@ public class InventorySocket : XRSocketInteractor
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         checkItem = args.interactable.GetComponent<Item>();
-        if (checkItem.makedItem == false)
+        if (checkItem.MakedItem == false)
         {
             CurrentCount++;
             if (currentItem == null)
@@ -100,7 +100,7 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        args.interactable.GetComponent<Item>().makedItem = false;
+        args.interactable.GetComponent<Item>().MakedItem = false;
         CurrentCount -= 1;
         if (CurrentCount > 0)
         {

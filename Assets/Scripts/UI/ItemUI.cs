@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ItemUI : UI
 {
+    [SerializeField] private Text nameTxt;
     [SerializeField] private Text introduceTxt;
     [SerializeField] private Text priceTxt;
+
 
     private Transform parentTransform;
     private Vector3 tmpVector;
@@ -18,9 +20,10 @@ public class ItemUI : UI
         transform.LookAt(tmpVector);
     }
 
-    public void TranceInfo(Transform parent, string introduce, string price)
+    public void TranceInfo(Transform parent, string name, string introduce, string price)
     {
         parentTransform = parent;
+        nameTxt.text = name.ToString();
         introduceTxt.text = introduce.ToString();
         priceTxt.text = price.ToString();
     }

@@ -5,25 +5,21 @@ using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Item : XRGrabInteractable
+public class Item : Introduce
 {
-    [Header("아이템 정보")]
-    public string itemName;
-    [SerializeField] private string price;
-    [SerializeField] private string introudce;
-
-    private ItemUI ui;
     private Collider col;
     private Rigidbody rigi;
 
-    [Header("인벤토리에 들어가기위한 제한갯수")]
-    protected bool defaultSell = false;
-    public int maxSlotCount = 99;
-    public bool makedItem = false;
-
-    [Header("아이템 재스폰->사과 또는 NPC의 판매 아이템")]
     private Transform parentTransform;
     private Vector3 spawnPoint;
+    private bool makedItem = false;
+    protected bool defaultSell = false;
+    public bool MakedItem { get { return makedItem; } set { makedItem = value; } }
+
+    [Header("아이템 정보")]
+    public int maxSlotCount = 99;
+
+    [Header("스폰되는 아이템일 경우")]
     public bool spawnItem = false;
     public float spawnTime = 5f;
 
@@ -35,31 +31,15 @@ public class Item : XRGrabInteractable
             spawnPoint = GetComponent<Transform>().position;
         }
         rigi = GetComponent<Rigidbody>();
-        ui = ItemManager.instance.itemUI;
         col = GetComponent<Collider>();
         base.Awake();
-    }
-
-    protected override void OnHoverEntered(HoverEnterEventArgs args)
-    {
-        if(!(ui.gameObject.activeSelf))
-        {
-            ui.TranceInfo(transform, introudce, price);
-            ui.gameObject.SetActive(true);
-        }
-        base.OnHoverEntered(args);
-    }
-
-    protected override void OnHoverExited(HoverExitEventArgs args)
-    {
-        ui.gameObject.SetActive(false);
-        base.OnHoverExited(args);
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         col.isTrigger = true;
         rigi.isKinematic = false;
+        print("aa");
         if (spawnItem)
         {
             StartCoroutine(SpawnItem());
