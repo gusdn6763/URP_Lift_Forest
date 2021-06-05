@@ -220,12 +220,10 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: 
-  price: 
+  obame: "\uACE0\uCD94\uC528\uC557"
+  price: 0
   introudce: 
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
-  sellingItem: {fileID: 4735929037806062729, guid: 1294ceaa38481a0438143f9d0a1de470, type: 3}
-  sellingNPC: {fileID: 0}
   sellingPrice: 1
