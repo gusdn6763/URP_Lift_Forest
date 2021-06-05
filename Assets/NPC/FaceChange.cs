@@ -17,19 +17,47 @@ public class FaceInfo
     public Faces faces;
 }
 
+//[ExecuteInEdit$$anonymous$$ode]
+//[RequireComponent(typeof(MySkinnedMeshRenderer))]
+
 public class FaceChange : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public SkinnedMeshRenderer MySkinnedMeshRenderer;
+    //GameObject findCharacter = GameObject.Find("face1");
+    //SkinnedMeshRenderer findSkinnedMesh = findCharacter.GetComponent<SkinnedMeshRenderer>();
 
-    public FaceInfo[] faceInfo;
+    //GameObject findChangeObject = GameObject.Find("face27");
+    //SkinnedMeshRenderer findMeshFilter = findChangeObject.GetComponent<SkinnedMeshRenderer>();
 
-    public void ChangedFace()
+    //findSkinnedMesh.sharedMesh = findMeshFilter.sharedMesh;
+    public Material[] myMesh;
+    public SkinnedMeshRenderer MySkin;
+
+    public void Start()
     {
-        if (true)
-        {
-            MySkinnedMeshRenderer.materials[0] = faceInfo[0].face;
-        }
-        
+        transform.Find("Face").GetComponent<SkinnedMeshRenderer>().material = myMesh[0];
+
+        var materials = GetComponentInChildren<SkinnedMeshRenderer>().materials;
+        materials[1] = myMesh[0];
+        GetComponentInChildren<SkinnedMeshRenderer>().materials = materials;
+        //MySkin = GetComponent<SkinnedMeshRenderer>();
+        //MySkin.materials[0] = myMesh[0];
     }
+
+   
+    // public FaceInfo[] faceInfo;
+
+    //public void ChangedFace()
+    //{
+    //    if (MySkinnedMeshRenderer != null)
+    //    {
+    //        MySkinnedMeshRenderer.materials[0] = faceInfo[0].face;
+    //        transform.GetComponent<SkinnedMeshRenderer>().MySkinnedMeshRenderer;
+    //    }
+
+    //}
+    //}
+
+
 }
+
+   
