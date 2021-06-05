@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &735353909152040964
+--- !u!1 &7028005889774133648
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 729763319125077326}
-  - component: {fileID: 739866833190342138}
-  - component: {fileID: 748581886383988514}
-  - component: {fileID: 735353909152040965}
-  - component: {fileID: 735353909152040967}
-  - component: {fileID: 735353909152040966}
+  - component: {fileID: 7033182647373927566}
+  - component: {fileID: 7060745439039373654}
+  - component: {fileID: 7052388478202038422}
+  - component: {fileID: 7028005889774133651}
+  - component: {fileID: 7028005889774133650}
+  - component: {fileID: 7028005889774133649}
   m_Layer: 0
   m_Name: Potato
   m_TagString: Untagged
@@ -21,35 +21,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &729763319125077326
+--- !u!4 &7033182647373927566
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.188, y: -1.2608, z: -1.048}
-  m_LocalScale: {x: 1.5001, y: 1.5001, z: 1.5001}
+  m_GameObject: {fileID: 7028005889774133648}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &739866833190342138
+--- !u!33 &7060745439039373654
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
-  m_Mesh: {fileID: 4300000, guid: 3c52d0fb55931e84a996a74bb2d2c8aa, type: 3}
---- !u!23 &748581886383988514
+  m_GameObject: {fileID: 7028005889774133648}
+  m_Mesh: {fileID: 4300000, guid: a60057db913789243b3e400c66be5c16, type: 3}
+--- !u!23 &7052388478202038422
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
+  m_GameObject: {fileID: 7028005889774133648}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,27 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &735353909152040965
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.07374355
-  m_Height: 0.08334307
-  m_Direction: 1
-  m_Center: {x: 0.000003837049, y: 0.04167052, z: 0.0000019147992}
---- !u!54 &735353909152040967
+--- !u!54 &7028005889774133651
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
+  m_GameObject: {fileID: 7028005889774133648}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -114,16 +100,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &735353909152040966
+--- !u!114 &7028005889774133650
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735353909152040964}
+  m_GameObject: {fileID: 7028005889774133648}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b0ea321dc66c243a44280742eb4778, type: 3}
+  m_Script: {fileID: 11500000, guid: a8a5152725b2ea5428b6900a8efbd603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -220,13 +206,22 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  obame: 
   price: 
   introudce: 
   maxSlotCount: 99
-  makedItem: 0
   spawnItem: 0
   spawnTime: 5
-  seeds: []
-  completeItem: {fileID: 0}
-  maxInstanteCount: 0
-  isActive: 0
+--- !u!65 &7028005889774133649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028005889774133648}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3696649, y: 0.13328458, z: 0.29651213}
+  m_Center: {x: -0.0000003054738, y: 0.06664229, z: 0.00000015646219}

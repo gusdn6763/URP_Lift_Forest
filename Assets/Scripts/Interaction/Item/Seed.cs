@@ -6,13 +6,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 [System.Serializable]
 public class SeedGrowingStage
 {
-    public float growingCount;
+    public float growingCountTime;
     public MeshRenderer renderer;
     public MeshFilter filter;
 }
 
 public class Seed : Item
 {
+    [Header("¾¾¾Ñ")]
     [SerializeField] private List<SeedGrowingStage> seeds;
     [SerializeField] private Item completeItem;
     [SerializeField] private int maxInstanteCount;
@@ -48,7 +49,7 @@ public class Seed : Item
     {
         while (growingCount != currentGrowingCount)
         {
-            yield return new WaitForSeconds(seeds[currentGrowingCount].growingCount);
+            yield return new WaitForSeconds(seeds[currentGrowingCount].growingCountTime);
             meshRenderer = seeds[currentGrowingCount].renderer;
             filter = seeds[currentGrowingCount].filter;
             currentGrowingCount++;

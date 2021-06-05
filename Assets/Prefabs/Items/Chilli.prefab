@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6814486351336518170
+--- !u!1 &4737198727086186293
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6811648924965110258}
-  - component: {fileID: 6840890888554448258}
-  - component: {fileID: 6829100748159861434}
-  - component: {fileID: 6814486351336518169}
-  - component: {fileID: 6814486351336518167}
-  - component: {fileID: 6814486351336518168}
+  - component: {fileID: 4731357271193042541}
+  - component: {fileID: 4741425259103582591}
+  - component: {fileID: 4750018529833616963}
+  - component: {fileID: 4735929037806062726}
+  - component: {fileID: 4735929037806062729}
+  - component: {fileID: 4735929037806062727}
   m_Layer: 0
   m_Name: Chilli
   m_TagString: Untagged
@@ -21,35 +21,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6811648924965110258
+--- !u!4 &4731357271193042541
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.5896, y: -1.2103, z: -1.2826}
-  m_LocalScale: {x: 2.4497, y: 2.4497, z: 2.4497}
+  m_GameObject: {fileID: 4737198727086186293}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -137.70248, y: 1.03, z: -104.995}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &6840890888554448258
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4741425259103582591
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
-  m_Mesh: {fileID: 4300000, guid: f54c57c9519d76c43bf59d11814ad0b5, type: 3}
---- !u!23 &6829100748159861434
+  m_GameObject: {fileID: 4737198727086186293}
+  m_Mesh: {fileID: 4300000, guid: e7780f7905145614cb2dc0119a7af50a, type: 3}
+--- !u!23 &4750018529833616963
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
+  m_GameObject: {fileID: 4737198727086186293}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,27 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6814486351336518169
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.017367676
-  m_Height: 0.13742661
-  m_Direction: 1
-  m_Center: {x: -0.0030688155, y: 0.06871329, z: 0.0032600567}
---- !u!54 &6814486351336518167
+--- !u!54 &4735929037806062726
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
+  m_GameObject: {fileID: 4737198727086186293}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -114,16 +100,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6814486351336518168
+--- !u!114 &4735929037806062729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6814486351336518170}
+  m_GameObject: {fileID: 4737198727086186293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72b0ea321dc66c243a44280742eb4778, type: 3}
+  m_Script: {fileID: 11500000, guid: a8a5152725b2ea5428b6900a8efbd603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -220,13 +206,23 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  price: 
-  introudce: 
+  obame: "\uACE0\uCD94"
+  price: 1
+  introudce: "\uACE0\uCD94\uAC00 \uB2E4 \uC790\uB790\uB2E4."
   maxSlotCount: 99
-  makedItem: 0
   spawnItem: 0
   spawnTime: 5
-  seeds: []
-  completeItem: {fileID: 0}
-  maxInstanteCount: 0
-  isActive: 0
+--- !u!136 &4735929037806062727
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737198727086186293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.10121617
+  m_Height: 0.056707226
+  m_Direction: 1
+  m_Center: {x: -0.0013992228, y: -0.000000004656613, z: 0.000000033527613}

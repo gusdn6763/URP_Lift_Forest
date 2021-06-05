@@ -39,7 +39,6 @@ public class Item : Introduce
     {
         col.isTrigger = true;
         rigi.isKinematic = false;
-        print("aa");
         if (spawnItem)
         {
             StartCoroutine(SpawnItem());
