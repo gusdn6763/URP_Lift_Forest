@@ -1,42 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ItemLocation : MonoBehaviour
+namespace TurnTheGameOn.ArrowWaypointer
 {
-    
-	public int radius;
-	[HideInInspector] public TutorialManager TutoMgr;
-	[HideInInspector] public int itemNum;
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
 
-	void Update()
+	public class ItemLocation : MonoBehaviour
 	{
-		if (TutoMgr.player)
+
+		public int radius;
+		[HideInInspector] public TutorialManager TutoMgr;
+		[HideInInspector] public int itemNum;
+
+		void Update()
 		{
-			if (Vector3.Distance(transform.position, TutoMgr.player.position) < radius)				
+			if (TutoMgr.player)
 			{
-			TutoMgr.changeTarget();
+				if (Vector3.Distance(transform.position, TutoMgr.player.position) < radius)
+				{
+					TutoMgr.changeTarget();
+				}
 			}
 		}
-	}
 
-	void OnTriggerEnter(Collider col)
-	{
-		if (col.gameObject.tag == "Player")
+		void OnTriggerEnter(Collider col)
 		{
-		TutoMgr.ItemEvent(itemNum);
-			TutoMgr.changeTarget();
+			if (col.gameObject.tag == "Player")
+			{
+				TutoMgr.ItemEvent(itemNum);
+				TutoMgr.changeTarget();
+			}
 		}
-	}
 
 	#if UNITY_EDITOR
-	void OnDrawGizmosSelected()
-	{
-		if (TutoMgr != null)
-		{
-			TutoMgr.OnDrawGizmosSelected(radius);
-		}
-	}
+			void OnDrawGizmosSelected()
+			{
+				if (TutoMgr != null)
+				{
+					TutoMgr.OnDrawGizmosSelected(radius);
+				}
+			}
 	#endif
+	}
 }
 
