@@ -9,12 +9,14 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    [SerializeField] private XRController rightTeleportRay;                 //오른손 포탈레이
-    [SerializeField] private XRRayInteractor leftInteractorRay;             //왼손 레이
-    [SerializeField] private XRRayInteractor rightInteractorRay;            //오른손 레이
-    [SerializeField] private XRNode playerMoveDevice;                       //어떠한 기기로 이동할지 정하는 변수
-    [SerializeField] private float speed;                                   //플레이어 속도
-    [SerializeField] private InputHelpers.Button teleportActivationButton;  //텔레포트 버튼
+    [SerializeField] private XRController rightTeleportRay;                         //오른손 포탈레이
+    [SerializeField] private XRRayInteractor leftInteractorRay;                     //왼손 레이
+    [SerializeField] private XRRayInteractor rightInteractorRay;                    //오른손 레이
+    [SerializeField] private XRNode playerMoveDevice;                               //어떠한 기기로 이동할지 정하는 변수
+    [SerializeField] private InputHelpers.Button rightTeleportActivationButton;     //텔레포트 버튼
+    [SerializeField] private GameObject inventory;                                  //인벤토리
+    [SerializeField] private float speed;                                           //플레이어 속도
+    [SerializeField] private int money;                                             //돈
 
     private CharacterController characterController;                        //VR Rig의 캐릭터 컨트롤러
     private XRRig rig;          
@@ -27,12 +29,11 @@ public class Player : MonoBehaviour
     private Vector3 norm;
     private int index;
     private bool validTarget;
-    private int money;
     public int Money { get { return money; } set { money = value; } }
 
     public float mass = 1f;                                     //영향받는 중력크기
     public float additionalHeight = 0.2f;                       //추가적인 머리 크기
-    public float activationThreshold = 0.1f;                    //텔포를 위해 버튼을 눌러야하는 시간
+    public float activationThreshold = 0.1f;                    //상호작용을 위해 버튼을 눌러야하는 시간
     public bool moveImpossible = false;                         //플레이어 이동을 금지
 
 
@@ -57,6 +58,11 @@ public class Player : MonoBehaviour
     {
         InputDevice device = InputDevices.GetDeviceAtXRNode(playerMoveDevice);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+
+        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated))
+            inventory.SetActive(isActivated);
+
+
 
         if (rightTeleportRay)
         {
@@ -121,9 +127,12 @@ public class Player : MonoBehaviour
 
     public bool CheckIfActivated(XRController controller)
     {
-        InputHelpers.IsPressed(controller.inputDevice, teleportActivationButton, out bool isActivated, activationThreshold);
+        InputHelpers.IsPressed(controller.inputDevice, rightTeleportActivationButton, out bool isActivated, activationThreshold);
         return isActivated;
     }
+
+
+
     public Vector3 SetCurrentRayPos()
     {
         rightInteractorRay.TryGetHitInfo(out pos, out norm, out index, out validTarget);

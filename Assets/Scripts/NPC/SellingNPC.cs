@@ -7,11 +7,10 @@ public class SellingNPC : NPC
 {
     [Header("아이템 판매 정보")]
     [SerializeField] private List<SellingItem> sellingItems;
+    [SerializeField] private Transform spawnPoint;
     [SerializeField] private string sellingDialogue;
     [SerializeField] private string needGoldDialogue;
     [SerializeField] private string buyDialogue;
-    [SerializeField] private Button okButton;
-    [SerializeField] private Button noButton;
     
     private Item sellingItem;
     private int sellingItemPrice;
@@ -28,34 +27,38 @@ public class SellingNPC : NPC
     {
         sellingItem = choiceItem;
         sellingItemPrice = price;
+
         npcUI.gameObject.SetActive(true);
         npcUI.ShowDialogue(transform, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString());
+        npcUI.ButtonOnOff(true);
+        npcUI.ChangeButtonName("구입", "취소");
 
-        ButtonCheck(true);
+        npcUI.SetOnClickAction(() =>
+        {
+            if (Player.instance.Money > sellingItemPrice)
+            {
+                Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
+                Player.instance.Money -= sellingItemPrice;
+                npcUI.ShowDialogue(transform, buyDialogue);
+            }
+            else
+            {
+                
+                npcUI.ShowDialogue(transform, needGoldDialogue.ToString());
+            }
+
+            npcUI.ButtonOnOff(false);
+        });
+
+        npcUI.SetNoClickAction(() =>
+        {
+            npcUI.ShowDialogue(transform, defaultDialogue);
+            npcUI.gameObject.SetActive(false);
+        });
     }    
 
-    public void BuyItemCheck()
-    {
-        if(Player.instance.Money > sellingItemPrice)
-        {
-            Instantiate(sellingItem);
-        }
-        else
-        {
-            npcUI.ShowDialogue(transform, needGoldDialogue.ToString());
-        }
-        ButtonCheck(false);
-    }
 
-    public void CancleItem()
-    {
-        npcUI.ShowDialogue(transform, defaultDialogue);
-        npcUI.gameObject.SetActive(false);
-    }
 
-    public void ButtonCheck(bool isOn)
-    {
-        okButton.gameObject.SetActive(isOn);
-        noButton.gameObject.SetActive(isOn);
-    }
+
+
 }

@@ -10,6 +10,7 @@ public class Introduce : XRGrabInteractable
 
     [Header("설명 정보")]
     [SerializeField] private string obame;
+    public string Name { get { return obame; } set { obame = value; } }
     [SerializeField] private string price;
     [SerializeField] private string introudce;
 

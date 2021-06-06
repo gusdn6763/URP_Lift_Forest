@@ -14,6 +14,7 @@ public class SellingItem : Item
     [SerializeField] private Item sellingPrefab;
 
 
+
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         sellingNPC(sellingPrefab, sellingPrice);
