@@ -8,14 +8,14 @@ public class NPC : XRBaseInteractable
 {
     [SerializeField] private float disableDiaolgueTime;
     [SerializeField] protected string defaultDialogue;
+    [SerializeField] private float interactiveRange = 5f;
 
     protected NPCUI npcUI;
-    protected bool interactive = false;
 
     protected override void Awake()
     {
         base.Awake();
-        npcUI = GetComponentInChildren<NPCUI>();
+        npcUI = ItemManager.instance.npcUI;
     }
 
     private void Start()
@@ -23,29 +23,13 @@ public class NPC : XRBaseInteractable
         npcUI.gameObject.SetActive(false);
     }
 
-
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if(interactive)
+        if(Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange)
         {
-            npcUI.gameObject.SetActive(interactive);
-            npcUI.ShowDialogue(defaultDialogue);
+            npcUI.gameObject.SetActive(true);
+            npcUI.ShowDialogue(transform, defaultDialogue);
         }
         base.OnSelectEntered(args);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag(Constant.player))
-            interactive = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Constant.player))
-        {
-            interactive = false;
-            npcUI.gameObject.SetActive(interactive);
-        }
     }
 }

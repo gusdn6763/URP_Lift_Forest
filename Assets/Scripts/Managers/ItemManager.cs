@@ -7,6 +7,7 @@ public class ItemManager : MonoBehaviour
     public static ItemManager instance;
 
     public ItemUI itemUI;
+    public NPCUI npcUI;
 
     private void Awake()
     {

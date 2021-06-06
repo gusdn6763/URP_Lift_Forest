@@ -103,8 +103,7 @@ public class GridBuildingSystem3D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isLeftInteractorRayHovering = 
-            Player.instance.leftInteractorRay.TryGetHitInfo(out currentPosition, out normal, out positionLine, out lineValid);
+        currentPosition = Player.instance.SetCurrentRayPos();
         if (currentPlacedObjectTypeSO != null)
         {
             grid.GetXZ(currentPosition, out int x, out int z);

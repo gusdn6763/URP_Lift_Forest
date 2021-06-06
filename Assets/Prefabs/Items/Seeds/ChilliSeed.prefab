@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6393649775497521378
+--- !u!1 &4413425684354707833
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6389749394649357066}
-  - component: {fileID: 6396412912052641658}
-  - component: {fileID: 6408326849441323074}
-  - component: {fileID: 6393649775497521377}
-  - component: {fileID: 6393649775497521391}
-  - component: {fileID: 6393649775497521376}
+  - component: {fileID: 4407228421568103057}
+  - component: {fileID: 4414075712040568545}
+  - component: {fileID: 4425805397211300313}
+  - component: {fileID: 4413425684354707834}
+  - component: {fileID: 4413425684354707828}
+  - component: {fileID: 2843575006095062419}
   m_Layer: 0
   m_Name: ChilliSeed
   m_TagString: Untagged
@@ -21,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6389749394649357066
+--- !u!4 &4407228421568103057
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.5896, y: -1.271, z: -1.2826}
   m_LocalScale: {x: 2, y: 2, z: 2}
@@ -35,21 +35,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &6396412912052641658
+--- !u!33 &4414075712040568545
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   m_Mesh: {fileID: 4300000, guid: f54c57c9519d76c43bf59d11814ad0b5, type: 3}
---- !u!23 &6408326849441323074
+--- !u!23 &4425805397211300313
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -84,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6393649775497521377
+--- !u!136 &4413425684354707834
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -98,13 +98,13 @@ CapsuleCollider:
   m_Height: 0.13742661
   m_Direction: 1
   m_Center: {x: -0.0030688155, y: 0.06871329, z: 0.0032600567}
---- !u!54 &6393649775497521391
+--- !u!54 &4413425684354707828
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -114,16 +114,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6393649775497521376
+--- !u!114 &2843575006095062419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6393649775497521378}
+  m_GameObject: {fileID: 4413425684354707833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2233a5b93b739478410339ba0eda50, type: 3}
+  m_Script: {fileID: 11500000, guid: 72b0ea321dc66c243a44280742eb4778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -220,10 +220,27 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: "\uACE0\uCD94\uC528\uC557"
-  price: 0
+  obame: 
+  price: 
   introudce: 
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
-  sellingPrice: 1
+  seeds:
+  - growingCountTime: 2
+    renderer: {fileID: 4425805397211300313}
+    filter: {fileID: 4414075712040568545}
+  - growingCountTime: 2
+    renderer: {fileID: 23855058149919356, guid: 53848b3668c371945a42e67cc6233f75, type: 3}
+    filter: {fileID: 33056778001132996, guid: 53848b3668c371945a42e67cc6233f75, type: 3}
+  - growingCountTime: 2
+    renderer: {fileID: 23034754812173462, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
+    filter: {fileID: 33942323983505120, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
+  - growingCountTime: 2
+    renderer: {fileID: 23885838211386910, guid: 4bc7afe3fada16546a291ec2fc800b37, type: 3}
+    filter: {fileID: 33636275706275522, guid: 4bc7afe3fada16546a291ec2fc800b37, type: 3}
+  - growingCountTime: 2
+    renderer: {fileID: 4750018529833616963, guid: 1294ceaa38481a0438143f9d0a1de470, type: 3}
+    filter: {fileID: 4741425259103582591, guid: 1294ceaa38481a0438143f9d0a1de470, type: 3}
+  completeItem: {fileID: 4735929037806062729, guid: 1294ceaa38481a0438143f9d0a1de470, type: 3}
+  maxInstanteCount: 3

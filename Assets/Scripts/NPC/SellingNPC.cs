@@ -29,7 +29,7 @@ public class SellingNPC : NPC
         sellingItem = choiceItem;
         sellingItemPrice = price;
         npcUI.gameObject.SetActive(true);
-        npcUI.ShowDialogue(sellingItem + "Àº(´Â)" + price + "°ñµå¾ß." + sellingDialogue.ToString());
+        npcUI.ShowDialogue(transform, sellingItem + "Àº(´Â)" + price + "°ñµå¾ß." + sellingDialogue.ToString());
 
         ButtonCheck(true);
     }    
@@ -42,14 +42,14 @@ public class SellingNPC : NPC
         }
         else
         {
-            npcUI.ShowDialogue(needGoldDialogue.ToString());
+            npcUI.ShowDialogue(transform, needGoldDialogue.ToString());
         }
         ButtonCheck(false);
     }
 
     public void CancleItem()
     {
-        npcUI.ShowDialogue(defaultDialogue);
+        npcUI.ShowDialogue(transform, defaultDialogue);
         npcUI.gameObject.SetActive(false);
     }
 

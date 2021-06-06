@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9072163152448472525}
   - component: {fileID: 9057076862589735658}
   - component: {fileID: 9057076862589735656}
-  - component: {fileID: 9057076862589735657}
+  - component: {fileID: 574134539709596907}
   m_Layer: 0
   m_Name: PotatoSeed
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9057076862589735657
+--- !u!114 &574134539709596907
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9057076862589735659}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2233a5b93b739478410339ba0eda50, type: 3}
+  m_Script: {fileID: 11500000, guid: 72b0ea321dc66c243a44280742eb4778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -185,7 +185,7 @@ MonoBehaviour:
       m_Calls: []
   m_AttachTransform: {fileID: 0}
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -226,6 +226,6 @@ MonoBehaviour:
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
-  sellingItem: {fileID: 7028005889774133650, guid: 3257676264821f046b11b7cf39be8cac, type: 3}
-  sellingNPC: {fileID: 0}
-  sellingPrice: 1
+  seeds: []
+  completeItem: {fileID: 0}
+  maxInstanteCount: 0

@@ -4,94 +4,39 @@ using UnityEngine;
 
 public class WaypointMove : MonoBehaviour
 {
+    [SerializeField] private Transform wayPoints;
+    [SerializeField] private float waitTime = 2f;
+    [SerializeField] private float speed = 1f;
 
-    [SerializeField]
-    Transform[] pointPos;
-  
-    
-    [SerializeField]
-    private float speed;
-    private bool isFinish = false;
+    private Transform[] pointPos;
+    private Animator animator;
 
     private int pointNum = 0;
-    
-    bool isMoveEnd = false;
-
-    YieldInstruction waitSecond = new WaitForSeconds(2.0f);
-
-    Animator animator;
-
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
+        pointPos = wayPoints.GetComponentsInChildren<Transform>();
     }
 
     void Start()
-    {
-
-        MovePath();
-
-        
-    }
-
-    void Update()
-    {
-
-
-
-       
-        // transform.position = pointPos[pointNum].transform.position;
-        // MovePath();
-
-
-    }
-
-
-    public void MovePath()
     {
         StartCoroutine(coMove());
     }
 
 
-    public void RandomMove()
-    {
-        speed = Random.Range(1.0f, 10.0f);
-    }
-
-
-
     IEnumerator coMove()
     {
-        RandomMove();
-        
         while (true)
         {
-            yield return null;
-
-            transform.position = Vector3.MoveTowards
-            (transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
-
+            transform.position = Vector3.MoveTowards(transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
             this.transform.LookAt(pointPos[pointNum].position);
-            
-
-            animator.SetBool("IsWalking", true);
+            animator.SetBool(Constant.move, true);
 
             if (Vector3.Distance(transform.position, pointPos[pointNum].position) < 0.05f)
             {
-
-                animator.SetBool("IsWalking", false); 
-               
-                
-                yield return waitSecond;
-
-                
-
-
-                Debug.Log(pointNum);
-
-
-
+                animator.SetBool(Constant.move, false);    
+                            
                 if (pointNum < pointPos.Length - 1)
                 {
                     pointNum++;
@@ -100,8 +45,9 @@ public class WaypointMove : MonoBehaviour
                 {
                     pointNum = 0;
                 }
+                yield return new WaitForSeconds(waitTime);
             }
-            //this.transform.rotation = Quaternion.LookRotation(transform.position);
+            yield return new WaitForSeconds(0.2f);
         }
     }
 

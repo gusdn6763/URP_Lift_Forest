@@ -16,7 +16,7 @@ public class Introduce : XRGrabInteractable
     protected override void Awake()
     {
         base.Awake();
-        ui = GetComponentInChildren<ItemUI>();
+        ui = ItemManager.instance.itemUI;
     }
 
 
