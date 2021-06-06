@@ -31,6 +31,7 @@ public class GridBuildingSystem3D : MonoBehaviour
     public int positionLine;
     public bool lineValid;
     bool isLeftInteractorRayHovering;
+    private bool start;
 
     public bool CanBuild 
     { 
@@ -44,7 +45,6 @@ public class GridBuildingSystem3D : MonoBehaviour
         grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (GridXZ<GridObject> g, int x, int y) => new GridObject(g, x, y), debugGrid);
         visualBuilding = GetComponent<BuildingGhost>();
     }
-
 
 
     public class GridObject
@@ -96,93 +96,97 @@ public class GridBuildingSystem3D : MonoBehaviour
         }
 
     }
-    private void Start()
-    {
-        currentPlacedObjectTypeSO = placedObjectTypeSOList[0];
-    }
 
-    private void FixedUpdate()
+    IEnumerator BuildingStart()
     {
-        currentPosition = Player.instance.SetCurrentRayPos();
-        if (currentPlacedObjectTypeSO != null)
+        while(start)
         {
-            grid.GetXZ(currentPosition, out int x, out int z);
-
-            Vector2Int placedObjectOrigin = new Vector2Int(x, z);
-            placedObjectOrigin = grid.ValidateGridPosition(placedObjectOrigin);
-
-            List<Vector2Int> gridPositionList = currentPlacedObjectTypeSO.GetGridPositionList(placedObjectOrigin, currentPlacedObjectTypeSODir);
-            foreach (Vector2Int gridPosition in gridPositionList)
+            yield return new WaitForSeconds(0.1f);
+            currentPosition = Player.instance.SetCurrentRayPos();
+            if (currentPlacedObjectTypeSO != null)
             {
-                if ((gridPosition.x + 1 > gridWidth || gridPosition.y + 1 > gridHeight) || !grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild())
-                {
-                    CanBuild = false;
-                    break;
-                }
-                else
-                {
-                    CanBuild = true;
-                }
-                
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (CanBuild)
-                {
-                    Vector2Int rotationOffset = currentPlacedObjectTypeSO.GetRotationOffset(currentPlacedObjectTypeSODir);
-                    Vector3 placedObjectWorldPosition = grid.GetWorldPosition(placedObjectOrigin.x, placedObjectOrigin.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
+                grid.GetXZ(currentPosition, out int x, out int z);
 
-                    PlacedObject_Done placedObject = PlacedObject_Done.Create(placedObjectWorldPosition, placedObjectOrigin, currentPlacedObjectTypeSODir, currentPlacedObjectTypeSO);
-                    foreach (Vector2Int gridPosition in gridPositionList)
+                Vector2Int placedObjectOrigin = new Vector2Int(x, z);
+                placedObjectOrigin = grid.ValidateGridPosition(placedObjectOrigin);
+
+                List<Vector2Int> gridPositionList = currentPlacedObjectTypeSO.GetGridPositionList(placedObjectOrigin, currentPlacedObjectTypeSODir);
+                foreach (Vector2Int gridPosition in gridPositionList)
+                {
+                    if ((gridPosition.x + 1 > gridWidth || gridPosition.y + 1 > gridHeight) || !grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild())
                     {
-                        grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+                        CanBuild = false;
+                        break;
                     }
-                    
-                    DeselectObjectType();
-                }
-                else
-                {
-                    // Cannot build here
-                    UtilsClass.CreateWorldTextPopup("지을 수 없습니다!", currentPosition);
-                }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[0]; RefreshSelectedObjectType(); }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[1]; RefreshSelectedObjectType(); }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType(); }
-        if (Input.GetKeyDown(KeyCode.Alpha4)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType(); }
-        if (Input.GetKeyDown(KeyCode.Alpha5)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType(); }
-        if (Input.GetKeyDown(KeyCode.Alpha6)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[5]; RefreshSelectedObjectType(); }
-
-        if (Input.GetKeyDown(KeyCode.Alpha0)) { DeselectObjectType(); }
-
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (grid.GetGridObject(currentPosition) != null)
-            {
-                // Valid Grid Position
-                PlacedObject_Done placedObject = grid.GetGridObject(currentPosition).GetPlacedObject();
-                if (placedObject != null)
-                {
-                    // Demolish
-                    placedObject.DestroySelf();
-
-                    List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
-                    foreach (Vector2Int gridPosition in gridPositionList)
+                    else
                     {
-                        grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
+                        CanBuild = true;
+                    }
+
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (CanBuild)
+                    {
+                        Vector2Int rotationOffset = currentPlacedObjectTypeSO.GetRotationOffset(currentPlacedObjectTypeSODir);
+                        Vector3 placedObjectWorldPosition = grid.GetWorldPosition(placedObjectOrigin.x, placedObjectOrigin.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
+
+                        PlacedObject_Done placedObject = PlacedObject_Done.Create(placedObjectWorldPosition, placedObjectOrigin, currentPlacedObjectTypeSODir, currentPlacedObjectTypeSO);
+                        foreach (Vector2Int gridPosition in gridPositionList)
+                        {
+                            grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+                        }
+
+                        DeselectObjectType();
+                    }
+                    else
+                    {
+                        // Cannot build here
+                        UtilsClass.CreateWorldTextPopup("지을 수 없습니다!", currentPosition);
                     }
                 }
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[0]; RefreshSelectedObjectType(); }
+            if (Input.GetKeyDown(KeyCode.Alpha2)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[1]; RefreshSelectedObjectType(); }
+            if (Input.GetKeyDown(KeyCode.Alpha3)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType(); }
+            if (Input.GetKeyDown(KeyCode.Alpha4)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType(); }
+            if (Input.GetKeyDown(KeyCode.Alpha5)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType(); }
+            if (Input.GetKeyDown(KeyCode.Alpha6)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[5]; RefreshSelectedObjectType(); }
+
+            if (Input.GetKeyDown(KeyCode.Alpha0)) { DeselectObjectType(); }
+
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (grid.GetGridObject(currentPosition) != null)
+                {
+                    // Valid Grid Position
+                    PlacedObject_Done placedObject = grid.GetGridObject(currentPosition).GetPlacedObject();
+                    if (placedObject != null)
+                    {
+                        // Demolish
+                        placedObject.DestroySelf();
+
+                        List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
+                        foreach (Vector2Int gridPosition in gridPositionList)
+                        {
+                            grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
+                        }
+                    }
+                }
+            }
+
         }
     }
+
+
+
 
 
     private void DeselectObjectType()
@@ -240,6 +244,23 @@ public class GridBuildingSystem3D : MonoBehaviour
     public PlacedObjectTypeSO GetPlacedObjectTypeSO()
     {
         return currentPlacedObjectTypeSO;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag(Constant.player))
+        {
+            currentPlacedObjectTypeSO = placedObjectTypeSOList[0];
+            StartCoroutine(BuildingStart());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(Constant.player))
+        {
+            StopAllCoroutines();
+        }
     }
 
 }

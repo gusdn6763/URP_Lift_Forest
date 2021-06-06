@@ -11,15 +11,23 @@ public class NPCUI : UI
     [SerializeField] private SCButton okButton;
     [SerializeField] private SCButton noButton;
 
+    public NPC currentNpc;
+
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     protected void Update()
     {
         transform.LookAt(new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z));
     }
 
-    public void ShowDialogue(Transform parent, string dialogue)
+    public void ShowDialogue(NPC parent, string dialogue)
     {
+        currentNpc = parent;
         dialogueTxt.text = dialogue.ToString();
-        transform.position = parent.position + addSize;
+        transform.position = parent.transform.position + addSize;
     }
 
     public void ButtonOnOff(bool isOn)
@@ -43,4 +51,5 @@ public class NPCUI : UI
     {
         noButton.SetOnClickAction(action);
     }
+
 }

@@ -26,6 +26,7 @@ public class SCButton : MonoBehaviour
     // 버튼의 OnClick 이벤트 변경 함수
     public void SetOnClickAction(UnityAction action)
     {
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(action);
     }
 

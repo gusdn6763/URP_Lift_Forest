@@ -43,12 +43,20 @@ public class Item : Introduce
         {
             StartCoroutine(SpawnItem());
         }
+        if (args.interactor.CompareTag(Constant.handRight) || args.interactor.CompareTag(Constant.handLeft))
+        {
+            Player.instance.GrabItem = this;
+        }
         base.OnSelectEntered(args);
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        col.isTrigger = false;
+        col.isTrigger = false; 
+        if ((args.interactor.CompareTag(Constant.handRight) || args.interactor.CompareTag(Constant.handLeft)))
+        {
+            Player.instance.GrabItem = null;
+        }
         base.OnSelectExited(args);
     }
 

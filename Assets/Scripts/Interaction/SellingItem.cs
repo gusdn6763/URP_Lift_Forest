@@ -6,18 +6,19 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SellingItem : Item
 {
-    public delegate void npcTell(Item itemInfo, int price);
-    public npcTell sellingNPC;
+    private SellingNPC sellingNPC;
+
+
 
     [Header("ÆÇ¸Å")]
     [SerializeField] private int sellingPrice;
     [SerializeField] private Item sellingPrefab;
 
-
+    public SellingNPC SellingNPC { get => sellingNPC; set => sellingNPC = value; }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        sellingNPC(sellingPrefab, sellingPrice);
+        SellingNPC.GetDialogue(sellingPrefab, sellingPrice);
         base.OnSelectEntered(args);
     }
 

@@ -11,7 +11,8 @@ public class Introduce : XRGrabInteractable
     [Header("설명 정보")]
     [SerializeField] private string obame;
     public string Name { get { return obame; } set { obame = value; } }
-    [SerializeField] private string price;
+    [SerializeField] private int price;
+    public int Price { get { return price; } set { price = value; } }
     [SerializeField] private string introudce;
 
     protected override void Awake()
@@ -23,9 +24,9 @@ public class Introduce : XRGrabInteractable
 
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        if (!(ui.gameObject.activeSelf))
+        if ((!ui.gameObject.activeSelf) && args.interactor.CompareTag(Constant.ray))
         {
-            ui.TranceInfo(transform, obame, introudce, price);
+            ui.TranceInfo(transform, obame, introudce, price.ToString());
             ui.gameObject.SetActive(true);
         }
         base.OnHoverEntered(args);

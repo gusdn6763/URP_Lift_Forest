@@ -55,16 +55,20 @@ public class InventorySocket : XRSocketInteractor
             {
                 if (currentItem != null && !dividObject)                    //인벤토리에 아이템이 넣어진게 있고, 나누어진 오브젝트면
                 {
-                    if (currentItem.GetType() == args.interactable.GetType())
+                    if (currentItem != checkItem)
                     {
-                        Destroy(args.interactable.gameObject);
-                        CurrentCount++;
+                        if (currentItem.GetType() == args.interactable.GetType())
+                        {
+                            Destroy(args.interactable.gameObject);
+                            CurrentCount++;
+                        }
                     }
                 }
                 else if (dividObject && currentItem != null && checkItem.MakedItem == false)
                 {
                     if (currentItem.GetType() == args.interactable.GetType())
                     {
+                        print("2");
                         Destroy(args.interactable.gameObject);
                         CurrentCount++;
                     }
@@ -86,7 +90,6 @@ public class InventorySocket : XRSocketInteractor
             CurrentCount++;
             if (currentItem == null)
             {
-                checkItem.transform.SetParent(transform);
                 currentItem = checkItem;
             }
         }
@@ -100,8 +103,8 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        args.interactable.GetComponent<Item>().MakedItem = false;
         CurrentCount -= 1;
+        currentItem.MakedItem = false;
         if (CurrentCount > 0)
         {
             StartCoroutine(MakeObject());
@@ -117,10 +120,9 @@ public class InventorySocket : XRSocketInteractor
     IEnumerator MakeObject()
     {
         yield return new WaitForSeconds(0.2f);
-        Item test = Instantiate(ItemManager.instance.FineItem(currentItem));
+        Item test = Instantiate(ItemManager.instance.FineItem(currentItem), transform.position, transform.rotation);
+        test.MakedItem = true;
         currentItem = test;
         dividObject = true;
-        test.transform.SetParent(transform);
-        test.transform.localPosition = Vector3.zero;
     }
 }

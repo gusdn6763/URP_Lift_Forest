@@ -23,7 +23,6 @@ public class Seed : Item
 
     private int growingCount;
     private int currentGrowingCount;
-    private bool buy = false;
 
     protected override void Awake()
     {
@@ -39,19 +38,13 @@ public class Seed : Item
         growingCount = seeds.Count;
     }
 
-    public void Buy()
-    {
-        buy = true;
-        StartCoroutine(SpawnItem());
-    }
-
     public IEnumerator Growing()
     {
         while (growingCount != currentGrowingCount)
         {
             yield return new WaitForSeconds(seeds[currentGrowingCount].growingCountTime);
             meshRenderer = seeds[currentGrowingCount].renderer;
-            filter = seeds[currentGrowingCount].filter;
+            filter.sharedMesh = seeds[currentGrowingCount].filter.sharedMesh;
             currentGrowingCount++;
             if (currentGrowingCount == growingCount)
             {
@@ -59,19 +52,9 @@ public class Seed : Item
                 for (int i = 0; i < count; i++)
                 {
                     Instantiate(completeItem, transform.position, transform.rotation);
+                    Destroy(this.gameObject);
                 }
             }
         }
-    }
-
-    protected override void OnSelectEntered(SelectEnterEventArgs args)
-    {
-
-        base.OnSelectEntered(args);
-    }
-
-    public override bool IsSelectableBy(XRBaseInteractor interactor)
-    {
-        return base.IsSelectableBy(interactor) && buy;
     }
 }

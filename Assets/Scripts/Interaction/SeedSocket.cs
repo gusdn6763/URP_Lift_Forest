@@ -9,7 +9,7 @@ public class SeedSocket : XRSocketInteractor
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        if(args.interactable.CompareTag(Constant.seed))
+        if (args.interactable.CompareTag(Constant.seed))
         {
             isOn = true;
             currentSeed = args.interactable.GetComponent<Seed>();

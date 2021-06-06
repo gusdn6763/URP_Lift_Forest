@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private XRNode playerMoveDevice;                               //어떠한 기기로 이동할지 정하는 변수
     [SerializeField] private InputHelpers.Button rightTeleportActivationButton;     //텔레포트 버튼
     [SerializeField] private GameObject inventory;                                  //인벤토리
+    [SerializeField] private Text text;
     [SerializeField] private float speed;                                           //플레이어 속도
     [SerializeField] private int money;                                             //돈
 
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
     private XRRig rig;          
     private XRController climbingHand;
     public XRController ClimbingHand { get { return climbingHand; } set { climbingHand = value; } }
+    private Item grabItem;
+    public Item GrabItem { get => grabItem; set => grabItem = value; }
 
     private Vector2 inputAxis;
     private bool enableRightTeleport = true;
@@ -29,7 +32,8 @@ public class Player : MonoBehaviour
     private Vector3 norm;
     private int index;
     private bool validTarget;
-    public int Money { get { return money; } set { money = value; } }
+    public int Money { get { return money; } set { money = value; text.text = "골드 : "+ money.ToString();  } }
+
 
     public float mass = 1f;                                     //영향받는 중력크기
     public float additionalHeight = 0.2f;                       //추가적인 머리 크기
@@ -59,8 +63,15 @@ public class Player : MonoBehaviour
         InputDevice device = InputDevices.GetDeviceAtXRNode(playerMoveDevice);
         device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
 
-        if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated))
-            inventory.SetActive(isActivated);
+        device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated);
+        if(isActivated)
+        {
+            inventory.transform.localPosition = new Vector3(-0.3f, -0.3f, 0.4f);
+        }
+        else
+        {
+            inventory.transform.localPosition = new Vector3(-0.3f,100f, 0.4f);
+        }
 
 
 

@@ -11,6 +11,7 @@ public class SellingNPC : NPC
     [SerializeField] private string sellingDialogue;
     [SerializeField] private string needGoldDialogue;
     [SerializeField] private string buyDialogue;
+    [SerializeField] private string SellingItem;
     
     private Item sellingItem;
     private int sellingItemPrice;
@@ -19,45 +20,70 @@ public class SellingNPC : NPC
     {
         for (int i = 0; i < sellingItems.Count; i++)
         {
-            sellingItems[i].sellingNPC += GetDialogue;
+            sellingItems[i].SellingNPC = this;
         }
     }
 
     public void GetDialogue(Item choiceItem, int price)
     {
-        sellingItem = choiceItem;
-        sellingItemPrice = price;
-
-        npcUI.gameObject.SetActive(true);
-        npcUI.ShowDialogue(transform, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString());
-        npcUI.ButtonOnOff(true);
-        npcUI.ChangeButtonName("구입", "취소");
-
-        npcUI.SetOnClickAction(() =>
+        if (Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange)
         {
-            if (Player.instance.Money > sellingItemPrice)
-            {
-                Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
-                Player.instance.Money -= sellingItemPrice;
-                npcUI.ShowDialogue(transform, buyDialogue);
-            }
-            else
-            {
-                
-                npcUI.ShowDialogue(transform, needGoldDialogue.ToString());
-            }
+            if (stopCoroutine != null)
+                StopCoroutine(stopCoroutine);
+            stopCoroutine = StartCoroutine(DisableUI(defaultDialogueTime));
 
-            npcUI.ButtonOnOff(false);
-        });
+            sellingItem = choiceItem;
+            sellingItemPrice = price;
 
-        npcUI.SetNoClickAction(() =>
+            npcUI.gameObject.SetActive(true);
+            npcUI.ButtonOnOff(true);
+
+            npcUI.ChangeButtonName("구입", "취소");
+            npcUI.ShowDialogue(this, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString());
+            npcUI.SetOnClickAction(() =>
+            {
+                if (Player.instance.Money > sellingItemPrice)
+                {
+                    Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
+                    Player.instance.Money -= sellingItemPrice;
+                    npcUI.ShowDialogue(this, buyDialogue);
+                    StopCoroutine(stopCoroutine);
+                    StartCoroutine(DisableUI(defaultDialogueTime));
+                }
+                else
+                {
+                    npcUI.ShowDialogue(this, needGoldDialogue.ToString());
+                    StopCoroutine(stopCoroutine);
+                    StartCoroutine(DisableUI(defaultDialogueTime));
+                }
+
+                npcUI.ButtonOnOff(false);
+            });
+
+            npcUI.SetNoClickAction(() =>
+            {
+                npcUI.ShowDialogue(this, defaultDialogue);
+                npcUI.gameObject.SetActive(false);
+            });
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag(Constant.item))
         {
-            npcUI.ShowDialogue(transform, defaultDialogue);
-            npcUI.gameObject.SetActive(false);
-        });
-    }    
-
-
+            Item tmp = other.GetComponent<Item>();
+            if(tmp.Price > 0)
+            {
+                Player.instance.Money += tmp.Price;
+                npcUI.gameObject.SetActive(true);
+                npcUI.ButtonOnOff(false);
+                npcUI.ShowDialogue(this, SellingItem);
+                Destroy(tmp.gameObject);
+            }
+             
+        }
+    }
 
 
 

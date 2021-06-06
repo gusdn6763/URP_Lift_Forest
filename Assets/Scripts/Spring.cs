@@ -9,7 +9,7 @@ public class Spring : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        for(int i = 0; i> seedsGround.Count; i++)
+        for(int i = 0; i< seedsGround.Count; i++)
         {
             if (seedsGround[i].socket.isOn)
             {
