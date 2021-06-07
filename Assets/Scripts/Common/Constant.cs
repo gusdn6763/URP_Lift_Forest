@@ -18,7 +18,7 @@
     public const string seed = "Seed";
     public const string dirt = "Dirt";
 
-
+    public const string apple = "Apple";
     public const string fishingHole = "FishingHole";
 }
 

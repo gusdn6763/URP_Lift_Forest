@@ -29,6 +29,7 @@ public class Introduce : XRGrabInteractable
             ui.TranceInfo(transform, obame, introudce, price.ToString());
             ui.gameObject.SetActive(true);
         }
+        // 부모 클래스 호출.
         base.OnHoverEntered(args);
     }
 

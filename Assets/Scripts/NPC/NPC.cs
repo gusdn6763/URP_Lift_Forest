@@ -11,7 +11,6 @@ public class NPC : XRBaseInteractable
     [SerializeField] protected float interactiveRange = 7f;
     [SerializeField] protected float defaultDialogueTime = 3f;
 
-    protected Coroutine stopCoroutine;
     protected NPCUI npcUI;
 
     protected override void Awake()
@@ -25,26 +24,13 @@ public class NPC : XRBaseInteractable
         npcUI.gameObject.SetActive(false);
     }
 
-    public IEnumerator DisableUI(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        if (npcUI.currentNpc == this)
-        {
-            npcUI.gameObject.SetActive(false);
-        }
-    }
-
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         if(Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange)
         {
             npcUI.gameObject.SetActive(true);
-            npcUI.ShowDialogue(this, defaultDialogue);
+            npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
             npcUI.ButtonOnOff(false);
-            if (stopCoroutine != null)
-                StopCoroutine(stopCoroutine);
-            stopCoroutine = StartCoroutine(DisableUI(defaultDialogueTime));
         }
         base.OnSelectEntered(args);
     }

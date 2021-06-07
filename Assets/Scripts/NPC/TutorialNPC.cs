@@ -25,24 +25,20 @@ public class TutorialNPC : NPC
             npcUI.ButtonOnOff(true);
 
             npcUI.ChangeButtonName("알았어?", "싫은데?");
-            npcUI.ShowDialogue(this, defaultDialogue);
+            npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
 
             npcUI.SetOnClickAction(() =>
             {
                 npcUI.ButtonOnOff(false);
                 faceChange.ChangeFace(Faces.Glad, 2f);
-                npcUI.ShowDialogue(this, yesAnswer);
-                StopCoroutine(stopCoroutine);
-                StartCoroutine(DisableUI(defaultDialogueTime));
+                npcUI.ShowDialogue(this, yesAnswer, defaultDialogueTime);
             });
 
             npcUI.SetNoClickAction(() =>
             {
                 npcUI.ButtonOnOff(false);
                 faceChange.ChangeFace(Faces.Sad, 5f);
-                npcUI.ShowDialogue(this, noAnswer);
-                StopCoroutine(stopCoroutine);
-                StartCoroutine(DisableUI(defaultDialogueTime));
+                npcUI.ShowDialogue(this, noAnswer, defaultDialogueTime);
             });
         }
     }
