@@ -221,7 +221,7 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   obame: "\uACE0\uCD94 \uD30C\uC885?"
-  price: 
+  price: 1
   introudce: "\uACE0\uCD94\uACE0\uCD94"
   maxSlotCount: 99
   spawnItem: 0

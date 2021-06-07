@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WaypointMove : MonoBehaviour
 {
     [SerializeField] private Transform wayPoints;
     [SerializeField] private float waitTime = 2f;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private float speed = 4f;
 
     private Transform[] pointPos;
     private Animator animator;
 
-    private int pointNum = 0;
+    private int pointNum = 1;
 
     private void Awake()
     {
@@ -21,34 +22,32 @@ public class WaypointMove : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(coMove());
+        Move();
     }
 
-
-    IEnumerator coMove()
+    public void Move()
     {
-        while (true)
+        animator.SetBool(Constant.move, true);
+        transform.DOMove(pointPos[pointNum].transform.position, speed).
+        SetEase(Ease.Linear).SetSpeedBased(true).OnComplete(() =>
         {
-            transform.position = Vector3.MoveTowards(transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
-            this.transform.LookAt(pointPos[pointNum].position);
-            animator.SetBool(Constant.move, true);
-
-            if (Vector3.Distance(transform.position, pointPos[pointNum].position) < 0.05f)
+            if (pointNum < pointPos.Length - 1)
             {
-                animator.SetBool(Constant.move, false);    
-                            
-                if (pointNum < pointPos.Length - 1)
-                {
-                    pointNum++;
-                }
-                else
-                {
-                    pointNum = 0;
-                }
-                yield return new WaitForSeconds(waitTime);
+                pointNum++;
             }
-            yield return new WaitForSeconds(0.2f);
-        }
+            else
+            {
+                pointNum = 1;
+            }
+            transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
+            StartCoroutine(MoveCoroutine());
+        });
     }
 
+    IEnumerator MoveCoroutine()
+    {
+        animator.SetBool(Constant.move, false);
+        yield return new WaitForSeconds(waitTime);
+        Move();
+    }
 }

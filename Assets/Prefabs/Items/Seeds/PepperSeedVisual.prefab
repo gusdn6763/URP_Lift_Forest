@@ -221,11 +221,17 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   obame: 
-  price: 
+  price: 0
   introudce: 
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
-  seeds: []
+  seeds:
+  - growingCountTime: 4.6
+    renderer: {fileID: 0}
+    filter: {fileID: 0}
+  - growingCountTime: 0
+    renderer: {fileID: 0}
+    filter: {fileID: 0}
   completeItem: {fileID: 0}
   maxInstanteCount: 0

@@ -57,7 +57,7 @@ public class InventorySocket : XRSocketInteractor
                 {
                     if (currentItem != checkItem)
                     {
-                        if (currentItem.GetType() == args.interactable.GetType())
+                        if (currentItem.Name == checkItem.Name)
                         {
                             Destroy(args.interactable.gameObject);
                             CurrentCount++;
@@ -66,9 +66,8 @@ public class InventorySocket : XRSocketInteractor
                 }
                 else if (dividObject && currentItem != null && checkItem.MakedItem == false)
                 {
-                    if (currentItem.GetType() == args.interactable.GetType())
+                    if (currentItem.Name == checkItem.Name)
                     {
-                        print("2");
                         Destroy(args.interactable.gameObject);
                         CurrentCount++;
                     }
