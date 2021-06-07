@@ -33,6 +33,7 @@ public class NPCUI : UI
     {
         currentNpc = parent;
         dialogueTxt.text = dialogue.ToString();
+        print(dialogueTxt.text);
         transform.position = parent.transform.position + addSize;
 
         if (stopCoroutine != null)
@@ -82,6 +83,6 @@ public class NPCUI : UI
     public IEnumerator DisableUI(float defaultTime)
     {
         yield return new WaitForSeconds(defaultTime);
-        gameObject.SetActive(false);
+        transform.position = new Vector3(0, 999f, 0f);
     }
 }

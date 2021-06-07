@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class QuestNPC : NPC
 {
@@ -16,7 +17,13 @@ public class QuestNPC : NPC
     private int currentCount = 0;
     private bool isOn = false;
 
-    public void GetDialogue(Item choiceItem, int price)
+    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    {
+        base.OnSelectEntered(args);
+        GetDialogue();
+    }
+
+    public void GetDialogue( )
     {
         if ((Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange))
         {
@@ -29,6 +36,7 @@ public class QuestNPC : NPC
                 npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
                 npcUI.SetOnClickAction(() =>
                 {
+                    isOn = true;
                     npcUI.ShowDialogue(this, acceptAnswer, defaultDialogueTime);
                     npcUI.ButtonOnOff(false);
                 });
@@ -50,6 +58,7 @@ public class QuestNPC : NPC
     {
         if(other.CompareTag(Constant.item))
         {
+            print(other.gameObject.name);
             Item tmp =  other.GetComponent<Item>();
             if(tmp.Name == requestItem.Name)
             {

@@ -15,7 +15,10 @@ public class ItemUI : UI
 
     private void Update()
     {
-        transform.position = parentTransform.position + addSize;
+        if (parentTransform)
+        {
+            transform.position = parentTransform.position + addSize;
+        }
         tmpVector = new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z);
         transform.LookAt(tmpVector);
     }
