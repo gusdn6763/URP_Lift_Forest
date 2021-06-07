@@ -206,6 +206,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  interaction: 1
+  addsize: {x: 0, y: 0, z: 0}
   obame: "\uAC10\uC790 (Potato)"
   price: 1
   introudce: "\uC18D\uC528 \uC2DD\uBB3C\uC774\uB2E4.\\n\uC5EC\uB7EC\uD574\uC0B4\uC774

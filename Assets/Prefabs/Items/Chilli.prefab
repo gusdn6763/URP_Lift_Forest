@@ -206,6 +206,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  interaction: 1
+  addsize: {x: 0, y: 0, z: 0}
   obame: "\uACE0\uCD94 (Chilli)"
   price: 1
   introudce: "\uC18D\uC528\uC2DD\uBB3C.\\n\uBE44\uD0C0\uBBFC A\uC640 \uBE44\uD0C0\uBBFC

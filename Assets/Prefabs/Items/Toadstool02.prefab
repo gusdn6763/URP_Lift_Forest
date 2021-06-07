@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1763186966440708606}
   - component: {fileID: 1763186966443679044}
   - component: {fileID: 1763186966442938174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toadstool02_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1763186966440742524}
   - component: {fileID: 1763186966443636368}
   - component: {fileID: 1763186966442656074}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toadstool02_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,9 +175,9 @@ GameObject:
   - component: {fileID: 1763186966440459680}
   - component: {fileID: 1763186966440459681}
   - component: {fileID: 1763186966440459711}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toadstool02
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 1763186966440766012}
   - component: {fileID: 1763186966443623648}
   - component: {fileID: 1763186966442941666}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toadstool02_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 1763186966440732206}
   - component: {fileID: 1763186966443639798}
   - component: {fileID: 1763186966442633660}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Toadstool02_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

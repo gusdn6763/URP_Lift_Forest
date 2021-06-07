@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3263994385996771363}
   m_Layer: 3
   m_Name: seed (2)
-  m_TagString: Item
+  m_TagString: Seed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  interaction: 1
+  addsize: {x: 0, y: 0, z: 0}
   obame: "\uC528\uC557"
   price: 2
   introudce: "\uC2DD\uBB3C\uC758 \uBC11\uC528\uAC00 \uBC1C\uB2EC \uD55C \uAC83."

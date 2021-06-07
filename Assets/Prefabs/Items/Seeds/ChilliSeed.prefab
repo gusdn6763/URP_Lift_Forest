@@ -220,10 +220,12 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: "\uACE0\uCD94 \uC528\uC557."
+  interaction: 1
+  addsize: {x: 0, y: 0, z: 0}
+  obame: "'\uC5B4\uB514 \uD55C \uBC88 \uBA39\uC5B4\uBD10'  \uC528\uC557"
   price: 1
-  introudce: "\uACE0\uCD94\uC18D\uC758 \uB9E4\uC6B4 \uC5F4\uB9E4\uCC44\uC18C\uB97C
-    \uC77C\uCEEB\uB294 \uB9D0."
+  introudce: "\uB2E4 \uC790\uB77C\uBA74 \uBE68\uAC1B\uAC8C \uC775\uB294\uB370, \uBD88\uB2ED\uBCF6\uC74C\uBA74
+    \uC18C\uC2A4\uB9CC\uD07C \uB9E4\uCF64\uD55C \uB9DB\uC744 \uB0B8\uB2E4"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
