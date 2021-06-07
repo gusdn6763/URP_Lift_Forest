@@ -30,8 +30,8 @@ namespace TurnTheGameOn.ArrowWaypointer
         private GameObject newItem;
         private string newItemName;
         private int nextItem;
-        private Transform ItemArrow; //Transform used to reference the Waypoint Arrow
-        private Transform currentItemPoint; //Transforms used to identify the Waypoint Arrow's target
+        private Transform ItemArrow; // 아이템 화살표 방향 변경용.
+        private Transform currentItemPoint; // 최근 아이템 포인트
         private Transform arrowTarget;
 
         void Start()
@@ -63,7 +63,7 @@ namespace TurnTheGameOn.ArrowWaypointer
     #if UNITY_EDITOR
             if (configureMode == Switch.On)
             {
-                CalculateWaypoints();
+                CalculateItemLocation();
             }
     #endif
             if (arrowTarget != null)
@@ -76,7 +76,9 @@ namespace TurnTheGameOn.ArrowWaypointer
                 arrowTarget = currentItemPoint;
             }
             if (ItemArrow == null)
+            {
                 findArrow();
+            }
             ItemArrow.LookAt(arrowTarget);
         }
 
@@ -90,7 +92,9 @@ namespace TurnTheGameOn.ArrowWaypointer
             if (check < TotalWaypoints)
             {
                 if (currentItemPoint == null)
+                {
                     currentItemPoint = itemComponents[0].itemLocation.transform;
+                }
                 currentItemPoint.gameObject.SetActive(false);
                 currentItemPoint = itemComponents[nextItem].itemLocation.transform;
                 currentItemPoint.gameObject.SetActive(true);
@@ -121,7 +125,7 @@ namespace TurnTheGameOn.ArrowWaypointer
                 ItemArrow = Arrow.transform;
             }
         }
-        public void CalculateWaypoints()
+        public void CalculateItemLocation()
         {
             if (configureMode == Switch.On)
             {
@@ -137,10 +141,14 @@ namespace TurnTheGameOn.ArrowWaypointer
                     {
                         newItemName = "ItemLocation " + (i + 1);
                         itemComponents[i].ItemName = newItemName;
-                        //setup waypoint reference
+
+                        // ItemLocation 참조 설정.
                         foreach (Transform child in transform)
                         {
-                            if (child.name == newItemName) { itemComponents[i].itemLocation = child.GetComponent<ItemLocation>(); }
+                            if (child.name == newItemName) 
+                            { 
+                                itemComponents[i].itemLocation = child.GetComponent<ItemLocation>(); 
+                            }
                         }
                         if (itemComponents[i].itemLocation == null)
                         {
@@ -148,8 +156,10 @@ namespace TurnTheGameOn.ArrowWaypointer
                             newItem.name = newItemName;
                             newItem.GetComponent<ItemLocation>().itemNum = i + 1;
                             newItem.transform.parent = gameObject.transform;
+
                             itemComponents[i].itemLocation = newItem.GetComponent<ItemLocation>();
                             itemComponents[i].itemLocation.TutoMgr = this;
+
                             Debug.Log("Next ItemLocation : " + newItemName);
                         }
                         currentItemPoint = itemComponents[0].itemLocation.transform;
@@ -164,7 +174,7 @@ namespace TurnTheGameOn.ArrowWaypointer
             {
                 if (Application.isPlaying)
                 {
-                    Debug.LogWarning("ARROW WAYPOINTER: Turn Off 'Configure Mode' on the Waypoint Controller");
+                    Debug.LogWarning("ItemLocation Arrow.... Configure Mode");
                 }
                 if (transform.childCount > itemComponents.Length)
                 {
@@ -172,6 +182,7 @@ namespace TurnTheGameOn.ArrowWaypointer
                     {
                         if (oldChild.GetComponent<ItemLocation>().itemNum > itemComponents.Length)
                         {
+                            // 객체 제거
                             DestroyImmediate(oldChild.gameObject);
                         }
                     }
@@ -179,7 +190,7 @@ namespace TurnTheGameOn.ArrowWaypointer
             }
         }
         #if UNITY_EDITOR
-        //Draws a Gizmo in the scene view window to show the Waypoints
+        // 기즈모 그리기용
         public void OnDrawGizmosSelected(int radius)
         {
             for (var i = 0; i < itemComponents.Length; i++)
