@@ -206,11 +206,12 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: "\uACE0\uCD94"
+  obame: "\uACE0\uCD94 (Chilli)"
   price: 1
-  introudce: "5\uC6D4 \uD30C\uC885 ~ 6,10\uC6D4 \uC218\uD655. \uB9E4\uC6B4\uB9DB\uC744
-    \uB0B4\uB294 \uC6B0\uB9AC\uB098\uB77C\uC758 \uC911\uC694\uD55C \uC2DD\uC7AC\uB8CC.
-    \uB9E4\uC6C0\uC758 \uC815\uB3C4\uAC00 \uB2E4\uC591\uD558\uB2E4."
+  introudce: "\uC18D\uC528\uC2DD\uBB3C.\\n\uBE44\uD0C0\uBBFC A\uC640 \uBE44\uD0C0\uBBFC
+    C\uAC00 \uB2E4\uB7C9 \uD568\uC720\uB418\uC5B4 \uC788\uC5B4, \uB354\uC704 \uC608\uBC29
+    \uD6A8\uACFC\uAC00 \uB192\uACE0, \uB610\uD55C \uC0B4\uADE0 \uC791\uC6A9\uC774
+    \uC788\uC5B4 \uC2DD\uC911\uB3C5 \uC608\uBC29\uC744 \uD574\uC90C."
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5

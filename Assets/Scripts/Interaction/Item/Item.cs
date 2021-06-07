@@ -62,7 +62,8 @@ public class Item : Introduce
 
     protected IEnumerator SpawnItem()
     {
-        yield return new WaitForSeconds(spawnTime);
+        // spawnTime = 5f
+        yield return new WaitForSeconds(spawnTime);                         
         Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);
     }
 }

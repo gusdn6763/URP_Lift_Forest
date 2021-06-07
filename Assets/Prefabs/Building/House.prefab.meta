@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Materials/Building/Green.mat.meta
+guid: 342177f1adade3541940c73665430129
+NativeFormatImporter:
+=======
 guid: c547e751d1dbb024e95c97e9e19e7ef5
 PrefabImporter:
+>>>>>>> 37cbd76e4f1b5981290f4665fad2699d40022b18:Assets/Prefabs/Building/House.prefab.meta
   externalObjects: {}
+  mainObjectFileID: 2100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
