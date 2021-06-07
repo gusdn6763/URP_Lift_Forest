@@ -11,6 +11,7 @@ public class NPCUI : UI
     [SerializeField] private SCButton okButton;
     [SerializeField] private SCButton noButton;
 
+    protected Coroutine stopCoroutine;
     public NPC currentNpc;
 
     private void Start()
@@ -28,11 +29,15 @@ public class NPCUI : UI
     /// </summary>
     /// <param name="parent">NPC À§Ä¡</param>
     /// <param name="dialogue"></param>
-    public void ShowDialogue(NPC parent, string dialogue)
+    public void ShowDialogue(NPC parent, string dialogue, float defaultTime)
     {
         currentNpc = parent;
         dialogueTxt.text = dialogue.ToString();
         transform.position = parent.transform.position + addSize;
+
+        if (stopCoroutine != null)
+            StopCoroutine(stopCoroutine);
+        stopCoroutine = StartCoroutine(DisableUI(defaultTime));
     }
 
     /// <summary>
@@ -74,4 +79,9 @@ public class NPCUI : UI
         noButton.SetOnClickAction(action);
     }
 
+    public IEnumerator DisableUI(float defaultTime)
+    {
+        yield return new WaitForSeconds(defaultTime);
+        gameObject.SetActive(false);
+    }
 }

@@ -18,6 +18,7 @@ public class InventorySocket : XRSocketInteractor
     public int currentCount;
     public bool dividObject = false;
 
+
     public int CurrentCount
     {
         get

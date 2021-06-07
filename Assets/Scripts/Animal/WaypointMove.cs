@@ -31,6 +31,7 @@ public class WaypointMove : MonoBehaviour
         transform.DOMove(pointPos[pointNum].transform.position, speed).
         SetEase(Ease.Linear).SetSpeedBased(true).OnComplete(() =>
         {
+            animator.SetBool(Constant.move, false);
             if (pointNum < pointPos.Length - 1)
             {
                 pointNum++;

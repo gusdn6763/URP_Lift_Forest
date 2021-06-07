@@ -28,10 +28,6 @@ public class SellingNPC : NPC
     {
         if (Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange)
         {
-            if (stopCoroutine != null)
-                StopCoroutine(stopCoroutine);
-            stopCoroutine = StartCoroutine(DisableUI(defaultDialogueTime));
-
             sellingItem = choiceItem;
             sellingItemPrice = price;
 
@@ -39,22 +35,18 @@ public class SellingNPC : NPC
             npcUI.ButtonOnOff(true);
 
             npcUI.ChangeButtonName("구입", "취소");
-            npcUI.ShowDialogue(this, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString());
+            npcUI.ShowDialogue(this, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString(), defaultDialogueTime);
             npcUI.SetOnClickAction(() =>
             {
                 if (Player.instance.Money > sellingItemPrice)
                 {
                     Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
                     Player.instance.Money -= sellingItemPrice;
-                    npcUI.ShowDialogue(this, buyDialogue);
-                    StopCoroutine(stopCoroutine);
-                    StartCoroutine(DisableUI(defaultDialogueTime));
+                    npcUI.ShowDialogue(this, buyDialogue, defaultDialogueTime);
                 }
                 else
                 {
-                    npcUI.ShowDialogue(this, needGoldDialogue.ToString());
-                    StopCoroutine(stopCoroutine);
-                    StartCoroutine(DisableUI(defaultDialogueTime));
+                    npcUI.ShowDialogue(this, needGoldDialogue.ToString(), defaultDialogueTime);
                 }
 
                 npcUI.ButtonOnOff(false);
@@ -62,7 +54,7 @@ public class SellingNPC : NPC
 
             npcUI.SetNoClickAction(() =>
             {
-                npcUI.ShowDialogue(this, defaultDialogue);
+                npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
                 npcUI.gameObject.SetActive(false);
             });
         }
@@ -78,13 +70,10 @@ public class SellingNPC : NPC
                 Player.instance.Money += tmp.Price;
                 npcUI.gameObject.SetActive(true);
                 npcUI.ButtonOnOff(false);
-                npcUI.ShowDialogue(this, SellingItem);
+                npcUI.ShowDialogue(this, SellingItem, defaultDialogueTime);
                 Destroy(tmp.gameObject);
             }
              
         }
     }
-
-
-
 }
