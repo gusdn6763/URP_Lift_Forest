@@ -44,8 +44,6 @@ public class Seed : Item
         while (growingCount != currentGrowingCount)
         {
             yield return new WaitForSeconds(seeds[currentGrowingCount].growingCountTime);
-            meshRenderer = seeds[currentGrowingCount].renderer;
-            filter.sharedMesh = seeds[currentGrowingCount].filter.sharedMesh;
             currentGrowingCount++;
             if (currentGrowingCount == growingCount)
             {
@@ -55,6 +53,11 @@ public class Seed : Item
                     Instantiate(completeItem, transform.position + (Vector3.up * 2), transform.rotation);
                     Destroy(this.gameObject);
                 }
+            }
+            else
+            {
+                meshRenderer = seeds[currentGrowingCount].renderer;
+                filter.sharedMesh = seeds[currentGrowingCount].filter.sharedMesh;
             }
         }
     }

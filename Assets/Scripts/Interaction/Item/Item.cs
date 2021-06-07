@@ -38,7 +38,6 @@ public class Item : Introduce
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         col.isTrigger = true;
-        rigi.isKinematic = false;
         if (spawnItem)
         {
             StartCoroutine(SpawnItem());
@@ -63,8 +62,11 @@ public class Item : Introduce
 
     protected IEnumerator SpawnItem()
     {
-        // spawnTime = 5f
         yield return new WaitForSeconds(spawnTime);                         
         Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);
+    }
+    public override bool IsSelectableBy(XRBaseInteractor interactor)
+    {
+        return base.IsSelectableBy(interactor) && (interactor.CompareTag(Constant.handLeft) || interactor.CompareTag(Constant.handRight));
     }
 }

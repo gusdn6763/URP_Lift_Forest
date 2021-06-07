@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3908586768220536411}
   - component: {fileID: 3908586768220536410}
   - component: {fileID: 3908586768220536741}
-  - component: {fileID: 3908586768220536740}
   - component: {fileID: 3908586768220536408}
+  - component: {fileID: 3908586768220536740}
   m_Layer: 3
   m_Name: Peach
   m_TagString: Item
@@ -100,6 +100,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3908586768220536408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908586768220536742}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.12089259, y: 0.11460527, z: 0.123446696}
+  m_Center: {x: 0.001160011, y: 0.0550745, z: -0.0024019373}
 --- !u!114 &3908586768220536740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,24 +220,11 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uBE0C\uB780\uB514 \uBCF5\uC22D\uC544"
-  price: 2
+  price: 1
   introudce: " 5~10cm \uD06C\uAE30\uC758 \uBD84\uD64D\uBE5B \uACFC\uC77C. \uB2EC\uCF64\uD55C
     \uACFC\uC999\uC774 \uB9C8\uC744\uC5D0\uC11C \uD55C \uCC38 \uC778\uAE30\uC774\uB2E4"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
---- !u!65 &3908586768220536408
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3908586768220536742}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.12089259, y: 0.11460527, z: 0.123446696}
-  m_Center: {x: 0.001160011, y: 0.0550745, z: -0.0024019373}

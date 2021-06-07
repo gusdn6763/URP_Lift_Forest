@@ -35,7 +35,7 @@ public class SellingNPC : NPC
             npcUI.ButtonOnOff(true);
 
             npcUI.ChangeButtonName("구입", "취소");
-            npcUI.ShowDialogue(this, sellingItem + "은(는)" + price + "골드야." + sellingDialogue.ToString(), defaultDialogueTime);
+            npcUI.ShowDialogue(this, sellingItem.Name + "은(는)" + price + "골드야." + sellingDialogue.ToString(), defaultDialogueTime);
             npcUI.SetOnClickAction(() =>
             {
                 if (Player.instance.Money > sellingItemPrice)

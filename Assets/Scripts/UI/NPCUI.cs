@@ -21,6 +21,10 @@ public class NPCUI : UI
 
     protected void Update()
     {
+        if (currentNpc)
+        {
+            transform.position = currentNpc.transform.position + addSize;
+        }
         transform.LookAt(new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z));
     }
 
@@ -33,7 +37,6 @@ public class NPCUI : UI
     {
         currentNpc = parent;
         dialogueTxt.text = dialogue.ToString();
-        print(dialogueTxt.text);
         transform.position = parent.transform.position + addSize;
 
         if (stopCoroutine != null)
@@ -83,6 +86,7 @@ public class NPCUI : UI
     public IEnumerator DisableUI(float defaultTime)
     {
         yield return new WaitForSeconds(defaultTime);
+        currentNpc = null;
         transform.position = new Vector3(0, 999f, 0f);
     }
 }

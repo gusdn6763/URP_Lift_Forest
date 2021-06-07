@@ -27,7 +27,7 @@ public class waypointMove2 : MonoBehaviour
         while (true)
         {
             transform.position = Vector3.MoveTowards(transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
-            this.transform.LookAt(pointPos[pointNum].position);
+            transform.LookAt(pointPos[pointNum].position);
             animator.SetBool(Constant.move, true);
 
             if (Vector3.Distance(transform.position, pointPos[pointNum].position) < 0.05f)
@@ -42,9 +42,9 @@ public class waypointMove2 : MonoBehaviour
                 {
                     pointNum = 0;
                 }
-                yield return new WaitForSeconds(waitTime);
+                yield return new WaitForSeconds(Random.Range(1, waitTime + 1));
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

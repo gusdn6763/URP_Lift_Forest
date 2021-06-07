@@ -15,7 +15,7 @@ public class QuestNPC : NPC
     [SerializeField] private int requestItemCount;
 
     private int currentCount = 0;
-    private bool isOn = false;
+    private bool questAccept = false;               //퀘스트 수락상태
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -29,14 +29,14 @@ public class QuestNPC : NPC
         {
             npcUI.gameObject.SetActive(true);
 
-            if (!isOn)
+            if (!questAccept)
             {
                 npcUI.ButtonOnOff(true);
                 npcUI.ChangeButtonName("수락", "거절");
                 npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
                 npcUI.SetOnClickAction(() =>
                 {
-                    isOn = true;
+                    questAccept = true;
                     npcUI.ShowDialogue(this, acceptAnswer, defaultDialogueTime);
                     npcUI.ButtonOnOff(false);
                 });
@@ -56,25 +56,28 @@ public class QuestNPC : NPC
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(Constant.item))
+        if (questAccept)
         {
-            print(other.gameObject.name);
-            Item tmp =  other.GetComponent<Item>();
-            if(tmp.Name == requestItem.Name)
+            if (other.CompareTag(Constant.item))
             {
-                currentCount++;
-                if(requestItemCount == currentCount)
+                Item tmp = other.GetComponent<Item>();
+                if (tmp.Name == requestItem.Name)
                 {
-                    npcUI.ShowDialogue(this, completeItem, defaultDialogueTime);
+                    currentCount++;
+                    if (requestItemCount == currentCount)
+                    {
+                        npcUI.ShowDialogue(this, completeItem, defaultDialogueTime);
+                    }
+                    else
+                    {
+                        npcUI.ShowDialogue(this, requestItemCount - currentCount + yesItem, defaultDialogueTime);
+                    }
+                    Destroy(other.gameObject);
                 }
                 else
                 {
-                    npcUI.ShowDialogue(this, currentCount + yesItem, defaultDialogueTime);
+                    npcUI.ShowDialogue(this, noItem, defaultDialogueTime);
                 }
-            }
-            else
-            {
-                npcUI.ShowDialogue(this, noItem, defaultDialogueTime);
             }
         }
     }

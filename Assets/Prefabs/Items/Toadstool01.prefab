@@ -367,7 +367,7 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uC170\uD37C\uB9B0 \uBC84\uC12F"
   price: 1
   introudce: "\uAE38\uCB49\uD55C \uAE30\uB465\uC774 \uD2B9\uC9D5\uC778 \uBC84\uC12F.

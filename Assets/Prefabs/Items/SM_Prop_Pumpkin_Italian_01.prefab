@@ -220,9 +220,9 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uC218\uD638\uBC15"
-  price: 3
+  price: 5
   introudce: "\uB178\uB780\uC0C9, \uCD08\uB85D\uC0C9 \uC904\uBB34\uB2AC\uAC00 \uAC15\uB82C\uD55C
     \uC218\uBC15\uC774 \uC544\uB2CC \uD638\uBC15. \uD638\uBC15\uC8FD \uC7AC\uB8CC\uB85C
     \uCD5C\uACE0\uB2E4!"

@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1246138038322638645}
   - component: {fileID: 1256468351462425005}
   - component: {fileID: 1241781937726633115}
+  - component: {fileID: 1315255722756957023}
   - component: {fileID: 1241781937726633116}
   m_Layer: 3
-  m_Name: SM_Prop_Apricot_01 (1)
+  m_Name: Apricot
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +100,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &1315255722756957023
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241781937726633117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08601059, y: 0.09468488, z: 0.1046548}
+  m_Center: {x: 0.00034935027, y: 0.047342796, z: -0.000021673743}
 --- !u!114 &1241781937726633116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,12 +220,12 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uD50C\uB77C\uB9AC \uC0B4\uAD6C"
-  price: 2
+  price: 1
   introudce: " 5~10cm \uD06C\uAE30\uC758 \uC8FC\uD64D\uBE5B \uACFC\uC77C.  \uD5A5\uAE0B\uD55C
     \uD5A5 \uB54C\uBB38\uC5D0 \uB9C8\uC744\uC5D0\uC11C\uB294 \uC0B4\uAD6C\uC7BC\uC73C\uB85C
     \uB9CE\uC774 \uB9CC\uB4E4\uC5B4 \uBA39\uB294\uB2E4"
   maxSlotCount: 99
-  spawnItem: 0
+  spawnItem: 1
   spawnTime: 5

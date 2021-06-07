@@ -19,7 +19,7 @@ public class ItemManager : MonoBehaviour
     {
         for(int i =0; i <items.Count; i++)
         {
-            if(items[i].GetType() == item.GetType())
+            if(items[i].Name == item.Name)
             {
                 return items[i];
             }

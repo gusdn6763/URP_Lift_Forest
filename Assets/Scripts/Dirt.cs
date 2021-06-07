@@ -13,6 +13,8 @@ public class Dirt : MonoBehaviour
     private int count;
     private int currentCount;
 
+    public bool DigAble { get => digAble; set => digAble = value; }
+
     private void Awake()
     {
         socket = GetComponentInChildren<SeedSocket>();
@@ -27,11 +29,11 @@ public class Dirt : MonoBehaviour
 
     public void Dig()
     {
-        if(currentCount < count && digAble)
+        if(currentCount < count && DigAble)
         {
             Field.transform.localPosition = overPosition[currentCount];
             currentCount++;
-            digAble = false;
+            DigAble = false;
             if (currentCount == count)
             {
                 socket.socketActive = true;
@@ -46,14 +48,6 @@ public class Dirt : MonoBehaviour
         if (other.CompareTag(Constant.agricultural))
         {
             Dig();
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag(Constant.agricultural))
-        {
-            digAble = true;
         }
     }
 }

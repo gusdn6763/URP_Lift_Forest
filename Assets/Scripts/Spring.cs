@@ -11,12 +11,12 @@ public class Spring : XRGrabInteractable
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        for(int i = 0; i< seedsGround.Count; i++)
+        particle.Play();
+        for (int i = 0; i< seedsGround.Count; i++)
         {
             if (seedsGround[i].socket.isOn)
             {
                 StartCoroutine(seedsGround[i].socket.currentSeed.Growing());
-                particle.Play();
             }
         }
         base.OnSelectEntered(args);

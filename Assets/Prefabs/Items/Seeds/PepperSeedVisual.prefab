@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7669395792736256274}
   - component: {fileID: 7669395792736256272}
   - component: {fileID: 8924116929287994428}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: PepperSeedVisual
   m_TagString: Seed
   m_Icon: {fileID: 0}
@@ -221,9 +221,9 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.5, z: 0}
   obame: "'\uD30C\uD504\uB9AC\uCE74 \uB2EE\uC558\uB300' \uC528\uC557"
-  price: 1
+  price: 0
   introudce: "\uD30C\uD504\uB9AC\uCE74 \uB2EE\uC558\uB2E4\uACE0 \uB9CE\uC774 \uB4E3\uC9C0\uB9CC
     \uC54C\uACE0\uBCF4\uBA74 \uC544\uC0AD\uD55C \uC2DD\uAC10\uC774 \uB6F0\uC5B4\uB09C
     \uCD08\uB85D\uBE5B \uD53C\uB9DD"
@@ -231,17 +231,20 @@ MonoBehaviour:
   spawnItem: 0
   spawnTime: 5
   seeds:
-  - growingCountTime: 4.6
+  - growingCountTime: 1
     renderer: {fileID: 7655692866842212271}
     filter: {fileID: 7647020446338503479}
-  - growingCountTime: 0
+  - growingCountTime: 1
     renderer: {fileID: 23930062376958498, guid: 8c64118ce05103a49965da9b0265081f, type: 3}
     filter: {fileID: 33000142735719346, guid: 8c64118ce05103a49965da9b0265081f, type: 3}
-  - growingCountTime: 0
+  - growingCountTime: 1
     renderer: {fileID: 23606013242140682, guid: 560f60ddf78a6b240901212ae5507fef, type: 3}
     filter: {fileID: 33455814866366222, guid: 560f60ddf78a6b240901212ae5507fef, type: 3}
-  - growingCountTime: 0
+  - growingCountTime: 1
     renderer: {fileID: 23515459550439652, guid: 613ec6aab7c2e7749ba54f9a5163ffa9, type: 3}
     filter: {fileID: 33072466421128730, guid: 613ec6aab7c2e7749ba54f9a5163ffa9, type: 3}
+  - growingCountTime: 1
+    renderer: {fileID: 7712929369119178189, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
+    filter: {fileID: 7719901576121924567, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
   completeItem: {fileID: 7735245101502255371, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
-  maxInstanteCount: 3
+  maxInstanteCount: 2

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4413425684354707834}
   - component: {fileID: 4413425684354707828}
   - component: {fileID: 2843575006095062419}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: ChilliSeed
   m_TagString: Seed
   m_Icon: {fileID: 0}
@@ -245,25 +245,25 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.5, z: 0}
   obame: "'\uC5B4\uB514 \uD55C \uBC88 \uBA39\uC5B4\uBD10'  \uC528\uC557"
-  price: 1
+  price: 0
   introudce: "\uB2E4 \uC790\uB77C\uBA74 \uBE68\uAC1B\uAC8C \uC775\uB294\uB370, \uBD88\uB2ED\uBCF6\uC74C\uBA74
     \uC18C\uC2A4\uB9CC\uD07C \uB9E4\uCF64\uD55C \uB9DB\uC744 \uB0B8\uB2E4"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
   seeds:
-  - growingCountTime: 2
+  - growingCountTime: 1
     renderer: {fileID: 4425805397211300313}
     filter: {fileID: 4414075712040568545}
   - growingCountTime: 2
     renderer: {fileID: 23855058149919356, guid: 53848b3668c371945a42e67cc6233f75, type: 3}
     filter: {fileID: 33056778001132996, guid: 53848b3668c371945a42e67cc6233f75, type: 3}
-  - growingCountTime: 2
+  - growingCountTime: 3
     renderer: {fileID: 23034754812173462, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
     filter: {fileID: 33942323983505120, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
-  - growingCountTime: 2
+  - growingCountTime: 4
     renderer: {fileID: 23885838211386910, guid: 4bc7afe3fada16546a291ec2fc800b37, type: 3}
     filter: {fileID: 33636275706275522, guid: 4bc7afe3fada16546a291ec2fc800b37, type: 3}
   - growingCountTime: 2

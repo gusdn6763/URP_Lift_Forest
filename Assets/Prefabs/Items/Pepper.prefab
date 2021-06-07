@@ -207,7 +207,7 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uD30C\uD504\uB9AC\uCE74 (Paprika)"
   price: 1
   introudce: "\uAC00\uC9C0\uACFC \uC758 \uD55C\uD574\uC0B4\uC774 \uD480.\\n\uAC1C\uD654\uAE30\uB294

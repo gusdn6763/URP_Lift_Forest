@@ -220,10 +220,13 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
-  obame: 
-  price: 0
-  introudce: 
+  addsize: {x: 0, y: 0.4, z: 0}
+  obame: "\uCF54\uB974\uCF58 \uC625\uC218\uC218"
+  price: 3
+  introudce: "\uB178\uB797\uACE0 \uB2EC\uB2EC\uD55C \uC77C\uB4F1\uAE09 \uC625\uC218\uC218.
+    \uB9C8\uC57D \uC625\uC218\uC218 \uD1B5\uC870\uB9BC \uBCF4\uB2E4 \uB9DB\uC788\uB2E4\uC18C
+    \uC18C\uBB38 \uB0AC\uB2E4. \uD55C \uBC88 \uCBE4 \uC7AC\uBC30\uD574\uBCF4\uB294
+    \uAC74 \uC5B4\uB54C?"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5

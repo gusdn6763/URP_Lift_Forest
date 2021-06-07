@@ -8,8 +8,6 @@ public class SellingItem : Item
 {
     private SellingNPC sellingNPC;
 
-
-
     [Header("ÆÇ¸Å")]
     [SerializeField] private int sellingPrice;
     [SerializeField] private Item sellingPrefab;

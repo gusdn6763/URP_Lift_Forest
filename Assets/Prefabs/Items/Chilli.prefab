@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4741425259103582591}
   - component: {fileID: 4750018529833616963}
   - component: {fileID: 4735929037806062726}
-  - component: {fileID: 4735929037806062729}
   - component: {fileID: 4735929037806062727}
+  - component: {fileID: 4735929037806062729}
   m_Layer: 3
   m_Name: Chilli
   m_TagString: Item
@@ -100,6 +100,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &4735929037806062727
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4737198727086186293}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.10121617
+  m_Height: 0.056707226
+  m_Direction: 1
+  m_Center: {x: -0.0013992228, y: -0.000000004656613, z: 0.000000033527613}
 --- !u!114 &4735929037806062729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +221,7 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0, z: 0}
+  addsize: {x: 0, y: 0.4, z: 0}
   obame: "\uACE0\uCD94 (Chilli)"
   price: 1
   introudce: "\uC18D\uC528\uC2DD\uBB3C.\\n\uBE44\uD0C0\uBBFC A\uC640 \uBE44\uD0C0\uBBFC
@@ -217,17 +231,3 @@ MonoBehaviour:
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
---- !u!136 &4735929037806062727
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4737198727086186293}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.10121617
-  m_Height: 0.056707226
-  m_Direction: 1
-  m_Center: {x: -0.0013992228, y: -0.000000004656613, z: 0.000000033527613}
