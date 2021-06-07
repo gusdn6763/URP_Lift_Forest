@@ -368,9 +368,10 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0, z: 0}
-  obame: "\uBC84\uC12FA"
+  obame: "\uC170\uD37C\uB9B0 \uBC84\uC12F"
   price: 1
-  introudce: "\uBC84\uC12F\uC774\uB2E4."
+  introudce: "\uAE38\uCB49\uD55C \uAE30\uB465\uC774 \uD2B9\uC9D5\uC778 \uBC84\uC12F.
+    \uB77C\uBA74 \uB053\uC77C \uB54C \uCD5C\uACE0\uB2E4!"
   maxSlotCount: 99
   spawnItem: 1
   spawnTime: 5

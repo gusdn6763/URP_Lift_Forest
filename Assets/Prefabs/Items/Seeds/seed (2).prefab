@@ -222,12 +222,24 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0, z: 0}
-  obame: "\uC528\uC557"
+  obame: "\uBAA8\uB77C\uB9AC"
   price: 2
   introudce: "\uC2DD\uBB3C\uC758 \uBC11\uC528\uAC00 \uBC1C\uB2EC \uD55C \uAC83."
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
-  seeds: []
-  completeItem: {fileID: 0}
-  maxInstanteCount: 0
+  seeds:
+  - growingCountTime: 0
+    renderer: {fileID: 8693359517693375889}
+    filter: {fileID: 6864034651335229787}
+  - growingCountTime: 0
+    renderer: {fileID: 23278393357268966, guid: 5e44cc6f29306d8498f7df5c4fd00a81, type: 3}
+    filter: {fileID: 33518372732956262, guid: 5e44cc6f29306d8498f7df5c4fd00a81, type: 3}
+  - growingCountTime: 0
+    renderer: {fileID: 23995417966581456, guid: 3ca76f97d9b7f904284878e5711c8b13, type: 3}
+    filter: {fileID: 33189541290483818, guid: 3ca76f97d9b7f904284878e5711c8b13, type: 3}
+  - growingCountTime: 0
+    renderer: {fileID: 23226465412035020, guid: facb720564d9d9b4089159d75fb44b4a, type: 3}
+    filter: {fileID: 33917854962731074, guid: facb720564d9d9b4089159d75fb44b4a, type: 3}
+  completeItem: {fileID: 4004892972526966117, guid: 70484006c81ace749ba5d04ebd8cfaf9, type: 3}
+  maxInstanteCount: 3
