@@ -36,7 +36,7 @@ public class Introduce : XRGrabInteractable
 
     protected override void OnHoverExited(HoverExitEventArgs args)
     {
-        ui.gameObject.SetActive(false);
+        ui.transform.position = new Vector3(0, 999f, 0f);
         base.OnHoverExited(args);
     }
 
