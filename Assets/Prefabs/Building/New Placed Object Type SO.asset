@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: New Placed Object Type SO
   m_EditorClassIdentifier: 
   nameString: "\uCE68\uB300"
-  prefab: {fileID: 5407454444750611356, guid: c547e751d1dbb024e95c97e9e19e7ef5, type: 3}
-  visual: {fileID: 1497366418336199257, guid: 50ebc84b6b377d740a851020e275fd65, type: 3}
+  prefab: {fileID: 3170072225998784398, guid: f5d4a045e9a8ac246a53ef50215c2ff9, type: 3}
+  visual: {fileID: 8905250702319032470, guid: 6f2736db700593549b59261b349263fa, type: 3}
   width: 0
   height: 0

@@ -28,7 +28,7 @@ public class GridXZ<T> {
     private int width;
     private int height;
     private float cellSize;
-    private Vector3 originPosition;
+    private Vector3Int originPosition;
     private T[,] gridArray;
 
     /// <summary>
@@ -40,7 +40,7 @@ public class GridXZ<T> {
     /// <param name="originPosition">시작 위치</param>
     /// <param name="createGridObject">어떠한 타입을 그리드에 저장하는지</param>
     /// <param name="showDebug">디버그 모드</param>
-    public GridXZ(int width, int height, float cellSize, Vector3 originPosition, Func<GridXZ<T>, int, int, T> createGridObject, bool showDebug) 
+    public GridXZ(int width, int height, float cellSize, Vector3Int originPosition, Func<GridXZ<T>, int, int, T> createGridObject, bool showDebug) 
     {
         this.width = width;
         this.height = height;
@@ -53,7 +53,7 @@ public class GridXZ<T> {
         {
             for (int z = 0; z < gridArray.GetLength(1); z++) 
             {
-                gridArray[x, z] = createGridObject(this, x, z);
+                gridArray[x, z] = createGridObject(this, x + originPosition.x, z + originPosition.z);
             }
         }
 

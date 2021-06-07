@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR;
 
 /// <summary>
 /// 그리드 시스템을 이용한 건물 건설 및 건설 가능 여부 체크
@@ -12,6 +14,8 @@ public class GridBuildingSystem3D : MonoBehaviour
     public static GridBuildingSystem3D instance;
 
     [SerializeField] private List<PlacedObjectTypeSO> placedObjectTypeSOList = null;
+    [SerializeField] private XRNode ChangeDevice;
+    [SerializeField] private Vector3Int startPoint;
     [SerializeField] private bool debugGrid = false;
 
     private BuildingGhost visualBuilding;
@@ -42,7 +46,7 @@ public class GridBuildingSystem3D : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (GridXZ<GridObject> g, int x, int y) => new GridObject(g, x, y), debugGrid);
+        grid = new GridXZ<GridObject>(gridWidth, gridHeight, cellSize, startPoint, (GridXZ<GridObject> g, int x, int y) => new GridObject(g, x, y), debugGrid);
         visualBuilding = GetComponent<BuildingGhost>();
     }
 
@@ -97,10 +101,23 @@ public class GridBuildingSystem3D : MonoBehaviour
 
     }
 
+
+    public void GetObject(PlacedObjectTypeSO place)
+    {
+        currentPlacedObjectTypeSO = place;
+        RefreshSelectedObjectType();
+    }
+
     IEnumerator BuildingStart()
     {
         while(start)
         {
+            InputDevice device = InputDevices.GetDeviceAtXRNode(ChangeDevice);
+            device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isOn);
+            if (isOn)
+            {
+                currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
+            }
             yield return new WaitForSeconds(0.1f);
             currentPosition = Player.instance.SetCurrentRayPos();
             if (currentPlacedObjectTypeSO != null)
@@ -147,22 +164,8 @@ public class GridBuildingSystem3D : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha1)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[0]; RefreshSelectedObjectType(); }
-            if (Input.GetKeyDown(KeyCode.Alpha2)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[1]; RefreshSelectedObjectType(); }
-            if (Input.GetKeyDown(KeyCode.Alpha3)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[2]; RefreshSelectedObjectType(); }
-            if (Input.GetKeyDown(KeyCode.Alpha4)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[3]; RefreshSelectedObjectType(); }
-            if (Input.GetKeyDown(KeyCode.Alpha5)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[4]; RefreshSelectedObjectType(); }
-            if (Input.GetKeyDown(KeyCode.Alpha6)) { currentPlacedObjectTypeSO = placedObjectTypeSOList[5]; RefreshSelectedObjectType(); }
-
-            if (Input.GetKeyDown(KeyCode.Alpha0)) { DeselectObjectType(); }
-
-
-            if (Input.GetMouseButtonDown(1))
+            device.TryGetFeatureValue(CommonUsages.primaryButton, out bool isBuild);
+            if (isBuild)
             {
                 if (grid.GetGridObject(currentPosition) != null)
                 {
@@ -184,10 +187,6 @@ public class GridBuildingSystem3D : MonoBehaviour
 
         }
     }
-
-
-
-
 
     private void DeselectObjectType()
     {
@@ -259,6 +258,7 @@ public class GridBuildingSystem3D : MonoBehaviour
     {
         if (other.CompareTag(Constant.player))
         {
+            DeselectObjectType();
             StopAllCoroutines();
         }
     }

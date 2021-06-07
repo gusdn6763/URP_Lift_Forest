@@ -95,7 +95,6 @@ namespace CodeMonkey.Utils {
 
             if (internalOnMouseDownFunc != null) internalOnMouseDownFunc();
             if (ClickFunc != null) ClickFunc();
-            if (MouseDownOnceFunc != null) MouseDownOnceFunc();
             if (triggerMouseOutFuncOnClick) OnMouseExit();
         }
         public void Manual_OnMouseExit() {
