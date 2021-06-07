@@ -139,6 +139,7 @@ namespace TurnTheGameOn.ArrowWaypointer
                 {
                     if (itemComponents[i] != null && itemComponents[i].itemLocation == null)
                     {
+                        // 오브젝트 만들 때 ItemLocation ? 이렇게 입력해야 찾음.
                         newItemName = "ItemLocation " + (i + 1);
                         itemComponents[i].ItemName = newItemName;
 
