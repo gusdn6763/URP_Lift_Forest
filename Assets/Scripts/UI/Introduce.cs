@@ -7,8 +7,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Introduce : XRGrabInteractable
 {
     protected ItemUI ui;
-
+    [SerializeField] private bool interaction = true;
     [Header("설명 정보")]
+    [SerializeField] private Vector3 addsize;
     [SerializeField] private string obame;
     public string Name { get { return obame; } set { obame = value; } }
     [SerializeField] private int price;
@@ -26,7 +27,7 @@ public class Introduce : XRGrabInteractable
     {
         if ((!ui.gameObject.activeSelf) && args.interactor.CompareTag(Constant.ray))
         {
-            ui.TranceInfo(transform, obame, introudce, price.ToString());
+            ui.TranceInfo(transform, addsize, obame, introudce, price.ToString());
             ui.gameObject.SetActive(true);
         }
         // 부모 클래스 호출.
@@ -37,6 +38,11 @@ public class Introduce : XRGrabInteractable
     {
         ui.gameObject.SetActive(false);
         base.OnHoverExited(args);
+    }
+
+    public override bool IsSelectableBy(XRBaseInteractor interactor)
+    {
+        return base.IsSelectableBy(interactor) && interaction;
     }
 
 }

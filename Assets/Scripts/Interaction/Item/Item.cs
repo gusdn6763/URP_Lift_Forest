@@ -8,7 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Item : Introduce
 {
     private Collider col;
-    private Rigidbody rigi;
+    protected Rigidbody rigi;
 
     private Transform parentTransform;
     private Vector3 spawnPoint;
@@ -52,7 +52,8 @@ public class Item : Introduce
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        col.isTrigger = false; 
+        col.isTrigger = false;
+        rigi.isKinematic = false;
         if ((args.interactor.CompareTag(Constant.handRight) || args.interactor.CompareTag(Constant.handLeft)))
         {
             Player.instance.GrabItem = null;

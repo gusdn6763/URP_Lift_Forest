@@ -20,8 +20,12 @@ public class ItemUI : UI
         transform.LookAt(tmpVector);
     }
 
-    public void TranceInfo(Transform parent, string name, string introduce, string price)
+    public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, string price)
     {
+        if (addSize != Vector3.zero)
+        {
+            this.addSize = addsize;
+        }
         parentTransform = parent;
         nameTxt.text = name.ToString();
         introduceTxt.text = introduce.ToString();
