@@ -220,9 +220,10 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: "\uACE0\uCD94 \uD30C\uC885?"
+  obame: "\uACE0\uCD94 \uC528\uC557."
   price: 1
-  introudce: "\uACE0\uCD94\uACE0\uCD94"
+  introudce: "\uACE0\uCD94\uC18D\uC758 \uB9E4\uC6B4 \uC5F4\uB9E4\uCC44\uC18C\uB97C
+    \uC77C\uCEEB\uB294 \uB9D0."
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5

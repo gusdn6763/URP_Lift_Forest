@@ -38,6 +38,7 @@ public class Seed : Item
         growingCount = seeds.Count;
     }
 
+    // Spring Script에 들어감.
     public IEnumerator Growing()
     {
         while (growingCount != currentGrowingCount)
