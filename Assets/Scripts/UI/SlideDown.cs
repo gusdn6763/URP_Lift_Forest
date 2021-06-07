@@ -7,8 +7,12 @@ using UnityEngine.UI;
 public class SlideDown : MonoBehaviour
 {
     public GameObject canvas;
+    public Vector3 movepoint;
    
-
+    public void Update()
+    {
+        canvas.transform.LookAt(Player.instance.transform);
+    }
 
     public void OnTriggerEnter(Collider other)
     {
