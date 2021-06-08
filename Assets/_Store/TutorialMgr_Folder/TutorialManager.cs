@@ -26,6 +26,7 @@ namespace TurnTheGameOn.ArrowWaypointer
         [Range(1, 100)] 
         public int TotalWaypoints;                  // 위치 갯수 조정.
 
+        public GameObject arrow;
         public ItemComponents[] itemComponents;
         private GameObject newItem;
         private string newItemName;
@@ -39,7 +40,7 @@ namespace TurnTheGameOn.ArrowWaypointer
             if (Application.isPlaying)
             {
                 GameObject newObject = new GameObject();
-                newObject.name = "Arrow Target";
+                newObject.name = "Arrow Target";                                            // 애로우 화살표 지정 방향
                 newObject.transform.parent = gameObject.transform;
                 arrowTarget = newObject.transform;
                 newObject = null;
@@ -60,12 +61,12 @@ namespace TurnTheGameOn.ArrowWaypointer
             {
                 TotalWaypoints = itemComponents.Length;
             }
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             if (configureMode == Switch.On)
             {
                 CalculateItemLocation();
             }
-    #endif
+#endif
             if (arrowTarget != null)
             {
                 arrowTarget.localPosition = Vector3.Lerp(arrowTarget.localPosition, currentItemPoint.localPosition, arrowTargetSmooth * Time.deltaTime);
@@ -77,7 +78,7 @@ namespace TurnTheGameOn.ArrowWaypointer
             }
             if (ItemArrow == null)
             {
-                findArrow();
+                ItemArrow = arrow.transform;
             }
             ItemArrow.LookAt(arrowTarget);
         }
@@ -112,19 +113,7 @@ namespace TurnTheGameOn.ArrowWaypointer
             instance.name = "Arrow";
             instance = null;
         }
-        public void findArrow()
-        {
-            GameObject Arrow = GameObject.Find("Arrow");
-            if (Arrow == null)
-            {
-                createArrow();
-                ItemArrow = GameObject.Find("Arrow").transform;
-            }
-            else
-            {
-                ItemArrow = Arrow.transform;
-            }
-        }
+
         public void CalculateItemLocation()
         {
             if (configureMode == Switch.On)
@@ -133,7 +122,7 @@ namespace TurnTheGameOn.ArrowWaypointer
 
                 if (ItemArrow == null)
                 {
-                    findArrow();
+                    ItemArrow = arrow.transform;
                 }
                 for (var i = 0; i < TotalWaypoints; i++)
                 {

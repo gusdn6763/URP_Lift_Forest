@@ -11,6 +11,7 @@ TagManager:
   - Seed
   - FishingHole
   - Ray
+  - ItemLocation
   layers:
   - Default
   - TransparentFX
