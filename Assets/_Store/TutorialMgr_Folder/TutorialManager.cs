@@ -8,6 +8,7 @@ namespace TurnTheGameOn.ArrowWaypointer
     [ExecuteInEditMode]
     public class TutorialManager : MonoBehaviour
     {
+        public static TutorialManager instance;
         public enum Switch { Off, On }
 
         [System.Serializable]
@@ -35,6 +36,11 @@ namespace TurnTheGameOn.ArrowWaypointer
         private Transform currentItemPoint; // 최근 아이템 포인트
         private Transform arrowTarget;
 
+        private void Awake()
+        {
+            instance = this;
+        }
+
         void Start()
         {
             if (Application.isPlaying)
@@ -45,6 +51,7 @@ namespace TurnTheGameOn.ArrowWaypointer
                 arrowTarget = newObject.transform;
                 newObject = null;
             }
+            player = Player.instance.transform;
             nextItem = 0;
             changeTarget();
         }

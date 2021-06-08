@@ -8,10 +8,16 @@ namespace TurnTheGameOn.ArrowWaypointer
 	{
 
 		public int radius;
-		[HideInInspector] public TutorialManager TutoMgr;
+		public TutorialManager TutoMgr;
 		[HideInInspector] public int itemNum;
 
-		void Update()
+        private void Start()
+        {
+			TutoMgr = TutorialManager.instance;
+
+		}
+
+        void Update()
 		{
 			if (TutoMgr.player)
 			{
