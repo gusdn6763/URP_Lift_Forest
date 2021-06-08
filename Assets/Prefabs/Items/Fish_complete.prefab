@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4608233179676234256}
   - component: {fileID: -4871673458794076307}
   - component: {fileID: 8110395761488688543}
+  - component: {fileID: 6918542166081393853}
   m_Layer: 3
   m_Name: Fish_complete
   m_TagString: Item
@@ -214,3 +215,16 @@ MonoBehaviour:
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
+--- !u!65 &6918542166081393853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478825002690512104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14257476, y: 0.2877226, z: 0.64365387}
+  m_Center: {x: -0.0028402247, y: 0.1422644, z: -0.0035459697}
