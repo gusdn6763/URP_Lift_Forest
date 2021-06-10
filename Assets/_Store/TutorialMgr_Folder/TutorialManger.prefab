@@ -48,6 +48,7 @@ MonoBehaviour:
   configureMode: 0
   arrowTargetSmooth: 0
   TotalWaypoints: 0
+  arrow: {fileID: 0}
   itemComponents: []
 --- !u!1001 &3731234539112890059
 PrefabInstance:
