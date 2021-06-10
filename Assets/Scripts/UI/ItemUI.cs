@@ -18,10 +18,12 @@ public class ItemUI : UI
         if (parentTransform)
         {
             transform.position = parentTransform.position + addSize;
-            print(transform.position);
         }
         tmpVector = new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z);
-        transform.LookAt(tmpVector);
+        if (Vector3.Distance(Player.instance.transform.position, transform.position) > 2f)
+        {
+            transform.LookAt(tmpVector);
+        }
     }
 
     public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, string price)

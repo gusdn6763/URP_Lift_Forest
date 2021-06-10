@@ -16,7 +16,6 @@ public class InventorySocket : XRSocketInteractor
     public Item currentItem;
 
     public int currentCount;
-    public bool dividObject = false;
 
     public int CurrentCount
     {
@@ -53,7 +52,7 @@ public class InventorySocket : XRSocketInteractor
         {
             if (checkItem.maxSlotCount >= currentCount)                     //인벤토리에 아이템을 넣을 수 있는 최대 갯수
             {
-                if (currentItem != null && !dividObject)                    //인벤토리에 아이템이 넣어진게 있고, 나누어진 오브젝트면
+                if (currentItem != null)                    //인벤토리에 아이템이 넣어진게 있고, 나누어진 오브젝트면
                 {
                     if (currentItem != checkItem)
                     {
@@ -62,14 +61,6 @@ public class InventorySocket : XRSocketInteractor
                             Destroy(args.interactable.gameObject);
                             CurrentCount++;
                         }
-                    }
-                }
-                else if (dividObject && currentItem != null && checkItem.MakedItem == false)
-                {
-                    if (currentItem.Name == checkItem.Name)
-                    {
-                        Destroy(args.interactable.gameObject);
-                        CurrentCount++;
                     }
                 }
             }
@@ -83,14 +74,13 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
+        print("113");
         checkItem = args.interactable.GetComponent<Item>();
-        if (checkItem.MakedItem == false)
+
+        CurrentCount++;
+        if (currentItem == null)
         {
-            CurrentCount++;
-            if (currentItem == null)
-            {
-                currentItem = checkItem;
-            }
+            currentItem = checkItem;
         }
         
         base.OnSelectEntered(args);
@@ -103,25 +93,15 @@ public class InventorySocket : XRSocketInteractor
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         CurrentCount -= 1;
-        currentItem.MakedItem = false;
         if (CurrentCount > 0)
         {
-            StartCoroutine(MakeObject());
+            startingSelectedInteractable = Instantiate(ItemManager.instance.FineItem(currentItem), transform.position, transform.rotation);
         }
         else
         {
             currentItem = null;
-            dividObject = false;
             base.OnSelectExited(args);
         }
     }
 
-    IEnumerator MakeObject()
-    {
-        yield return new WaitForSeconds(0.2f);
-        Item test = Instantiate(ItemManager.instance.FineItem(currentItem), transform.position, transform.rotation);
-        test.MakedItem = true;
-        currentItem = test;
-        dividObject = true;
-    }
 }
