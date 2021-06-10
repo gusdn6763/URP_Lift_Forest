@@ -1,9 +1,9 @@
 ﻿public class Constant
 {
-    public const string handRight = "Right";
-    public const string handLeft = "Left";
+    public const string hand = "Hand";
     public const string ray = "Ray";
 
+    public const string inventory = "Inventory";
     public const string player = "Player";
     public const string weapon = "Weapon";
     public const string fire = "Fire";

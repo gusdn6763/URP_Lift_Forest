@@ -59,6 +59,6 @@ public class Item : Introduce
     }
     public override bool IsSelectableBy(XRBaseInteractor interactor)
     {
-        return base.IsSelectableBy(interactor) && (interactor.CompareTag(Constant.handLeft) || interactor.CompareTag(Constant.handRight));
+        return base.IsSelectableBy(interactor) && (interactor.CompareTag(Constant.hand) || interactor.CompareTag(Constant.inventory));
     }
 }

@@ -90,14 +90,14 @@ public class Player : MonoBehaviour
         }
         else if (!moveImpossible)
         {
+            CapsuleFollowHeadset();
             StartMove();
             ApplyGravity();
-            CapsuleFollowHeadset();
         }
         else
         {
-            ApplyGravity();
             CapsuleFollowHeadset();
+            ApplyGravity();
         }
     }
 
