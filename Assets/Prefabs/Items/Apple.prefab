@@ -221,10 +221,10 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0.4, z: 0}
-  obame: "\uC0AC\uACFC"
+  obame: "\uD504\uB9AC\uB9B0 \uC0AC\uACFC "
   price: 1
-  introudce: "\uC0AC\uACFC\uB098\uBB34\uC758 \uC5F4\uB9E4.\\n\uC0AC\uACFC \uC5F4\uB9E4\uB294
-    \uC8FC\uB85C \uAC00\uC744\uC5D0 \uC775\uB294\uB2E4."
+  introudce: " 5~10cm \uD06C\uAE30\uC758 \uBD89\uC740 \uBE5B\uC758 \uACFC\uC77C. 
+    \uCD5C\uC0C1\uC758 \uC560\uD50C \uD30C\uC774\uB97C \uB9DB\uBCFC \uC218 \uC788\uB2E4!"
   maxSlotCount: 99
   spawnItem: 1
   spawnTime: 5

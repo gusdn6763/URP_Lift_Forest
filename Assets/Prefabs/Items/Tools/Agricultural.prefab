@@ -221,9 +221,12 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
-  obame: "\uB18D\uAE30\uAD6C (Agricultural)"
+  interaction: 1
+  addsize: {x: 0, y: 0, z: 0}
+  obame: "\uBCA0\uC2A4\uB518 \uB18D\uAE30\uAD6C"
   price: 1
-  introudce: "\uBC2D\uC744 \uAC08 \uC218 \uC788\uB2E4."
+  introudce: "\uBC2D\uC744 \uAC08 \uB54C\uB294 \uBCA0\uC2A4\uB518 \uB18D\uAE30\uAD6C\uAC00
+    \uCD5C\uACE0!"
   maxSlotCount: 1
   spawnItem: 0
   spawnTime: 5

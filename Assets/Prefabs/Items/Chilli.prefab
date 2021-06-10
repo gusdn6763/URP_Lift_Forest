@@ -222,12 +222,10 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0.4, z: 0}
-  obame: "\uACE0\uCD94 (Chilli)"
+  obame: "\uD56B\uC2A4\uD540 \uACE0\uCD94"
   price: 1
-  introudce: "\uC18D\uC528\uC2DD\uBB3C.\\n\uBE44\uD0C0\uBBFC A\uC640 \uBE44\uD0C0\uBBFC
-    C\uAC00 \uB2E4\uB7C9 \uD568\uC720\uB418\uC5B4 \uC788\uC5B4, \uB354\uC704 \uC608\uBC29
-    \uD6A8\uACFC\uAC00 \uB192\uACE0, \uB610\uD55C \uC0B4\uADE0 \uC791\uC6A9\uC774
-    \uC788\uC5B4 \uC2DD\uC911\uB3C5 \uC608\uBC29\uC744 \uD574\uC90C."
+  introudce: "\uC911\uB3C5\uC131 \uAC15\uD55C \uB9E4\uC6B4 \uB9DB \uB54C\uBB38\uC5D0
+    \uC606 \uB9C8\uC744\uC5D0\uC11C\uB3C4 \uC778\uAE30\uC788\uB2E4\uACE0 \uD55C\uB2E4!"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5

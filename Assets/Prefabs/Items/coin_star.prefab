@@ -221,7 +221,7 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0.4, z: 0}
-  obame: "\uB3C8 (Coin)"
+  obame: Gold (Coin)
   price: 2
   introudce: "\uC791\uBB3C \uB9E4\uB9E4 \uBC0F \uBCF4\uBB3C\uC0C1\uC790\uB97C \uD1B5\uD574
     \uC5BB\uC744 \uC218 \uC788\uB2E4."

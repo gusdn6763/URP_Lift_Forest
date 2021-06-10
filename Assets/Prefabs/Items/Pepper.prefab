@@ -208,10 +208,10 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   interaction: 1
   addsize: {x: 0, y: 0.4, z: 0}
-  obame: "\uD30C\uD504\uB9AC\uCE74 (Paprika)"
+  obame: "\uB85C\uD53C\uB9CC \uD30C\uD504\uB9AC\uCE74"
   price: 1
-  introudce: "\uAC00\uC9C0\uACFC \uC758 \uD55C\uD574\uC0B4\uC774 \uD480.\\n\uAC1C\uD654\uAE30\uB294
-    11\uC6D4 ~ 7\uC6D4 \uC774\uB2E4.\\n"
+  introudce: "\uD53C\uB9DD\uC774\uB791\uC740 \uB2E4\uB974\uAC8C \uB2EC\uCF64\uC0C8\uCF64\uD55C
+    \uB9DB\uC774 \uC77C\uD488\uC778 \uB178\uB780\uBE5B\uC758 \uD30C\uD504\uB9AC\uCE74"
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
