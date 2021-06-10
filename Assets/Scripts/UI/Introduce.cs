@@ -16,6 +16,8 @@ public class Introduce : XRGrabInteractable
     public int Price { get { return price; } set { price = value; } }
     [SerializeField] private string introudce;
 
+    protected bool isOn = true;
+
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +29,7 @@ public class Introduce : XRGrabInteractable
     {
         if ((!ui.gameObject.activeSelf) && args.interactor.CompareTag(Constant.ray))
         {
-            ui.TranceInfo(transform, addsize, obame, introudce, price.ToString());
+            ui.TranceInfo(transform, addsize, obame, introudce, price.ToString(), isOn);
             ui.gameObject.SetActive(true);
         }
         // 부모 클래스 호출.

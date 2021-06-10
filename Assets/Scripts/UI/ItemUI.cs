@@ -8,7 +8,7 @@ public class ItemUI : UI
     [SerializeField] private Text nameTxt;
     [SerializeField] private Text introduceTxt;
     [SerializeField] private Text priceTxt;
-
+    [SerializeField] private GameObject gold;
 
     private Transform parentTransform;
     private Vector3 tmpVector;
@@ -26,8 +26,9 @@ public class ItemUI : UI
         }
     }
 
-    public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, string price)
+    public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, string price, bool isOn = false)
     {
+        gold.SetActive(isOn);
         this.addSize = addsize;
         parentTransform = parent;
         nameTxt.text = name.ToString();

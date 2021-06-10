@@ -32,6 +32,7 @@ public class Item : Introduce
         rigi = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         base.Awake();
+        isOn = true;
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
