@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1765412093353152243}
   - component: {fileID: 4608233179676234256}
   - component: {fileID: -4871673458794076307}
-  - component: {fileID: 8110395761488688543}
   - component: {fileID: 6918542166081393853}
+  - component: {fileID: -8074853724164043091}
   m_Layer: 3
   m_Name: Fish_complete
   m_TagString: Item
@@ -100,7 +100,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8110395761488688543
+--- !u!65 &6918542166081393853
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478825002690512104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14257476, y: 0.2877226, z: 0.64365387}
+  m_Center: {x: -0.0028402247, y: 0.1422644, z: -0.0035459697}
+--- !u!114 &-8074853724164043091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3478825002690512104}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8a5152725b2ea5428b6900a8efbd603, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c5d0d86f1023e54b94a7b57e6b2b5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -207,24 +220,12 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   interaction: 1
-  addsize: {x: 0, y: 0.4, z: 0}
-  obame: "\uBB3C\uACE0\uAE30 (Fish)"
+  addsize: {x: 0, y: 0, z: 0}
+  obame: "\uBB3C\uACE0\uAE30"
   price: 1
   introudce: "\uB09A\uC2DC\uD558\uC5EC \uC5BB\uC740 \uBB3C\uACE0\uAE30.\\n\uC0C1\uC810\uC5D0
     \uD314\uBA74 \uCF54\uC778\uC744 \uC5BB\uC744 \uC218 \uC788\uB2E4."
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 5
---- !u!65 &6918542166081393853
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3478825002690512104}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.14257476, y: 0.2877226, z: 0.64365387}
-  m_Center: {x: -0.0028402247, y: 0.1422644, z: -0.0035459697}
+  rod: {fileID: 0}
