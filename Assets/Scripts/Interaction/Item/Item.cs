@@ -14,7 +14,6 @@ public class Item : Introduce
     private Vector3 spawnPoint;
     private bool makedItem = false;
     protected bool defaultSell = false;
-    public bool MakedItem { get { return makedItem; } set { makedItem = value; } }
 
     [Header("아이템 정보")]
     public int maxSlotCount = 99;
@@ -42,10 +41,7 @@ public class Item : Introduce
         {
             StartCoroutine(SpawnItem());
         }
-        if (args.interactor.CompareTag(Constant.handRight) || args.interactor.CompareTag(Constant.handLeft))
-        {
-            Player.instance.GrabItem = this;
-        }
+
         base.OnSelectEntered(args);
     }
 
@@ -53,17 +49,13 @@ public class Item : Introduce
     {
         col.isTrigger = false;
         rigi.isKinematic = false;
-        if ((args.interactor.CompareTag(Constant.handRight) || args.interactor.CompareTag(Constant.handLeft)))
-        {
-            Player.instance.GrabItem = null;
-        }
         base.OnSelectExited(args);
     }
 
     protected IEnumerator SpawnItem()
     {
         yield return new WaitForSeconds(spawnTime);                         
-        Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);
+        Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform.parent);
     }
     public override bool IsSelectableBy(XRBaseInteractor interactor)
     {

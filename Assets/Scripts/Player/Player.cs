@@ -84,8 +84,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CapsuleFollowHeadset();
-
         if (climbingHand)
         {
             Climb();
@@ -94,10 +92,12 @@ public class Player : MonoBehaviour
         {
             StartMove();
             ApplyGravity();
+            CapsuleFollowHeadset();
         }
         else
         {
             ApplyGravity();
+            CapsuleFollowHeadset();
         }
     }
 
@@ -106,6 +106,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void CapsuleFollowHeadset()
     {
+        print("1");
         characterController.height = rig.cameraInRigSpaceHeight + additionalHeight;
         Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
         characterController.center = new Vector3(capsuleCenter.x, characterController.height / 2 + characterController.skinWidth + additionalHeight, capsuleCenter.z);
@@ -133,6 +134,9 @@ public class Player : MonoBehaviour
     {
         InputDevices.GetDeviceAtXRNode(climbingHand.controllerNode).TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 velocity);
 
+        characterController.height = rig.cameraInRigSpaceHeight + additionalHeight;
+        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
+        characterController.center = new Vector3(capsuleCenter.x, characterController.height / 2 + characterController.skinWidth + additionalHeight + 1, capsuleCenter.z);
         characterController.Move(transform.rotation * -velocity * Time.fixedDeltaTime);
     }
 
