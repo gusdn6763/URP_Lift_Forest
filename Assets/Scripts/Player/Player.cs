@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated);
         if(isActivated)
         {
-            inventory.transform.localPosition = new Vector3(-0.3f, -0.3f, 0.4f);
+            inventory.transform.localPosition = new Vector3(-1f, -0.1f, 0.4f);
         }
         else
         {
@@ -106,7 +106,6 @@ public class Player : MonoBehaviour
     /// </summary>
     void CapsuleFollowHeadset()
     {
-        print("1");
         characterController.height = rig.cameraInRigSpaceHeight + additionalHeight;
         Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
         characterController.center = new Vector3(capsuleCenter.x, characterController.height / 2 + characterController.skinWidth + additionalHeight, capsuleCenter.z);

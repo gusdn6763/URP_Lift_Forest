@@ -74,7 +74,6 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        print("113");
         checkItem = args.interactable.GetComponent<Item>();
 
         CurrentCount++;
