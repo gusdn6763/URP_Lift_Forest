@@ -22,6 +22,7 @@ public class WaypointMove : MonoBehaviour
 
     void Start()
     {
+        transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
         Move();
     }
 
