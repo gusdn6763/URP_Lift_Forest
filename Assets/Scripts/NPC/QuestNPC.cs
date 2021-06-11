@@ -5,14 +5,14 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class QuestNPC : NPC
 {
-    [SerializeField] private string acceptAfterAnswer;
-    [SerializeField] private string acceptAnswer;
-    [SerializeField] private string noAnswer;
-    [SerializeField] private string yesItem;
-    [SerializeField] private string noItem;
-    [SerializeField] private string completeItem;
-    [SerializeField] private Item requestItem;
-    [SerializeField] private int requestItemCount;
+    [SerializeField] private string acceptAfterAnswer;              //퀘스트 수락한 후의 대답
+    [SerializeField] private string acceptAnswer;                   //퀘스트 수락시 대답
+    [SerializeField] private string noAnswer;                       //퀘스트 거절 대답
+    [SerializeField] private string yesItem;                        //퀘스트 아이템이 맞을시 대답
+    [SerializeField] private string noItem;                         //퀘스트 아이템이 아닐시 대답
+    [SerializeField] private string completeItem;                   //퀘스트 완료상태의 대답
+    [SerializeField] private Item requestItem;                      //요구하는 퀘스트 아이템
+    [SerializeField] private int requestItemCount;                  //요구하는 퀘스트 아이템 갯수
 
     private int currentCount = 0;
     private bool questAccept = false;               //퀘스트 수락상태
