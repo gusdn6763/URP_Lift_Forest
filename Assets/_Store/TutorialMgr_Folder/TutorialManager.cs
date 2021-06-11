@@ -15,10 +15,10 @@ public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
 
+
+
     [Range(1, 20)]
     public float arrowTargetSmooth;             // 화살표 방향 전환 부드럽기 조정.
-    [Range(1, 100)]
-    public int TotalWaypoints;                  // 위치 갯수 조정.
 
     public GameObject arrow;
     public ItemComponents[] itemComponents;
@@ -26,6 +26,7 @@ public class TutorialManager : MonoBehaviour
     private Transform ItemArrow; // 아이템 화살표 방향 변경용.
     private Transform currentItemPoint; // 최근 아이템 포인트
     private Transform arrowTarget;
+    private int TotalWaypoints;                  // 위치 갯수 조정.
     private int nextItem;
 
     private void Awake()
@@ -42,13 +43,14 @@ public class TutorialManager : MonoBehaviour
         newObject = null;
 
         nextItem = 0;
+        TotalWaypoints = itemComponents.Length;
+        ItemArrow = arrow.transform;
         changeTarget();
+
     }
 
     void Update()
     {
-        TotalWaypoints = itemComponents.Length;
-
         if (arrowTarget != null)
         {
             arrowTarget.localPosition = Vector3.Lerp(arrowTarget.localPosition, currentItemPoint.localPosition, arrowTargetSmooth * Time.deltaTime);
@@ -58,17 +60,9 @@ public class TutorialManager : MonoBehaviour
         {
             arrowTarget = currentItemPoint;
         }
-        if (ItemArrow == null)
-        {
-            ItemArrow = arrow.transform;
-        }
         ItemArrow.LookAt(arrowTarget);
     }
 
-    public void ItemEvent(int itemEvent)
-    {
-        itemComponents[itemEvent - 1].ItemLocationEvent.Invoke();
-    }
 
     public void changeTarget()
     {

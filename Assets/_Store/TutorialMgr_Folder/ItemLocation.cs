@@ -21,7 +21,6 @@ public class ItemLocation : MonoBehaviour
 	{
 		if (col.CompareTag(Constant.player))
 		{
-			TutorialManager.instance.ItemEvent(itemNum);
 			TutorialManager.instance.changeTarget();
 		}
 	}
