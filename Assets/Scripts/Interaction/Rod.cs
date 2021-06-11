@@ -6,10 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class Rod : Item
 {
     private Hook hook;
-    private bool isGrab;
     private bool isActive = true;
-
-    public bool IsGrab { get => isGrab; set => isGrab = value; }
     public bool IsActive { get => isActive; set => isActive = value; }
 
     protected override void Awake()
@@ -20,7 +17,7 @@ public class Rod : Item
 
     public override bool IsSelectableBy(XRBaseInteractor interactor)
     {
-        return base.IsSelectableBy(interactor) && isActive;
+        return base.IsSelectableBy(interactor) && IsActive;
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
