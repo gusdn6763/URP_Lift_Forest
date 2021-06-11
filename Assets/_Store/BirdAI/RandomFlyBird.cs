@@ -1,8 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(Animator))]               
+       
 [RequireComponent(typeof(Rigidbody))]
 
 public class RandomFlyBird : MonoBehaviour
@@ -15,7 +14,6 @@ public class RandomFlyBird : MonoBehaviour
     [SerializeField] public bool returnToBase = false;
     [SerializeField] public float randomBaseOffset = 5, delayStart = 0f;
 
-    private Animator animator;
     private Rigidbody body;
     [System.NonSerialized]
     public float changeTarget = 0f, changeAnim = 0f, timeSinceTarget = 0f, timeSinceAnim = 0f, prevAnim, currentAnim = 0f, prevSpeed, speed, zturn, prevz,
@@ -28,7 +26,6 @@ public class RandomFlyBird : MonoBehaviour
     void Start()
     {
         // Inititalize
-        animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
         turnSpeedBackup = turnSpeed;
         direction = Quaternion.Euler(transform.eulerAngles) * (Vector3.forward);
@@ -127,15 +124,7 @@ public class RandomFlyBird : MonoBehaviour
     {
         float newState;
         if (Random.Range(0f, 1f) < idleRatio) newState = 0f;
-        else
-        {
-            newState = Random.Range(animSpeedMinMax.x, animSpeedMinMax.y);
-        }
-        if (newState != currentAnim)
-        {
-            animator.SetFloat("flySpeed", newState);
-            if (newState == 0) animator.speed = 1f; else animator.speed = newState;
-        }
+        else newState = Random.Range(animSpeedMinMax.x, animSpeedMinMax.y);
         return newState;
     }
 

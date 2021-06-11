@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated);
         if(isActivated)
         {
-            inventory.transform.localPosition = new Vector3(-1f, -0.1f, 0.4f);
+            inventory.transform.localPosition = new Vector3(-0.5f, -0.1f, 0.4f);
         }
         else
         {
@@ -144,8 +144,6 @@ public class Player : MonoBehaviour
         InputHelpers.IsPressed(controller.inputDevice, rightTeleportActivationButton, out bool isActivated, activationThreshold);
         return isActivated;
     }
-
-
 
     public Vector3 SetCurrentRayPos()
     {

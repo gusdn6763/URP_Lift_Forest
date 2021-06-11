@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Pigattack : MonoBehaviour
 {
-
     [SerializeField]
     float speed = 3f;
-
 
     Animator animator;
 
@@ -21,22 +19,13 @@ public class Pigattack : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    private void Start()
-    {
-
-    }
-
-
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("¾È´¨");
-
-        if (other.gameObject.tag == "Player")
+        if (other.CompareTag(Constant.player))
         {
-
             StartCoroutine(moveAttack(other.transform));
-            //animator.SetTrigger("IsAttack");
         }
     }
 

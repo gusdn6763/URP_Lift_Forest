@@ -17,7 +17,7 @@ public class ItemManager : MonoBehaviour
 
     public Item FineItem(Item item)
     {
-        for(int i =0; i <items.Count; i++)
+        for (int i =0; i <items.Count; i++)
         {
             if(items[i].Name == item.Name)
             {

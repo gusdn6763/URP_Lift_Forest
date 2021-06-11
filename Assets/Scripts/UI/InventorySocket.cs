@@ -48,6 +48,7 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
+
         if (checkItem = args.interactable.GetComponent<Item>())             //만약의 에러 체크용
         {
             if (checkItem.maxSlotCount >= currentCount)                     //인벤토리에 아이템을 넣을 수 있는 최대 갯수
@@ -65,6 +66,7 @@ public class InventorySocket : XRSocketInteractor
                 }
             }
         }
+        
         base.OnHoverEntered(args);
     }
 
@@ -76,10 +78,10 @@ public class InventorySocket : XRSocketInteractor
     {
         checkItem = args.interactable.GetComponent<Item>();
 
-        CurrentCount++;
         if (currentItem == null)
         {
             currentItem = checkItem;
+            CurrentCount++;
         }
         
         base.OnSelectEntered(args);
@@ -91,10 +93,12 @@ public class InventorySocket : XRSocketInteractor
     /// <param name="args"></param>
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
-        CurrentCount -= 1;
+        CurrentCount--;
         if (CurrentCount > 0)
         {
             startingSelectedInteractable = Instantiate(ItemManager.instance.FineItem(currentItem), transform.position, transform.rotation);
+            CurrentCount--;
+            currentItem = null;
         }
         else
         {
