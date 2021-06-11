@@ -8,7 +8,7 @@ public class NPC : XRBaseInteractable
 {
     [Header("NPCÁ¤º¸")]
     [SerializeField] protected string defaultDialogue;
-    [SerializeField] protected float interactiveRange = 7f;
+    [SerializeField] protected float interactiveRange = 10f;
     [SerializeField] protected float defaultDialogueTime = 3f;
 
     protected NPCUI npcUI;
