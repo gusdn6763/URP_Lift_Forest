@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1241781937726633117}
   m_LocalRotation: {x: -0, y: -0.059091657, z: -0, w: 0.9982526}
   m_LocalPosition: {x: 1.3158102, y: 7.9722977, z: 0.7248418}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -226,6 +226,8 @@ MonoBehaviour:
   introudce: " 5~10cm \uD06C\uAE30\uC758 \uC8FC\uD64D\uBE5B \uACFC\uC77C.  \uD5A5\uAE0B\uD55C
     \uD5A5 \uB54C\uBB38\uC5D0 \uB9C8\uC744\uC5D0\uC11C\uB294 \uC0B4\uAD6C\uC7BC\uC73C\uB85C
     \uB9CE\uC774 \uB9CC\uB4E4\uC5B4 \uBA39\uB294\uB2E4"
+  parentTransform: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   maxSlotCount: 99
-  spawnItem: 1
+  spawnItem: 0
   spawnTime: 5

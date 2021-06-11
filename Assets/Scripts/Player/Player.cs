@@ -56,7 +56,10 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
-
+    private void Start()
+    {
+        Money = money;
+    }
 
     private void Update()
     {
@@ -66,7 +69,7 @@ public class Player : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated);
         if(isActivated)
         {
-            inventory.transform.localPosition = new Vector3(-0.05f, -0.1f, 0.55f);
+            inventory.transform.localPosition = new Vector3(-0.05f, -0.2f, 0.55f);
         }
         else
         {

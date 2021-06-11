@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class waypointMove2 : MonoBehaviour
 {
@@ -19,32 +20,34 @@ public class waypointMove2 : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(coMove());
+        transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
+        Move();
     }
 
-    IEnumerator coMove()
+    public void Move()
     {
-        while (true)
+        animator.SetBool(Constant.move, true);
+        transform.DOMove(pointPos[pointNum].transform.position, speed).
+        SetEase(Ease.Linear).SetSpeedBased(true).OnComplete(() =>
         {
-            transform.position = Vector3.MoveTowards(transform.position, pointPos[pointNum].transform.position, speed * Time.deltaTime);
-            transform.LookAt(pointPos[pointNum].position);
-            animator.SetBool(Constant.move, true);
-
-            if (Vector3.Distance(transform.position, pointPos[pointNum].position) < 0.05f)
+            animator.SetBool(Constant.move, false);
+            if (pointNum < pointPos.Length - 1)
             {
-                animator.SetBool(Constant.move, false);
-
-                if (pointNum < pointPos.Length - 1)
-                {
-                    pointNum++;
-                }
-                else
-                {
-                    pointNum = 0;
-                }
-                yield return new WaitForSeconds(Random.Range(1, waitTime + 1));
+                pointNum++;
             }
-            yield return new WaitForSeconds(0.1f);
-        }
+            else
+            {
+                pointNum = 1;
+            }
+            transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
+            StartCoroutine(MoveCoroutine());
+        });
+    }
+
+    IEnumerator MoveCoroutine()
+    {
+        animator.SetBool(Constant.move, false);
+        yield return new WaitForSeconds(waitTime);
+        Move();
     }
 }

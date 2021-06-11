@@ -10,12 +10,15 @@ public class QuestNPC : NPC
     [SerializeField] private string noAnswer;                       //퀘스트 거절 대답
     [SerializeField] private string yesItem;                        //퀘스트 아이템이 맞을시 대답
     [SerializeField] private string noItem;                         //퀘스트 아이템이 아닐시 대답
-    [SerializeField] private string completeItem;                   //퀘스트 완료상태의 대답
+    [SerializeField] private string completeItem;                   //퀘스트 완료시 대답
+    [SerializeField] private string questCompleted;                 //퀘스트 완료후 대화시 대답
     [SerializeField] private Item requestItem;                      //요구하는 퀘스트 아이템
     [SerializeField] private int requestItemCount;                  //요구하는 퀘스트 아이템 갯수
 
+
     private int currentCount = 0;
     private bool questAccept = false;               //퀘스트 수락상태
+    private bool questComplete = false;                             //퀘스트 완료상태
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
@@ -49,14 +52,21 @@ public class QuestNPC : NPC
             }
             else
             {
-                npcUI.ShowDialogue(this, acceptAfterAnswer, defaultDialogueTime);
+                if (questComplete)
+                {
+                    npcUI.ShowDialogue(this, questCompleted, defaultDialogueTime);
+                }
+                else
+                {
+                    npcUI.ShowDialogue(this, acceptAfterAnswer, defaultDialogueTime);
+                }
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (questAccept)
+        if (questAccept && !questComplete)
         {
             if (other.CompareTag(Constant.item))
             {
@@ -67,6 +77,7 @@ public class QuestNPC : NPC
                     if (requestItemCount == currentCount)
                     {
                         npcUI.ShowDialogue(this, completeItem, defaultDialogueTime);
+                        questComplete = true;
                     }
                     else
                     {

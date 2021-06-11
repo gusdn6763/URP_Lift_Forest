@@ -18,11 +18,11 @@ public class Seed : Item
     [SerializeField] private Item completeItem;
     [SerializeField] private int maxInstanteCount;
 
-    private MeshFilter filter;
-    private MeshRenderer meshRenderer;
+    public MeshFilter filter;
+    public MeshRenderer meshRenderer;
 
-    private int growingCount;
-    private int currentGrowingCount;
+    public int growingCount;
+    public int currentGrowingCount;
 
     protected override void Awake()
     {
@@ -41,22 +41,23 @@ public class Seed : Item
     // Spring Script에 들어감.
     public IEnumerator Growing()
     {
-        while (growingCount != currentGrowingCount)
+        transform.localScale = Vector3.one;
+        while (currentGrowingCount != growingCount)
         {
             yield return new WaitForSeconds(seeds[currentGrowingCount].growingCountTime);
             currentGrowingCount++;
-            if (currentGrowingCount == growingCount)
+            if (currentGrowingCount >= growingCount)
             {
-                int count = Random.Range(0, maxInstanteCount);
+                int count = Random.Range(1, maxInstanteCount + 1);
                 for (int i = 0; i < count; i++)
                 {
-                    Instantiate(completeItem, transform.position + (Vector3.up * 2), transform.rotation);
+                    Instantiate(completeItem, transform.position + (Vector3.up * 5), transform.rotation);
                     Destroy(this.gameObject);
                 }
             }
             else
             {
-                meshRenderer = seeds[currentGrowingCount].renderer;
+                meshRenderer.sharedMaterials = seeds[currentGrowingCount].renderer.sharedMaterials;
                 filter.sharedMesh = seeds[currentGrowingCount].filter.sharedMesh;
             }
         }

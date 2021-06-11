@@ -22,7 +22,6 @@ public class Pigattack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("¾È´¨");
         if (other.CompareTag(Constant.player))
         {
             StartCoroutine(moveAttack(other.transform));

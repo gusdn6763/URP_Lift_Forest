@@ -26,14 +26,22 @@ public class ItemUI : UI
         }
     }
 
-    public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, string price, bool isOn = false)
+    public void TranceInfo(Transform parent, Vector3 addsize ,string name, string introduce, float price, bool isOn = false)
     {
         gold.SetActive(isOn);
         this.addSize = addsize;
         parentTransform = parent;
-        nameTxt.text = name.ToString();
-        introduceTxt.text = introduce.ToString();
-        priceTxt.text = price.ToString();
+        nameTxt.text = name;
+        introduceTxt.text = introduce;
+        if (price != 0)
+        {
+            priceTxt.text = price.ToString();
+        }
+        else
+        {
+            priceTxt.text = "";
+        }
+
     }
 
 }

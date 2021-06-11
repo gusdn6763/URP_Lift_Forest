@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7747bdf78fa6141a2f81d16ff91e5f, type: 3}
+  m_Name: Bed Desk
+  m_EditorClassIdentifier: 
+  nameString: Bed
+  prefab: {fileID: 6244973058210758121, guid: d951b2145c293c74eae21e14eff99f05, type: 3}
+  visual: {fileID: 2761838175894762338, guid: 6b9037a4703d10843bc4bbdc1f8fbcec, type: 3}
+  width: 1
+  height: 1

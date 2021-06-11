@@ -39,7 +39,7 @@ public class SellingNPC : NPC
             npcUI.ShowDialogue(this, sellingItem.Name + "Àº(´Â)" + price + "°ñµå¾ß." + sellingDialogue.ToString(), defaultDialogueTime);
             npcUI.SetOnClickAction(() =>
             {
-                if (Player.instance.Money > sellingItemPrice)
+                if (Player.instance.Money >= sellingItemPrice)
                 {
                     Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
                     Player.instance.Money -= sellingItemPrice;

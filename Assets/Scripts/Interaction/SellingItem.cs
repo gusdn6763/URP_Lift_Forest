@@ -17,6 +17,7 @@ public class SellingItem : Item
     private void Start()
     {
         rayActive = true;
+        isOn = false;
     }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)

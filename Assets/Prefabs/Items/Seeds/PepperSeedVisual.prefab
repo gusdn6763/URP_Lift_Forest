@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7672960299182731001}
   - component: {fileID: 7647020446338503479}
   - component: {fileID: 7655692866842212271}
-  - component: {fileID: 7669395792736256274}
   - component: {fileID: 7669395792736256272}
   - component: {fileID: 8924116929287994428}
+  - component: {fileID: 2195193545102110671}
   m_Layer: 8
   m_Name: PepperSeedVisual
   m_TagString: Seed
@@ -84,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7669395792736256274
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7669395792736256277}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.055934444
-  m_Height: 0.12216809
-  m_Direction: 1
-  m_Center: {x: 0.006624297, y: -0.053600993, z: -0.051813655}
 --- !u!54 &7669395792736256272
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -227,9 +213,9 @@ MonoBehaviour:
   introudce: "\uD30C\uD504\uB9AC\uCE74 \uB2EE\uC558\uB2E4\uACE0 \uB9CE\uC774 \uB4E3\uC9C0\uB9CC
     \uC54C\uACE0\uBCF4\uBA74 \uC544\uC0AD\uD55C \uC2DD\uAC10\uC774 \uB6F0\uC5B4\uB09C
     \uCD08\uB85D\uBE5B \uD53C\uB9DD"
+  parentTransform: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
   maxSlotCount: 99
-  spawnItem: 0
-  spawnTime: 5
   seeds:
   - growingCountTime: 1
     renderer: {fileID: 7655692866842212271}
@@ -248,3 +234,16 @@ MonoBehaviour:
     filter: {fileID: 7719901576121924567, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
   completeItem: {fileID: 7735245101502255371, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
   maxInstanteCount: 2
+--- !u!65 &2195193545102110671
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669395792736256277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07070068, y: 0.12216809, z: 0.111868896}
+  m_Center: {x: 0.0066204825, y: -0.053599413, z: -0.05181366}

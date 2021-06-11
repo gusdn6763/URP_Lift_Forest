@@ -12,6 +12,8 @@ TagManager:
   - ItemLocation
   - Hand
   - Inventory
+  - Tree
+  - Dirt
   layers:
   - Default
   - TransparentFX

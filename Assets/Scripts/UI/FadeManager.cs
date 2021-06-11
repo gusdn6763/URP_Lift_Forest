@@ -40,6 +40,7 @@ public class FadeManager : MonoBehaviour
             OnAction();
             OnAction = null;
         }
+        FadeIn();
     }
 
     public void FadeIn(float _speed = 0.02f)
