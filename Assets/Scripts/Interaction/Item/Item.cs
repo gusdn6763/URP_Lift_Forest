@@ -12,8 +12,8 @@ public class Item : Introduce
 
     private Transform parentTransform;
     private Vector3 spawnPoint;
-    private bool makedItem = false;
     protected bool defaultSell = false;
+    protected bool rayActive = false;
 
     [Header("아이템 정보")]
     public int maxSlotCount = 99;
@@ -60,6 +60,13 @@ public class Item : Introduce
     }
     public override bool IsSelectableBy(XRBaseInteractor interactor)
     {
-        return base.IsSelectableBy(interactor) && (interactor.CompareTag(Constant.hand) || interactor.CompareTag(Constant.inventory));
+        if (!rayActive)
+        {
+            return base.IsSelectableBy(interactor) && (interactor.CompareTag(Constant.hand) || interactor.CompareTag(Constant.inventory));
+        }
+        else
+        {
+            return base.IsSelectableBy(interactor);
+        }
     }
 }

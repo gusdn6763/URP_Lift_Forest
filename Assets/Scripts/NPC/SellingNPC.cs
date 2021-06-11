@@ -26,6 +26,7 @@ public class SellingNPC : NPC
 
     public void GetDialogue(Item choiceItem, int price)
     {
+        print(Vector3.Distance(transform.position, Player.instance.transform.position));
         if (Vector3.Distance(transform.position, Player.instance.transform.position) < interactiveRange)
         {
             sellingItem = choiceItem;

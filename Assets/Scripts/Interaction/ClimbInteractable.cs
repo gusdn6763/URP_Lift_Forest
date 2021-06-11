@@ -5,8 +5,9 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ClimbInteractable : XRBaseInteractable
 {
-     AudioSource audioSource;
-     void Start()
+    AudioSource audioSource;
+
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }

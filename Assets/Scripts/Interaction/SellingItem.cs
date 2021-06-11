@@ -8,11 +8,16 @@ public class SellingItem : Item
 {
     private SellingNPC sellingNPC;
 
+    public SellingNPC SellingNPC { get => sellingNPC; set => sellingNPC = value; }
+
     [Header("ÆÇ¸Å")]
     [SerializeField] private int sellingPrice;
     [SerializeField] private Item sellingPrefab;
 
-    public SellingNPC SellingNPC { get => sellingNPC; set => sellingNPC = value; }
+    private void Start()
+    {
+        rayActive = true;
+    }
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
