@@ -8,6 +8,7 @@ public class ItemManager : MonoBehaviour
 
     public ItemUI itemUI;
     public NPCUI npcUI;
+    public GameObject houseUI;
 
     private void Awake()
     {

@@ -916,7 +916,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8355241314698139090}
-  - component: {fileID: 6442309853457301674}
   m_Layer: 0
   m_Name: BedVisual
   m_TagString: Untagged
@@ -941,20 +940,6 @@ Transform:
   m_Father: {fileID: 2518181764619608363}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6442309853457301674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5002199404400355981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2dc85b9245fa847969ce32ebeb6041, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mesh: {fileID: 0}
-  anchor: {fileID: 0}
 --- !u!1 &5402310421134355378
 GameObject:
   m_ObjectHideFlags: 0
