@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //페이드 인, 아웃 효과
 public class FadeManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class FadeManager : MonoBehaviour
     
     public Action OnAction;
 
-    [SerializeField] private SpriteRenderer black;
+    [SerializeField] private Image black;
     private Color color;
 
     private void Awake()

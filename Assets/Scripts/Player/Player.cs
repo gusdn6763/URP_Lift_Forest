@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         device.TryGetFeatureValue(CommonUsages.triggerButton, out bool isActivated);
         if(isActivated)
         {
-            inventory.transform.localPosition = new Vector3(-0.5f, -0.1f, 0.4f);
+            inventory.transform.localPosition = new Vector3(-0.05f, -0.1f, 0.55f);
         }
         else
         {

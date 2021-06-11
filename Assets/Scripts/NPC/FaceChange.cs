@@ -32,7 +32,6 @@ public class FaceChange : MonoBehaviour
     public void ChangeFace(Faces face, float time)
     {
         mesh.material = allFaces.Find(x => x.faces == face).face;
-        print(allFaces.Find(x => x.faces == face).face);
         StartCoroutine(ResetFace(time));
     }
 
