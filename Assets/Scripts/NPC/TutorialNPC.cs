@@ -24,7 +24,7 @@ public class TutorialNPC : NPC
             npcUI.gameObject.SetActive(true);
             npcUI.ButtonOnOff(true);
 
-            npcUI.ChangeButtonName("알았어?", "싫은데?");
+            npcUI.ChangeButtonName("알았어!", "싫은데?");
             npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
 
             npcUI.SetOnClickAction(() =>
