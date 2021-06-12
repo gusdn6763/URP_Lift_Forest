@@ -20,7 +20,7 @@ public class waypointMove2 : MonoBehaviour
 
     void Start()
     {
-        transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
+        transform.LookAt(pointPos[pointNum].transform.position);
         Move();
     }
 

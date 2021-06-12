@@ -9,9 +9,9 @@ public class Pigattack : MonoBehaviour
 
     Animator animator;
 
-    bool isAttack = false;
-    bool isAttackCompleted = false;
-    bool isRunning = false;
+    public bool isAttack = false;
+    public bool isAttackCompleted = false;
+    public bool isRunning = false;
 
     public Transform Waypoint;
 
@@ -36,8 +36,7 @@ public class Pigattack : MonoBehaviour
 
             if (isAttack == false)
             {
-                transform.position = Vector3.MoveTowards
-                (transform.position, target.position, speed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
 
                 this.transform.LookAt(target.position);
 
@@ -52,39 +51,30 @@ public class Pigattack : MonoBehaviour
 
                 if (!isAttackCompleted)
                 {
-                    Debug.Log($"isAttackCompleted");
-
                     animator.SetBool("IsAttack", true);
                     isAttack = true;
                     isAttackCompleted = true;
                     yield return new WaitForSeconds(1f);
                     isRunning = true;
+                    
                 }
             }
 
             if (isRunning)
             {
-                transform.position = Vector3.MoveTowards
-                (transform.position, Waypoint.position, speed * 2 * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, Waypoint.position, speed * 2 * Time.deltaTime);
 
                 this.transform.LookAt(Waypoint.position);
                 animator.SetBool("IsRunning", true);
-            
+
+                if(Vector3.Distance(transform.position, Waypoint.position) < 2f)
+                {
+                    animator.SetBool("IsWalking", false);
+                    animator.SetBool("IsRunning", false);
+                    StopAllCoroutines();
+                }
             }
-
-
-            ////this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(transform.position), 3f * Time.deltaTime);
-
-            //if (pointNum < pointPos.Length - 1)
-            //{
-            //    pointNum++;
-            //}
-            //else
-            //{
-            //    pointNum = 0;
-            //}
         }
-        //this.transform.rotation = Quaternion.LookRotation(transform.position);
     }
 }
 

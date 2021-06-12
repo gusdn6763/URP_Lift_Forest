@@ -51,9 +51,9 @@ public class Seed : Item
                 int count = Random.Range(1, maxInstanteCount + 1);
                 for (int i = 0; i < count; i++)
                 {
-                    Instantiate(completeItem, transform.position + (Vector3.up * 5), transform.rotation);
-                    Destroy(this.gameObject);
+                    Instantiate(completeItem, transform.position + (Vector3.up * 3), transform.rotation);
                 }
+                Destroy(this.gameObject);
             }
             else
             {

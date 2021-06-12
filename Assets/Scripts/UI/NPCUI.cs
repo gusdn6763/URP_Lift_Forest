@@ -25,7 +25,10 @@ public class NPCUI : UI
         {
             transform.position = currentNpc.transform.position + addSize;
         }
-        transform.LookAt(new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z));
+        if (Vector3.Distance(Player.instance.transform.position, transform.position) > 3f)
+        {
+            transform.LookAt(new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z));
+        }
     }
 
     /// <summary>
@@ -38,6 +41,7 @@ public class NPCUI : UI
         currentNpc = parent;
         dialogueTxt.text = dialogue.ToString();
         transform.position = parent.transform.position + addSize;
+        transform.LookAt(new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z));
 
         if (stopCoroutine != null)
             StopCoroutine(stopCoroutine);

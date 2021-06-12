@@ -50,7 +50,6 @@ public class QuestNPC : NPC
             //퀘스트 수락한 적이 없을 경우
             if (!questAccept)
             {
-                print("1");
                 //수락 비활성화 활성화 하고 버튼 텍스트 변경
                 npcUI.ButtonOnOff(true);
                 npcUI.ChangeButtonName("수락", "거절");
@@ -110,6 +109,10 @@ public class QuestNPC : NPC
                     {
                         npcUI.ShowDialogue(this, completeItem, defaultDialogueTime);
                         questComplete = true;
+                        if(face)
+                        {
+                            face.ChangeFace(Faces.Glad, 1f);
+                        }
                     }
                     else
                     {

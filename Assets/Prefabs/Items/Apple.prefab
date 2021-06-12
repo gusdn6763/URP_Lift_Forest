@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 383813776230465366}
   m_LocalRotation: {x: -0, y: -0.4178256, z: -0, w: 0.90852726}
   m_LocalPosition: {x: -0.75338024, y: 5.0022964, z: 1.8576247}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -225,8 +225,6 @@ MonoBehaviour:
   price: 1
   introudce: " 5~10cm \uD06C\uAE30\uC758 \uBD89\uC740 \uBE5B\uC758 \uACFC\uC77C. 
     \uCD5C\uC0C1\uC758 \uC560\uD50C \uD30C\uC774\uB97C \uB9DB\uBCFC \uC218 \uC788\uB2E4!"
-  parentTransform: {fileID: 0}
-  spawnPoint: {x: 0, y: 0, z: 0}
   maxSlotCount: 99
   spawnItem: 0
   spawnTime: 3
