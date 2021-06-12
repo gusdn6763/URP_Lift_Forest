@@ -37,9 +37,9 @@ public class waypointMove2 : MonoBehaviour
             }
             else
             {
-                pointNum = 1;
+                pointNum = 0;
             }
-            transform.DOLookAt(pointPos[pointNum].transform.position, 1f);
+            transform.LookAt(pointPos[pointNum].transform.position);
             StartCoroutine(MoveCoroutine());
         });
     }
