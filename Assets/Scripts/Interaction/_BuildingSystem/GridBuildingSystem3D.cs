@@ -96,95 +96,88 @@ public class GridBuildingSystem3D : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    public void StartBuild()
     {
-        device = InputDevices.GetDeviceAtXRNode(ChangeDevice);
-        if (currentPlacedObjectTypeSO != null)
+        StartCoroutine(StartBuiliding());
+    }
+
+    public void StopBuilding()
+    {
+        DeselectObjectType();
+        StopAllCoroutines();
+    }
+
+    IEnumerator StartBuiliding()
+    {
+        while (true)
         {
-            if (device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isOn) && isOn)
+            device = InputDevices.GetDeviceAtXRNode(ChangeDevice);
+            if (currentPlacedObjectTypeSO != null)
             {
-                if (oneClickRotation)
+                if (device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool isOn) && isOn)
                 {
-                    currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
-                    oneClickRotation = false;
-                }
-            }
-            else
-            {
-                oneClickRotation = true;
-            }
-
-            Vector3 mousePosition = Player.instance.SetCurrentRayPos();
-            grid.GetXZ(mousePosition, out int x, out int z);
-
-            Vector2Int placedObjectOrigin = new Vector2Int(x, z);
-            placedObjectOrigin = grid.ValidateGridPosition(placedObjectOrigin);
-
-            List<Vector2Int> gridPositionList = currentPlacedObjectTypeSO.GetGridPositionList(placedObjectOrigin, currentPlacedObjectTypeSODir);
-            foreach (Vector2Int gridPosition in gridPositionList)
-            {
-                if ((gridPosition.x + 1 > gridWidth || gridPosition.y + 1 > gridHeight) || !grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild())
-                {
-                    CanBuild = false;
-                    break;
+                    if (oneClickRotation)
+                    {
+                        currentPlacedObjectTypeSODir = PlacedObjectTypeSO.GetNextDir(currentPlacedObjectTypeSODir);
+                        oneClickRotation = false;
+                    }
                 }
                 else
                 {
-                    CanBuild = true;
+                    oneClickRotation = true;
                 }
-            }
-            device.TryGetFeatureValue(CommonUsages.triggerButton, out bool building);
-            print(building);
-            if (building)
-            {
-                if (CanBuild)
+
+                Vector3 mousePosition = Player.instance.SetCurrentRayPos();
+                grid.GetXZ(mousePosition, out int x, out int z);
+
+                Vector2Int placedObjectOrigin = new Vector2Int(x, z);
+                placedObjectOrigin = grid.ValidateGridPosition(placedObjectOrigin);
+
+                List<Vector2Int> gridPositionList = currentPlacedObjectTypeSO.GetGridPositionList(placedObjectOrigin, currentPlacedObjectTypeSODir);
+                foreach (Vector2Int gridPosition in gridPositionList)
                 {
-                    if (oneClick)
+                    if ((gridPosition.x + 1 > gridWidth || gridPosition.y + 1 > gridHeight) || !grid.GetGridObject(gridPosition.x, gridPosition.y).CanBuild())
                     {
-                        Vector2Int rotationOffset = currentPlacedObjectTypeSO.GetRotationOffset(currentPlacedObjectTypeSODir);
-                        Vector3 placedObjectWorldPosition = grid.GetWorldPosition(placedObjectOrigin.x, placedObjectOrigin.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
-
-                        PlacedObject_Done placedObject = PlacedObject_Done.Create(placedObjectWorldPosition, placedObjectOrigin, currentPlacedObjectTypeSODir, currentPlacedObjectTypeSO);
-                        foreach (Vector2Int gridPosition in gridPositionList)
-                        {
-                            grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
-                        }
-
-                        DeselectObjectType();
-                        oneClick = false;
+                        CanBuild = false;
+                        break;
                     }
                     else
                     {
-                        oneClick = true;
+                        CanBuild = true;
                     }
                 }
-                else
+                device.TryGetFeatureValue(CommonUsages.triggerButton, out bool building);
+                if (building)
                 {
-                    UtilsClass.CreateWorldTextPopup("지을 수 없습니다!", mousePosition);
+                    if (CanBuild)
+                    {
+                        if (oneClick)
+                        {
+                            Vector2Int rotationOffset = currentPlacedObjectTypeSO.GetRotationOffset(currentPlacedObjectTypeSODir);
+                            Vector3 placedObjectWorldPosition = grid.GetWorldPosition(placedObjectOrigin.x, placedObjectOrigin.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * grid.GetCellSize();
+
+                            PlacedObject_Done placedObject = PlacedObject_Done.Create(placedObjectWorldPosition, placedObjectOrigin, currentPlacedObjectTypeSODir, currentPlacedObjectTypeSO);
+                            foreach (Vector2Int gridPosition in gridPositionList)
+                            {
+                                grid.GetGridObject(gridPosition.x, gridPosition.y).SetPlacedObject(placedObject);
+                            }
+
+                            DeselectObjectType();
+                            oneClick = false;
+                        }
+                        else
+                        {
+                            oneClick = true;
+                        }
+                    }
+                    else
+                    {
+                        UtilsClass.CreateWorldTextPopup("지을 수 없습니다!", mousePosition);
+                    }
                 }
             }
+            yield return new WaitForSeconds(0.1f);
         }
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    Vector3 mousePosition = Mouse3D.GetMouseWorldPosition();
-        //    if (grid.GetGridObject(mousePosition) != null)
-        //    {
-        //        // Valid Grid Position
-        //        PlacedObject_Done placedObject = grid.GetGridObject(mousePosition).GetPlacedObject();
-        //        if (placedObject != null)
-        //        {
-        //            // Demolish
-        //            placedObject.DestroySelf();
-
-        //            List<Vector2Int> gridPositionList = placedObject.GetGridPositionList();
-        //            foreach (Vector2Int gridPosition in gridPositionList)
-        //            {
-        //                grid.GetGridObject(gridPosition.x, gridPosition.y).ClearPlacedObject();
-        //            }
-        //        }
-        //    }
-        //}
     }
 
 

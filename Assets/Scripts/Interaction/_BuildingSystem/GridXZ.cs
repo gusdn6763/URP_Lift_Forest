@@ -72,11 +72,6 @@ public class GridXZ<T> {
             }
             Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
             Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
-
-            OnGridObjectChanged += (object sender, OnGridObjectChangedEventArgs eventArgs) => 
-            {
-                debugTextArray[eventArgs.x, eventArgs.z].text = gridArray[eventArgs.x, eventArgs.z]?.ToString();
-            };
         }
     }
 

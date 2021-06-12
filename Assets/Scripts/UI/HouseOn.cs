@@ -9,6 +9,7 @@ public class HouseOn : MonoBehaviour
         if(other.CompareTag(Constant.player))
         {
             ItemManager.instance.houseUI.SetActive(true);
+            GridBuildingSystem3D.instance.StartBuild();
         }
     }
 
@@ -17,6 +18,7 @@ public class HouseOn : MonoBehaviour
         if (other.CompareTag(Constant.player))
         {
             ItemManager.instance.houseUI.SetActive(false);
+            GridBuildingSystem3D.instance.StopBuilding();
         }
     }
 

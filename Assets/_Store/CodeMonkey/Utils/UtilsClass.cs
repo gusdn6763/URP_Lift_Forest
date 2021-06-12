@@ -118,7 +118,7 @@ namespace CodeMonkey.Utils {
             //새로 생성
             transform.rotation = Quaternion.Euler(90, 0, 0);
             transform.localScale = new Vector3(0.2f, 0.2f, 1f);
-            textMesh.fontSize = 30;
+            textMesh.fontSize = 10;
 
             return textMesh;
         }
