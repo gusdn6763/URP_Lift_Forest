@@ -31,6 +31,7 @@ public class NPC : XRBaseInteractable
             npcUI.gameObject.SetActive(true);
             npcUI.ShowDialogue(this, defaultDialogue, defaultDialogueTime);
             npcUI.ButtonOnOff(false);
+            print("1");
         }
         base.OnSelectEntered(args);
     }

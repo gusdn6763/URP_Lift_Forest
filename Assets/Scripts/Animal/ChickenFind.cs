@@ -6,22 +6,21 @@ public class ChickenFind : MonoBehaviour
 {
     public Transform targetPos1;
     public float ChickSpeed = 10f;
+    private waypointMove2 way;
+    private Animator chick;
 
-    public void Start()
+    private void Awake()
     {
-        targetPos1.transform.position = new Vector3(10, 0, 0);
+        way = GetComponent<waypointMove2>();
+        chick = GetComponent<Animator>();
     }
+
 
     public void MoveAction()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        float translateMove = ChickSpeed * Time.deltaTime;
-
-        targetPos1.transform.Translate
-            (x * translateMove, 0, z * translateMove);
-
+        this.transform.position = targetPos1.position;
+        chick.SetBool(Constant.move, false);
+        way.Stop(false);
     }
 
 }

@@ -10,8 +10,8 @@ public class Item : Introduce
     private Collider col;
     protected Rigidbody rigi;
 
-    public Transform parentTransform;
-    public Vector3 spawnPoint;
+    private Transform parentTransform;
+    private Vector3 spawnPoint;
     protected bool defaultSell = false;
     protected bool rayActive = false;
 
@@ -19,8 +19,8 @@ public class Item : Introduce
     public int maxSlotCount = 99;
 
     [Header("스폰되는 아이템일 경우")]
-    private bool spawnItem = false;
-    private float spawnTime = 5f;
+    [SerializeField] private bool spawnItem = false;
+    [SerializeField] private float spawnTime = 5f;
 
     protected override void Awake()
     {

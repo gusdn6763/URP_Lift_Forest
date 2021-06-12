@@ -50,4 +50,16 @@ public class waypointMove2 : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Move();
     }
+
+    public void Stop(bool ison)
+    {
+        if (ison)
+        {
+            transform.DOPlay();
+        }
+        else
+        {
+            transform.DOPause();
+        }
+    }
 }

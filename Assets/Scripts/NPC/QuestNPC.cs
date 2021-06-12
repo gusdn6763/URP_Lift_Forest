@@ -22,7 +22,7 @@ public class QuestNPC : NPC
     private bool questComplete = false;                             //퀘스트 완료상태
 
     // public Action MoveAction; //닭장 미션
-    public ChickenFind chickenFind;
+    public ChickenFind[] chickenFind;
 
     protected override void Awake()
     {
@@ -32,8 +32,9 @@ public class QuestNPC : NPC
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
-        GetDialogue();
+        
         base.OnSelectEntered(args);
+        GetDialogue();
     }
 
     /// <summary>
@@ -46,10 +47,10 @@ public class QuestNPC : NPC
         {
             //NPC 대화창 활성화
             npcUI.gameObject.SetActive(true);
-
             //퀘스트 수락한 적이 없을 경우
             if (!questAccept)
             {
+                print("1");
                 //수락 비활성화 활성화 하고 버튼 텍스트 변경
                 npcUI.ButtonOnOff(true);
                 npcUI.ChangeButtonName("수락", "거절");
@@ -65,7 +66,10 @@ public class QuestNPC : NPC
 
                     if(chickenFind != null)
                     {
-                        chickenFind.MoveAction();
+                        for (int i = 0; i < chickenFind.Length; i++)
+                        {
+                            chickenFind[i].MoveAction();
+                        }
                     }
                 });
 
