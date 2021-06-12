@@ -8,7 +8,6 @@ public class SeedSocket : XRSocketInteractor
     public bool isOn = false;
     public Seed currentSeed;
 
-    private bool isUsing = false;
     private bool realShowMesh = false;
 
     protected override void Awake()
