@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            inventory.transform.localPosition = new Vector3(-0.3f,100f, 0.4f);
+            inventory.transform.localPosition = new Vector3(100f,100f, 100f);
         }
 
 

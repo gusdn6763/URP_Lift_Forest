@@ -60,7 +60,7 @@ public class Item : Introduce
             tmp.spawnItem = true;
             tmp.GetInfo();
             transform.SetParent(null);
-            transform.localScale += transform.localScale;
+            tmp.transform.localScale += transform.localScale;
             spawnItem = false;
         }
 

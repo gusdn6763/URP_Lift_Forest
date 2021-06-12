@@ -5,4 +5,5 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class HouseGround : XRBaseInteractable
 {
+
 }

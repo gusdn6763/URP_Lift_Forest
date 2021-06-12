@@ -38,7 +38,10 @@ public class Introduce : XRGrabInteractable
 
     protected override void OnHoverExited(HoverExitEventArgs args)
     {
-        ui.gameObject.SetActive(false);
+        if (args.interactor.CompareTag(Constant.ray))
+        {
+            ui.gameObject.SetActive(false);
+        }
         base.OnHoverExited(args);
     }
 
