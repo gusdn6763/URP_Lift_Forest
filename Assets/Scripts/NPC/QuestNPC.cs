@@ -21,7 +21,8 @@ public class QuestNPC : NPC
     private bool questAccept = false;                               //퀘스트 수락상태
     private bool questComplete = false;                             //퀘스트 완료상태
 
-    public Action ActionEvent;
+    // public Action MoveAction; //닭장 미션
+    public ChickenFind chickenFind;
 
     protected override void Awake()
     {
@@ -62,9 +63,9 @@ public class QuestNPC : NPC
                     npcUI.ShowDialogue(this, acceptAnswer, defaultDialogueTime);
                     npcUI.ButtonOnOff(false);
 
-                    if(ActionEvent != null)
+                    if(chickenFind != null)
                     {
-                        ActionEvent();
+                        chickenFind.MoveAction();
                     }
                 });
 
