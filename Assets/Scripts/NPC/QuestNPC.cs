@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using System;
 
 public class QuestNPC : NPC
 {
@@ -19,6 +20,8 @@ public class QuestNPC : NPC
     private int currentCount = 0;
     private bool questAccept = false;                               //퀘스트 수락상태
     private bool questComplete = false;                             //퀘스트 완료상태
+
+    public Action ActionEvent;
 
     protected override void Awake()
     {
@@ -58,6 +61,11 @@ public class QuestNPC : NPC
                     questAccept = true;
                     npcUI.ShowDialogue(this, acceptAnswer, defaultDialogueTime);
                     npcUI.ButtonOnOff(false);
+
+                    if(ActionEvent != null)
+                    {
+                        ActionEvent();
+                    }
                 });
 
                 //오른쪽 버튼(수락)을 클릭시 실행
