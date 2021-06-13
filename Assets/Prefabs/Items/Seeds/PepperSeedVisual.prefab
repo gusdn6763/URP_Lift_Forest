@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7669395792736256277}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.7432, y: -1.113, z: -0.9176}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -213,9 +213,9 @@ MonoBehaviour:
   introudce: "\uD30C\uD504\uB9AC\uCE74 \uB2EE\uC558\uB2E4\uACE0 \uB9CE\uC774 \uB4E3\uC9C0\uB9CC
     \uC54C\uACE0\uBCF4\uBA74 \uC544\uC0AD\uD55C \uC2DD\uAC10\uC774 \uB6F0\uC5B4\uB09C
     \uCD08\uB85D\uBE5B \uD53C\uB9DD"
-  parentTransform: {fileID: 0}
-  spawnPoint: {x: 0, y: 0, z: 0}
   maxSlotCount: 99
+  spawnItem: 0
+  spawnTime: 5
   seeds:
   - growingCountTime: 1
     renderer: {fileID: 7655692866842212271}
@@ -234,6 +234,10 @@ MonoBehaviour:
     filter: {fileID: 7719901576121924567, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
   completeItem: {fileID: 7735245101502255371, guid: 80da9cfa0d1da534f954b31ee640a9c4, type: 3}
   maxInstanteCount: 2
+  filter: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  growingCount: 0
+  currentGrowingCount: 0
 --- !u!65 &2195193545102110671
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9057076862589735659}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.188, y: -1.314, z: -1.048}
-  m_LocalScale: {x: 1.5001, y: 1.5001, z: 1.5001}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -248,3 +248,7 @@ MonoBehaviour:
     filter: {fileID: 7060745439039373654, guid: 3257676264821f046b11b7cf39be8cac, type: 3}
   completeItem: {fileID: 7028005889774133650, guid: 3257676264821f046b11b7cf39be8cac, type: 3}
   maxInstanteCount: 3
+  filter: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  growingCount: 0
+  currentGrowingCount: 0
