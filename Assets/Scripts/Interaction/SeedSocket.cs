@@ -8,12 +8,14 @@ public class SeedSocket : XRSocketInteractor
     public bool isOn = false;
     public Seed currentSeed;
 
+    private Dirt dirt;
     private bool realShowMesh = false;
 
     protected override void Awake()
     {
         base.Awake();
         co = GetComponent<Collider>();
+        dirt = GetComponentInParent<Dirt>();
     }
 
     protected override void DrawHoveredInteractables()
@@ -57,6 +59,8 @@ public class SeedSocket : XRSocketInteractor
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         co.isTrigger = false;
+        currentSeed = null;
+        dirt.RestDirt();
         base.OnSelectExited(args);
     }
 

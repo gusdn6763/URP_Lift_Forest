@@ -16,7 +16,10 @@ public class Spring : XRGrabInteractable
         {
             if (seedsGround[i].socket.isOn)
             {
-                StartCoroutine(seedsGround[i].socket.currentSeed.Growing());
+                if (seedsGround[i].socket.currentSeed != null)
+                {
+                    StartCoroutine(seedsGround[i].socket.currentSeed.Growing());
+                }
             }
         }
         base.OnSelectEntered(args);

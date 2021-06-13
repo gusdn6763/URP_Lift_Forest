@@ -20,9 +20,13 @@ public class ItemUI : UI
             transform.position = parentTransform.position + addSize;
         }
         tmpVector = new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z);
-        if (Vector3.Distance(Player.instance.transform.position, transform.position) > 2f)
+        if (Vector3.Distance(Player.instance.transform.position, transform.position) > 1f)
         {
             transform.LookAt(tmpVector);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(transform.position - tmpVector);
         }
     }
 
@@ -41,8 +45,16 @@ public class ItemUI : UI
         {
             priceTxt.text = "";
         }
+
         tmpVector = new Vector3(Player.instance.transform.position.x, transform.position.y, Player.instance.transform.position.z);
-        transform.LookAt(tmpVector);
+        if (Vector3.Distance(Player.instance.transform.position, transform.position) > 1f)
+        {
+            transform.LookAt(tmpVector);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(transform.position - tmpVector);
+        }
         
     }
 
