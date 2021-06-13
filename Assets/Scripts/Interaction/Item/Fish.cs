@@ -24,4 +24,10 @@ public class Fish : Item
         }
         base.OnSelectEntered(args);
     }
+
+    protected override void OnSelectExited(SelectExitEventArgs args)
+    {
+        transform.SetParent(null);
+        base.OnSelectExited(args);
+    }
 }

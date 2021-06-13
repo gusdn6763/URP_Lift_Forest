@@ -29,13 +29,13 @@ public class Hook : MonoBehaviour
     {
         if (col.CompareTag(Constant.fishingHole) && !Grabbing)
         {
-            Fish fish = Instantiate(ItemManager.instance.FineItem(FishPrefab), 
-                transform.position, transform.rotation).GetComponent<Fish>();
+            Fish fish = Instantiate(FishPrefab, 
+                transform.position, transform.rotation);
 
             Hole = true;
             Grabbing = true;
+            fish.transform.SetParent(transform);
             fish.OnAction = ChangeStatus;
-            fish.transform.SetParent(this.transform);
         }
     }
 

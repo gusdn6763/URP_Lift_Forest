@@ -54,6 +54,7 @@ public class Item : Introduce
     {
         col.isTrigger = true;
 
+        print(parentTransform);
         if (spawnItem && parentTransform.CompareTag(Constant.tree))
         {
             Item tmp =  Instantiate(ItemManager.instance.FineItem(this), spawnPoint, Quaternion.identity, parentTransform);

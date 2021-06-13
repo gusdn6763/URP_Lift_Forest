@@ -40,7 +40,7 @@ public class SellingNPC : NPC
             {
                 if (Player.instance.Money >= sellingItemPrice)
                 {
-                    Instantiate(sellingItem, spawnPoint.position, spawnPoint.rotation);
+                    Instantiate(sellingItem, spawnPoint.position, Quaternion.identity);
                     Player.instance.Money -= sellingItemPrice;
                     npcUI.ShowDialogue(this, buyDialogue, defaultDialogueTime);
                 }
