@@ -229,13 +229,13 @@ MonoBehaviour:
   spawnItem: 0
   spawnTime: 5
   seeds:
-  - growingCountTime: 2
+  - growingCountTime: 3
     renderer: {fileID: 6165676229044977740}
     filter: {fileID: 8247241647136126086}
-  - growingCountTime: 3
+  - growingCountTime: 4
     renderer: {fileID: 23086859572317532, guid: 23303cb0efade674b946eb8d8fb90e7f, type: 3}
     filter: {fileID: 33122459390035550, guid: 23303cb0efade674b946eb8d8fb90e7f, type: 3}
-  - growingCountTime: 4
+  - growingCountTime: 5
     renderer: {fileID: 23241266811813708, guid: a5503981ddb2841458c40544bbc78005, type: 3}
     filter: {fileID: 33475634768644192, guid: a5503981ddb2841458c40544bbc78005, type: 3}
   - growingCountTime: 5

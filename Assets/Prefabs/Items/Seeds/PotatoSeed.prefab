@@ -234,13 +234,13 @@ MonoBehaviour:
   - growingCountTime: 1
     renderer: {fileID: 9072163152448472525}
     filter: {fileID: 9061589786628101909}
-  - growingCountTime: 1
+  - growingCountTime: 2
     renderer: {fileID: 23034754812173462, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
     filter: {fileID: 33942323983505120, guid: eeff9644f4a5b284faf7be559353277e, type: 3}
-  - growingCountTime: 1
+  - growingCountTime: 3
     renderer: {fileID: 23963333033447300, guid: 5a7f5d66e03803f48ab0fc24d088724d, type: 3}
     filter: {fileID: 33998768871902814, guid: 5a7f5d66e03803f48ab0fc24d088724d, type: 3}
-  - growingCountTime: 1
+  - growingCountTime: 4
     renderer: {fileID: 23976823614827798, guid: e48b8d820d122d64484926ce5e8f6e8c, type: 3}
     filter: {fileID: 33773876670190712, guid: e48b8d820d122d64484926ce5e8f6e8c, type: 3}
   - growingCountTime: 1

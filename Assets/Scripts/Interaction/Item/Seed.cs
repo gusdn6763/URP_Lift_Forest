@@ -48,7 +48,7 @@ public class Seed : Item
             currentGrowingCount++;
             if (currentGrowingCount >= growingCount)
             {
-                int count = Random.Range(1, maxInstanteCount + 1);
+                int count = Random.Range(1, maxInstanteCount);
                 for (int i = 0; i < count; i++)
                 {
                     Instantiate(completeItem, transform.position + (Vector3.up * 3), transform.rotation);
