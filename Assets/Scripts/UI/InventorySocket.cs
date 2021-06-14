@@ -106,5 +106,4 @@ public class InventorySocket : XRSocketInteractor
             base.OnSelectExited(args);
         }
     }
-
 }
